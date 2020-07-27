@@ -6,7 +6,7 @@
 import React from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { CreatePortal, ReactFragments, ErrorBoundaries } from '@views/index';
+import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
 
@@ -19,8 +19,8 @@ interface IState {
 
 class TipList extends React.Component<IProps, IState> {
   public readonly state: Readonly<IState> = {
-    selectedKeys: ['createPortal'],
-    openKeys: ['react']
+    selectedKeys: ['basicProject'],
+    openKeys: ['project']
   };
   // 选择菜单
   private selectMenu = (item: any) => {
@@ -46,6 +46,7 @@ class TipList extends React.Component<IProps, IState> {
           </Menu>
         </Col>
         <Col span={20} style={{ padding: '20px 50px' }}>
+          <Route path="/tips/basicProject" component={BasicProject} />
           <Route path="/tips/createPortal" component={CreatePortal} />
           <Route path="/tips/reactFragments" component={ReactFragments} />
           <Route path="/tips/errorBoundaries" component={ErrorBoundaries} />

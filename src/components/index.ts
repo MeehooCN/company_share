@@ -10,8 +10,10 @@ import MyTitle from '@components/components/text/MyTitle';
 import API from '@components/components/API';
 import CodeExample from '@components/components/CodeExample';
 import CodeBox from '@components/CodeBox';
+import ImageComponent from '@components/components/image/ImageComponent';
+import ImageList from '@components/components/image/ImageList';
 
 export {
   ErrorBoundary, MyTitle, Header, TitleWithDescription, API,
-  CodeExample, CodeBox
+  CodeExample, CodeBox, ImageComponent, ImageList
 };

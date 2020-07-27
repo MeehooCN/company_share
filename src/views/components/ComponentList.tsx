@@ -6,7 +6,7 @@
 import React from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { MyTitle } from '@views/index';
+import { MyTitle, ImageListView } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
 
@@ -47,6 +47,7 @@ class ComponentList extends React.Component<IProps, IState> {
         </Col>
         <Col span={20} style={{ padding: '20px 50px' }}>
           <Route path="/components/myTitle" component={MyTitle} />
+          <Route path="/components/imageList" component={ImageListView} />
         </Col>
       </Row>
     );

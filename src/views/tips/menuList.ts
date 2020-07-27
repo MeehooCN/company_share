@@ -7,6 +7,14 @@
 import { MenuData } from '@utils/CommonInterface';
 
 export const menuList: Array<MenuData> = [{
+  name: '项目技巧',
+  key: 'project',
+  children: [{
+    name: '基本业务系统的增删查改',
+    key: 'basicProject',
+    children: []
+  }]
+}, {
   name: 'React 技巧',
   key: 'react',
   children: [{

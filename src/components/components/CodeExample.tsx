@@ -16,7 +16,7 @@ interface IProps {
 const CodeExample = (props: IProps) => {
   const { viewComponents, code } = props;
   return (
-    <Card style={{ width: '100%' }}>
+    <Card style={{ width: '100%', minWidth: 1100 }}>
       {viewComponents}
       <Row style={{ marginTop: 20, width: '100%' }}>
         <CodeBox code={code} />

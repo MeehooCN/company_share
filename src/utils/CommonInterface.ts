@@ -18,3 +18,13 @@ export interface Resource {
   type: string,
   introduceComponentList: Array<IntroduceComponent>
 }
+
+export interface ImageData {
+  id: string,
+  sourceUrl: string,
+  thumbnailUrl: string,
+  thumbnailTrueUrl: string,
+  name: string,
+  width: number,
+  height: number
+}

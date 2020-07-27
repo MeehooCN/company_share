@@ -45,7 +45,7 @@ class Header extends React.Component<IProps, IState> {
             <Link to="/components/myTitle">组件</Link>
           </Menu.Item>
           <Menu.Item key="tips">
-            <Link to="/tips/createPortal">Tips</Link>
+            <Link to="/tips/basicProject">Tips</Link>
           </Menu.Item>
           <Menu.Item key="sources">
             <Link to="/resources">资源</Link>
