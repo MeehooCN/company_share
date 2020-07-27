@@ -136,7 +136,7 @@ class ImageList extends React.Component<IProps, IState> {
     let scrollHeight: number = document.documentElement.scrollTop;
     // 距img元素显露出的距离
     // 有个问题，最后两个始终处于懒加载下面一排不知道为啥
-    let diff = 50;
+    let diff = 100;
     for (let i = 0; i < imageList.length; i++) {
       let imgDiv = imageList[i].id;
       // @ts-ignore
@@ -177,10 +177,10 @@ class ImageList extends React.Component<IProps, IState> {
     return (
       <div
         style={{
-          width: containerWidth,
+          width: containerWidth + 1,
           display: 'flex',
           flexWrap: 'wrap',
-          minWidth: containerWidth
+          minWidth: containerWidth + 1
         }}
         onWheel={this.handleWheel}
       >
