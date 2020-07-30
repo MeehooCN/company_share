@@ -18,11 +18,12 @@ interface APIData {
 
 interface IProps {
   dataList: Array<APIData>,
-  description?: string
+  description?: string,
+  title?: string
 }
 
 const API = (props: IProps) => {
-  const { dataList, description } = props;
+  const { dataList, description, title } = props;
   const columns: ColumnProps<APIData>[] = [{
     title: '属性',
     dataIndex: 'name'
@@ -38,7 +39,7 @@ const API = (props: IProps) => {
   }];
   return (
     <div style={{ width: '100%', marginTop: 50 }}>
-      <TitleWithDescription title="API" titleSize={24} content={description || '暂无描述。'} />
+      <TitleWithDescription title={title || 'API'} titleSize={24} content={description || '暂无描述。'} />
       <Table<APIData>
         columns={columns}
         dataSource={dataList}

@@ -25,7 +25,7 @@ class Title extends React.Component<IProps, IState> {
       defaultValue: '主题色'
     }];
     const viewComponents = <MyTitle title="我的标题一" />;
-    const code = '<MyTitle title="我的标题一" />';
+    const code: string = '<MyTitle title="我的标题一" />';
     return (
       <Row>
         <TitleWithDescription title="MyTitle" content="标题。" />
