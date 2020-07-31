@@ -29,5 +29,9 @@ export const menuList: Array<MenuData> = [{
     name: 'ErrorBoundaries 错误边界',
     key: 'errorBoundaries',
     children: []
+  }, {
+    name: 'this.props.children 在父组件中显示子组件',
+    key: 'parentComponents',
+    children: []
   }]
 }];

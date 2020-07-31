@@ -6,7 +6,7 @@
 import React from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject } from '@views/index';
+import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
 
@@ -50,6 +50,7 @@ class TipList extends React.Component<IProps, IState> {
           <Route path="/tips/createPortal" component={CreatePortal} />
           <Route path="/tips/reactFragments" component={ReactFragments} />
           <Route path="/tips/errorBoundaries" component={ErrorBoundaries} />
+          <Route path="/tips/parentComponents" component={ParentComponents} />
         </Col>
       </Row>
     );
