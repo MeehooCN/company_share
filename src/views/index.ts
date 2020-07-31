@@ -14,6 +14,7 @@ import BasicProject from '@views/tips/project/BasicProject';
 import CreatePortal from '@views/tips/react/CreatePortal';
 import ReactFragments from '@views/tips/react/ReactFragments';
 import ErrorBoundaries from '@views/tips/react/ErrorBoundaries';
+import ParentComponents from '@views/tips/react/ParentComponents';
 import ResourceList from '@views/resources/ResourceList';
 import DebugList from '@views/debug/DebugList';
 import EchartsYError from '@views/debug/react/EchartsYError';
@@ -23,5 +24,5 @@ export {
   ComponentList, MyTitle, ImageListView,
   TipList, ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
   ResourceList,
-  DebugList, EchartsYError,
+  DebugList, EchartsYError,ParentComponents
 };
