@@ -12,8 +12,9 @@ import CodeExample from '@components/components/CodeExample';
 import CodeBox from '@components/CodeBox';
 import ImageComponent from '@components/components/image/ImageComponent';
 import ImageList from '@components/components/image/ImageList';
+import ImageView from '@components/components/image/ImageView';
 
 export {
   ErrorBoundary, MyTitle, Header, TitleWithDescription, API,
-  CodeExample, CodeBox, ImageComponent, ImageList
+  CodeExample, CodeBox, ImageComponent, ImageList, ImageView
 };

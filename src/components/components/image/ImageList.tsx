@@ -167,9 +167,9 @@ class ImageList extends React.Component<IProps, IState> {
           <ImageComponent
             index={index}
             image={item}
-            imageList={imageList}
             height={item.viewHeight}
             width={item.viewWidth}
+            onClick={() => {}}
           />
         </div>
       ));

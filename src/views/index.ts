@@ -9,6 +9,7 @@ import Home from '@views/home/Home';
 import ComponentList from '@views/components/ComponentList';
 import MyTitle from '@views/components/text/MyTitle';
 import ImageListView from '@views/components/image/ImageList';
+import ImageView from '@views/components/image/ImageView';
 import TipList from '@views/tips/TipList';
 import BasicProject from '@views/tips/project/BasicProject';
 import CreatePortal from '@views/tips/react/CreatePortal';
@@ -21,7 +22,7 @@ import EchartsYError from '@views/debug/react/EchartsYError';
 
 export {
   NotFound, Home, Welcome,
-  ComponentList, MyTitle, ImageListView,
+  ComponentList, MyTitle, ImageListView, ImageView,
   TipList, ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
   ResourceList,
   DebugList, EchartsYError,ParentComponents

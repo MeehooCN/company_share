@@ -21,5 +21,9 @@ export const menuList: Array<MenuData> = [{
     name: 'ImageList 自适应图片列表',
     key: 'imageList',
     children: []
+  }, {
+    name: 'ImageView 图片浏览',
+    key: 'imageView',
+    children: []
   }]
 }];
