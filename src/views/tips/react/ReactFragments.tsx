@@ -62,7 +62,7 @@ const ReactFragments = () => {
     <div>
       <TitleWithDescription title="ReactFragments" content="子组件返回组件列表。" />
       <Row style={{ marginTop: 20 }}>
-        <Row className="description">当你想生成一个table时：</Row>
+        <Row className="description">当你想生成一个 table 时：</Row>
         <CodeBox code={code1} />
         <Row className="description">{'<Columns /> 需要返回多个 <td> 元素以使渲染的 HTML 有效。如果在 <Columns /> 的 render() 中使用了父 div，则生成的 HTML 将无效。'}</Row>
         <CodeBox code={code2} />

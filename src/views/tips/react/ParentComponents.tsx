@@ -9,7 +9,7 @@ import { CodeBox, TitleWithDescription } from '@components/index';
 
 const ParentComponents = () => {
   const code1: string = 'import React from \'react\';\n' +
-    'import {Button} from \'antd\';\n' +
+    'import { Button } from \'antd\';\n' +
     'import Parent from \'../../common/Parent\'; //引入Parent组件\n' +
     '\n' +
     'class AnyOne extends React.Component {\n' +
@@ -37,5 +37,5 @@ const ParentComponents = () => {
       </Row>
     </div>
   );
-}
+};
 export default ParentComponents;
