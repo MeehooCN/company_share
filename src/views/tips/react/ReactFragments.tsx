@@ -60,7 +60,11 @@ const ReactFragments = () => {
     '}';
   return (
     <div>
-      <TitleWithDescription title="ReactFragments" content="子组件返回组件列表。" />
+      <TitleWithDescription
+        title="ReactFragments"
+        content="子组件返回组件列表。"
+        url="https://react.docschina.org/docs/fragments.html"
+      />
       <Row style={{ marginTop: 20 }}>
         <Row className="description">当你想生成一个 table 时：</Row>
         <CodeBox code={code1} />

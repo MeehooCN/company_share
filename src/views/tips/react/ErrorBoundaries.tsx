@@ -71,7 +71,11 @@ const ErrorBoundaries = () => {
     'export default App;';
   return (
     <div>
-      <TitleWithDescription title="ErrorBoundaries" content="react 错误边界，捕获错误，可配置上传到服务器。" />
+      <TitleWithDescription
+        title="ErrorBoundaries"
+        content="react 错误边界，捕获错误，可配置上传到服务器。"
+        url="https://react.docschina.org/docs/error-boundaries.html"
+      />
       <Row style={{ marginTop: 20 }}>
         <Row className="description">公用组件，捕获错误的组件。</Row>
         <CodeBox code={code1} />

@@ -5,9 +5,9 @@
  * @createTime: 2020/8/3 11:01
  **/
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { Row, Space, message, Spin } from 'antd';
 import { LeftCircleOutlined, RightCircleOutlined, CloseOutlined, FullscreenExitOutlined } from '@ant-design/icons';
-import { createPortal } from 'react-dom';
 import { ImageData } from '@utils/commonInterface';
 import './imageView.less';
 

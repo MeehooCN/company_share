@@ -39,7 +39,11 @@ const CreatePortal = () => {
     'export default AlbumImage;';
   return (
     <div>
-      <TitleWithDescription title="CreatePortal" content="传送门，适用于遮罩层，对 z-index 有要求的。" />
+      <TitleWithDescription
+        title="CreatePortal"
+        content="传送门，适用于遮罩层，对 z-index 有要求的。组件 - 图片 - 图片浏览 使用该 API，可供参考。"
+        url="https://react.docschina.org/docs/portals.html"
+      />
       <Row style={{ marginTop: 20 }}>
         <CodeBox code={code} />
       </Row>
