@@ -9,6 +9,7 @@ import { Route } from 'react-router-dom';
 import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
+import { MenuData } from '@utils/CommonInterface';
 
 interface IProps {}
 
@@ -20,7 +21,7 @@ interface IState {
 class TipList extends React.Component<IProps, IState> {
   public readonly state: Readonly<IState> = {
     selectedKeys: ['basicProject'],
-    openKeys: ['project']
+    openKeys: menuList.map((menu: MenuData) => menu.key)
   };
   // 选择菜单
   private selectMenu = (item: any) => {

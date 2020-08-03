@@ -9,6 +9,7 @@ import { Route } from 'react-router-dom';
 import { EchartsYError } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/debug/menuList';
+import { MenuData } from '@utils/CommonInterface';
 
 interface IProps {}
 
@@ -20,7 +21,7 @@ interface IState {
 class DebugList extends React.Component<IProps, IState> {
   public readonly state: Readonly<IState> = {
     selectedKeys: ['echartsYError'],
-    openKeys: ['react']
+    openKeys: menuList.map((menu: MenuData) => menu.key)
   };
   // 选择菜单
   private selectMenu = (item: any) => {
