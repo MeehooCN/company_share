@@ -135,10 +135,14 @@ class ImageView extends React.Component<IProps, IState> {
         {getImageListComponent(imageList)}
       </Row>
     );
-    const code: string = '<ImageViewComponent\n' +
+    const code: string = '// 关闭显示\n' +
+      'private closeView = () => {\n' +
+      '  this.setState({ imageView: false });\n' +
+      '};\n' +
+      '<ImageViewComponent\n' +
       '  index={imageIndex}\n' +
       '  imageList={imageList}\n' +
-      '  closeView={() => this.setState({ imageView: false })}\n' +
+      '  closeView={this.closeView}\n' +
       '  imageView={imageView}\n' +
       '/>';
     return (
