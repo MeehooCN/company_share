@@ -11,7 +11,6 @@ export const menuList: Array<MenuData> = [{
   key: 'react',
   children: [{
     name: 'ReactEcharts y 轴数据过小处理',
-    key: 'echartsYError',
-    children: []
+    key: 'echartsYError'
   }]
 }];

@@ -11,27 +11,29 @@ export const menuList: Array<MenuData> = [{
   key: 'project',
   children: [{
     name: '基本业务系统的增删查改',
-    key: 'basicProject',
-    children: []
+    key: 'basicProject'
   }]
 }, {
   name: 'React 技巧',
   key: 'react',
   children: [{
     name: 'createPortal 传送门',
-    key: 'createPortal',
-    children: []
+    key: 'createPortal'
   }, {
     name: 'ReactFragments 子组件返回组件列表',
-    key: 'reactFragments',
-    children: []
+    key: 'reactFragments'
   }, {
     name: 'ErrorBoundaries 错误边界',
-    key: 'errorBoundaries',
-    children: []
+    key: 'errorBoundaries'
   }, {
     name: 'this.props.children 在父组件中显示子组件',
-    key: 'parentComponents',
-    children: []
+    key: 'parentComponents'
+  }]
+}, {
+  name: 'Node.js',
+  key: 'node',
+  children: [{
+    name: 'yalc 将源代码打包用在自己项目中',
+    key: 'yalc'
   }]
 }];

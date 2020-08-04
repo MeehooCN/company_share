@@ -11,19 +11,16 @@ export const menuList: Array<MenuData> = [{
   key: 'text',
   children: [{
     name: 'MyTitle 标题',
-    key: 'myTitle',
-    children: []
+    key: 'myTitle'
   }]
 }, {
   name: '图片',
   key: 'image',
   children: [{
     name: 'ImageList 自适应图片列表',
-    key: 'imageList',
-    children: []
+    key: 'imageList'
   }, {
     name: 'ImageView 图片浏览',
-    key: 'imageView',
-    children: []
+    key: 'imageView'
   }]
 }];

@@ -20,7 +20,9 @@ const MenuItem = Menu.Item;
 export const initMenu = (menuList: Array<MenuData>, type: string) => {
   const subMenuList = [];
   for (let i = 0, length = menuList.length; i < length; i++) {
+    // @ts-ignore
     if (menuList[i].children.length > 0) {
+      // @ts-ignore
       const menuHtmlList = menuList[i].children.map((item: MenuData) => (
         <MenuItem key={item.key}>
           <Link to={type + item.key}>{item.name}</Link>

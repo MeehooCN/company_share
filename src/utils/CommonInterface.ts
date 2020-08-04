@@ -6,7 +6,7 @@
 export interface MenuData {
   name: string,
   key: string,
-  children: Array<MenuData>
+  children?: Array<MenuData>
 }
 
 export interface IntroduceComponent {
