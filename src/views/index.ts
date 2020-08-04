@@ -20,12 +20,13 @@ import ParentComponents from '@views/tips/react/ParentComponents';
 import ResourceList from '@views/resources/ResourceList';
 import DebugList from '@views/debug/DebugList';
 import EchartsYError from '@views/debug/react/EchartsYError';
+import InitialingGradle from '@views/debug/flutter/InitialingGradle';
 
 export {
   NotFound, Home, Welcome,
   ComponentList, MyTitle, ImageListView, ImageView,
   TipList, ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
-  Yalc,
+  Yalc, ParentComponents,
   ResourceList,
-  DebugList, EchartsYError,ParentComponents
+  DebugList, EchartsYError, InitialingGradle
 };

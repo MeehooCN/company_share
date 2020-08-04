@@ -6,7 +6,7 @@
 import React from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { EchartsYError } from '@views/index';
+import { EchartsYError, InitialingGradle } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/debug/menuList';
 import { MenuData } from '@utils/CommonInterface';
@@ -48,6 +48,7 @@ class DebugList extends React.Component<IProps, IState> {
         </Col>
         <Col span={20} style={{ padding: '20px 50px' }}>
           <Route path="/debugs/echartsYError" component={EchartsYError} />
+          <Route path="/debugs/initialingGradle" component={InitialingGradle} />
         </Col>
       </Row>
     );

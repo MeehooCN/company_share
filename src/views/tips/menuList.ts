@@ -30,7 +30,7 @@ export const menuList: Array<MenuData> = [{
     key: 'parentComponents'
   }]
 }, {
-  name: 'Node.js',
+  name: 'Node.js 技巧',
   key: 'node',
   children: [{
     name: 'yalc 将源代码打包用在自己项目中',

@@ -13,4 +13,11 @@ export const menuList: Array<MenuData> = [{
     name: 'ReactEcharts y 轴数据过小处理',
     key: 'echartsYError'
   }]
+}, {
+  name: 'Flutter 错误处理',
+  key: 'flutter',
+  children: [{
+    name: 'flutter initializing gradle...',
+    key: 'initialingGradle'
+  }]
 }];

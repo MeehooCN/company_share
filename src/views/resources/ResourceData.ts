@@ -54,6 +54,12 @@ export const reactResourceList: Array<Resource> = [{
     name: 'react-transition-group',
     link: 'https://github.com/reactjs/react-transition-group'
   }]
+}, {
+  type: '包管理',
+  introduceComponentList: [{
+    name: 'yalc',
+    link: 'https://github.com/whitecolor/yalc'
+  }]
 }];
 /**
  * flutter 资源数据文件
