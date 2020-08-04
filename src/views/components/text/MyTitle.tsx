@@ -22,7 +22,7 @@ class Title extends React.Component<IProps, IState> {
       name: 'color',
       description: '可选，border 颜色',
       type: 'string',
-      defaultValue: '主题色'
+      defaultValue: '#333'
     }];
     const viewComponents = <MyTitle title="我的标题一" />;
     const code: string = '<MyTitle title="我的标题一" />';

@@ -4,7 +4,6 @@
  * @createTime: 2020/7/21 9:30
  **/
 import React from 'react';
-import { colors } from '@utils/CommonVars';
 
 interface MyTitleProps {
   title: string,
@@ -12,11 +11,9 @@ interface MyTitleProps {
 }
 
 const MyTitle = (props: MyTitleProps) => {
-  let borderColor: string = colors.primaryColor;
+  let borderColor: string = '#333';
   const { title, color } = props;
-  if (color) {
-    borderColor = color;
-  }
+  if (color) borderColor = color;
   return (
     <div style={{ padding: '0 0 0 18px', borderLeft: '4px solid ' + borderColor }}>
       {title}
