@@ -2,6 +2,7 @@ module.exports = {
 	parser:  '@typescript-eslint/parser',
 	extends: [
 		'eslint-config-alloy/react',
+		'plugin:react-hooks/recommended'
 	],
 	globals: {
 		// 这里填入你的项目需要的全局变量
@@ -15,9 +16,7 @@ module.exports = {
 				version: 'detect'
 		}
 	},
-	plugins: {
-		'react-hook': 'react-hook'
-	},
+	plugins: ['react-hooks'],
 	rules: {
 		'indent': [
 		    'error',
