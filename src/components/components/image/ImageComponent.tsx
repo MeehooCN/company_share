@@ -14,17 +14,13 @@ interface IProps {
   onClick(image: ImageData): void
 }
 
-interface IState {}
-
-class ImageComponent extends React.Component<IProps, IState> {
-  render(): React.ReactNode {
-    const { image, height, width, onClick } = this.props;
-    return (
-      <div style={{ height: height || 150, width: width || undefined, margin: 5, cursor: 'pointer' }} onClick={() => onClick(image)}>
-        <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto' }} />
-      </div>
-    );
-  }
-}
+const ImageComponent = (props: IProps) => {
+  const { image, height, width, onClick } = props;
+  return (
+    <div style={{ height: height || 150, width: width || undefined, margin: 5, cursor: 'pointer' }} onClick={() => onClick(image)}>
+      <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto' }} />
+    </div>
+  );
+};
 
 export default ImageComponent;

@@ -15,6 +15,9 @@ module.exports = {
 				version: 'detect'
 		}
 	},
+	plugins: {
+		'react-hook': 'react-hook'
+	},
 	rules: {
 		'indent': [
 		    'error',
@@ -43,6 +46,9 @@ module.exports = {
 		],
 		// 语句强制分号结尾
 		'semi': [2, 'always'],
-		'space-unary-ops': [0, { 'words': true, 'nonwords': false }]
+		'space-unary-ops': [0, { 'words': true, 'nonwords': false }],
+		// react hook 检查
+		'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则
+		'react-hooks/exhaustive-deps': 'warn' // 检查 effect 的依赖
 	}
 };

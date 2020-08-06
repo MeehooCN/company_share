@@ -12,32 +12,25 @@ import './index.less';
 
 const { Content } = Layout;
 
-interface IProps {}
-
-interface IState {
-  loading: boolean
+interface IProps {
+  children: any
 }
 
-class Home extends React.Component<IProps, IState> {
-  public readonly state: Readonly<IState> = {
-    loading: false
-  };
-  public render(): React.ReactNode {
-    const { loading } = this.state;
-    return (
-      <Row style={{ width: '100%' }}>
-        <Header />
-        <Content style={{ width: '100%' }}>
-          {!loading && this.props.children}
-        </Content>
-        <BackTop>
-          <div className="back-top" style={{ backgroundColor: colors.primaryColor }}>
-            <VerticalAlignTopOutlined style={{ color: '#fff', fontSize: 20 }} />
-          </div>
-        </BackTop>
-      </Row>
-    );
-  }
-}
+const Home = (props: IProps) => {
+  const { children } = props;
+  return (
+    <Row style={{ width: '100%' }}>
+      <Header />
+      <Content style={{ width: '100%' }}>
+        {children}
+      </Content>
+      <BackTop>
+        <div className="back-top" style={{ backgroundColor: colors.primaryColor }}>
+          <VerticalAlignTopOutlined style={{ color: '#fff', fontSize: 20 }} />
+        </div>
+      </BackTop>
+    </Row>
+  );
+};
 
 export default Home;

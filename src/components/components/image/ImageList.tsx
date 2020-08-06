@@ -4,8 +4,7 @@
  * @createTime: 2020/7/27 11:27
  * @param: imageList: 图片列表数据，listChange: 是否改变图片列表，containerWidth: 容器宽度
  **/
-/* eslint no-unused-vars:0 */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Empty, Row } from 'antd';
 import { ImageComponent } from '@components/index';
 import { ImageData } from '@utils/CommonInterface';
@@ -20,46 +19,27 @@ interface ImageDataWithViewContainer extends ImageData {
 }
 
 interface IProps {
-  imageList: Array<ImageData>,
+  imagePropList: Array<ImageData>,
   listChange?: boolean,
   containerWidth?: number
 }
-interface IState {
-  imageList: Array<ImageDataWithViewContainer>,
-  containerWidth: number
-}
 
-class ImageList extends React.Component<IProps, IState> {
-  public readonly state: Readonly<IState> = {
-    imageList: [],
-    containerWidth: 1200
-  };
-  componentDidMount(): void {
-    const { imageList, containerWidth } = this.props;
-    this.setState({ imageList: this.getImageList(imageList), containerWidth: containerWidth || 1200 }, () => {
-      this.lazyLoad();
-      this.getImageView();
-    });
-  }
-  componentWillReceiveProps(nextProps: Readonly<IProps>, nextContext: any): void {
-    const { imageList, listChange } = nextProps;
-    if (listChange) {
-      this.setState({ imageList: this.getImageList(imageList) }, () => {
-        this.lazyLoad();
-        this.getImageView();
-      });
-    } else {
-      if (this.props.imageList !== nextProps.imageList) {
-        this.setState({ imageList: this.getImageList(imageList) }, () => {
-          this.lazyLoad();
-          this.getImageView();
-        });
-      }
+const ImageList = (props: IProps) => {
+  const { imagePropList, containerWidth = 1200 } = props;
+  const [imageList, setImageList] = useState<Array<ImageDataWithViewContainer>>([]);
+  const [isInit, setIsInit] = useState<boolean>(false);
+  useEffect(() => {
+    setIsInit(true);
+    initImageList(imagePropList);
+  }, [imagePropList]);
+  useEffect(() => {
+    if (isInit) {
+      lazyLoad();
     }
-  }
-  // 获取图片列表
-  private getImageList = (imageList: Array<ImageData>) => {
-    return imageList.map((item: ImageData) => {
+  }, [imageList]);
+  // 初始化图片列表
+  const initImageList = (imagePropList: Array<ImageData>) => {
+    let imageTempList: Array<ImageDataWithViewContainer> = imagePropList.map((item: ImageData) => {
       return {
         ...item,
         viewHeight: wishHeight,
@@ -67,10 +47,41 @@ class ImageList extends React.Component<IProps, IState> {
         imageRatio: item.width / item.height
       };
     });
+    imageTempList = getImageView(imageTempList);
+    setImageList(imageTempList);
+  };
+  // 滑动滚轮图片懒加载
+  const handleWheel = (e: any) => {
+    let deltaY = e.deltaY;
+    // 向下 加载图片
+    if (deltaY > 0) {
+      lazyLoad();
+    }
+  };
+  // 图片懒加载
+  const lazyLoad = () => {
+    const tempImageList: Array<ImageDataWithViewContainer> = [...imageList];
+    // 设备可用高度
+    let availHeight: number = window.screen.availHeight;
+    // 滚动的高度
+    let scrollHeight: number = document.documentElement.scrollTop;
+    // 距img元素显露出的距离
+    // 有个问题，最后两个始终处于懒加载下面一排不知道为啥
+    let diff = 100;
+    for (let i = 0; i < tempImageList.length; i++) {
+      // @ts-ignore
+      let reactObj = document.getElementById(tempImageList[i].id).getBoundingClientRect();
+      // div距顶部高度
+      let contentTop = reactObj.top;
+      if (scrollHeight + diff > contentTop - availHeight) {
+        tempImageList[i].thumbnailTrueUrl = tempImageList[i].thumbnailUrl;
+      }
+    }
+    setImageList(tempImageList);
+    setIsInit(false);
   };
   // 计算图片宽高
-  private getImageView = () => {
-    const { imageList, containerWidth } = this.state;
+  const getImageView = (imageTempList: Array<ImageDataWithViewContainer>) => {
     const allRatio: number = containerWidth / wishHeight;
     let rowList: Array<any> = [];
     // 第几行
@@ -81,13 +92,13 @@ class ImageList extends React.Component<IProps, IState> {
     let lastRowIndex: number = 0;
     // 当前行有几张图
     let rowTotal: number = 0;
-    for (let index: number = 0; index < imageList.length; index++) {
-      rowTotalRatio = rowTotalRatio + imageList[index].imageRatio;
+    for (let index: number = 0; index < imageTempList.length; index++) {
+      rowTotalRatio = rowTotalRatio + imageTempList[index].imageRatio;
       // 分行，每行宽高比总和小于总宽高比
       if (rowTotalRatio >= allRatio) {
         const spaceWidth: number = rowTotal * 10;
         const restWidth = containerWidth - spaceWidth;
-        const height: number = restWidth / (rowTotalRatio - imageList[index].imageRatio);
+        const height: number = restWidth / (rowTotalRatio - imageTempList[index].imageRatio);
         rowList.push({
           row: rowIndex,
           endIndex: index - 1, // 包括这张图
@@ -96,18 +107,18 @@ class ImageList extends React.Component<IProps, IState> {
         });
         lastRowIndex = index - 1;
         rowIndex = rowIndex + 1;
-        rowTotalRatio = imageList[index].imageRatio;
+        rowTotalRatio = imageTempList[index].imageRatio;
         rowTotal = 1;
       } else {
         rowTotal = rowTotal + 1;
       }
     }
     // 如果还剩图片或者只有一行
-    if (lastRowIndex < (imageList.length - 1) || lastRowIndex === 0) {
+    if (lastRowIndex < (imageTempList.length - 1) || lastRowIndex === 0) {
       rowList.push({
         row: rowIndex,
-        endIndex: imageList.length - 1,
-        total: imageList.length - lastRowIndex,
+        endIndex: imageTempList.length - 1,
+        total: imageTempList.length - lastRowIndex,
         height: wishHeight
       });
     }
@@ -117,76 +128,42 @@ class ImageList extends React.Component<IProps, IState> {
       if (j > 0) {
         startIndex = rowList[j - 1].endIndex;
       }
-      for (let i: number = 0; i < imageList.length; i++) {
+      for (let i: number = 0; i < imageTempList.length; i++) {
         // 如果图片处于这一行
         if (i > startIndex && i <= endIndex) {
-          imageList[i].viewHeight = rowList[j].height;
-          imageList[i].viewWidth = imageList[i].imageRatio * imageList[i].viewHeight;
+          imageTempList[i].viewHeight = rowList[j].height;
+          imageTempList[i].viewWidth = imageTempList[i].imageRatio * imageTempList[i].viewHeight;
         }
       }
     }
-    this.setState({ imageList });
+    return imageTempList;
   };
-  // 图片懒加载
-  private lazyLoad = () => {
-    const { imageList } = this.state;
-    // 设备可用高度
-    let availHeight: number = window.screen.availHeight;
-    // 滚动的高度
-    let scrollHeight: number = document.documentElement.scrollTop;
-    // 距img元素显露出的距离
-    // 有个问题，最后两个始终处于懒加载下面一排不知道为啥
-    let diff = 100;
-    for (let i = 0; i < imageList.length; i++) {
-      let imgDiv = imageList[i].id;
-      // @ts-ignore
-      let reactObj = document.getElementById(imgDiv).getBoundingClientRect();
-      // div距顶部高度
-      let contentTop = reactObj.top;
-      if (scrollHeight + diff > contentTop - availHeight) {
-        imageList[i].thumbnailTrueUrl = imageList[i].thumbnailUrl;
-      }
-    }
-    this.setState({ imageList });
-  };
-  // 滑动滚轮图片懒加载
-  private handleWheel = (e: any) => {
-    let deltaY = e.deltaY;
-    // 向下 加载图片
-    if (deltaY > 0) {
-      this.lazyLoad();
-    }
-  };
-
-  render(): React.ReactNode {
-    const { imageList, containerWidth } = this.state;
-    let imageHtml: any = <Row justify="center" style={{ width: '100%' }}><Empty description="暂无图片" /></Row>;
-    if (imageList.length > 0) {
-      imageHtml = imageList.map((item: ImageDataWithViewContainer, index: number) => (
-        <div id={item.id} key={item.id}>
-          <ImageComponent
-            index={index}
-            image={item}
-            height={item.viewHeight}
-            width={item.viewWidth}
-            onClick={() => {}}
-          />
-        </div>
-      ));
-    }
-    return (
-      <div
-        style={{
-          width: containerWidth + 1,
-          display: 'flex',
-          flexWrap: 'wrap',
-          minWidth: containerWidth + 1
-        }}
-        onWheel={this.handleWheel}
-      >
-        {imageHtml}
+  let imageHtml: any = <Row justify="center" style={{ width: '100%' }}><Empty description="暂无图片" /></Row>;
+  if (imageList.length > 0) {
+    imageHtml = imageList.map((item: ImageDataWithViewContainer, index: number) => (
+      <div id={item.id} key={item.id}>
+        <ImageComponent
+          index={index}
+          image={item}
+          height={item.viewHeight}
+          width={item.viewWidth}
+          onClick={() => {}}
+        />
       </div>
-    );
+    ));
   }
-}
+  return (
+    <div
+      style={{
+        width: containerWidth + 1,
+        display: 'flex',
+        flexWrap: 'wrap',
+        minWidth: containerWidth + 1
+      }}
+      onWheel={handleWheel}
+    >
+      {imageHtml}
+    </div>
+  );
+};
 export default ImageList;

@@ -12,6 +12,10 @@
     "react",
     "ant-design"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MeehooCN/company_share"
+  },
   "author": "obf1313",
   "license": "ISC",
   "dependencies": {
@@ -24,6 +28,7 @@
     "babel-eslint": "^10.0.3",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.24",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "mockjs": "^1.1.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.13.1",
