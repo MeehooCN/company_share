@@ -6,7 +6,7 @@
 import React, { useState } from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents, Yalc } from '@views/index';
+import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents, Yalc, UseEffect } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
 import { MenuData } from '@utils/CommonInterface';
@@ -34,6 +34,7 @@ const TipList = () => {
         <Route path="/tips/errorBoundaries" component={ErrorBoundaries} />
         <Route path="/tips/parentComponents" component={ParentComponents} />
         <Route path="/tips/yalc" component={Yalc} />
+        <Route path="/tips/useEffect" component={UseEffect} />
       </Col>
     </Row>
   );

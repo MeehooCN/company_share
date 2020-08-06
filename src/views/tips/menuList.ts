@@ -28,6 +28,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'this.props.children 在父组件中显示子组件',
     key: 'parentComponents'
+  }, {
+    name: 'useEffect 使用总结',
+    key: 'useEffect'
   }]
 }, {
   name: 'Node.js 技巧',
