@@ -12,6 +12,9 @@ export const menuList: Array<MenuData> = [{
   children: [{
     name: '基本业务系统的增删查改',
     key: 'basicProject'
+  }, {
+    name: 'WebStorm 开启 ESLint 校验',
+    key: 'eslint'
   }]
 }, {
   name: 'React 技巧',

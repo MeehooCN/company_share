@@ -6,7 +6,10 @@
 import React, { useState } from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents, Yalc, UseEffect } from '@views/index';
+import {
+  CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents,
+  Yalc, UseEffect, WebStormESLint
+} from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
 import { MenuData } from '@utils/CommonInterface';
@@ -29,6 +32,7 @@ const TipList = () => {
       </Col>
       <Col span={20} style={{ padding: '20px 50px' }}>
         <Route path="/tips/basicProject" component={BasicProject} />
+        <Route path="/tips/eslint" component={WebStormESLint} />
         <Route path="/tips/createPortal" component={CreatePortal} />
         <Route path="/tips/reactFragments" component={ReactFragments} />
         <Route path="/tips/errorBoundaries" component={ErrorBoundaries} />

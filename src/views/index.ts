@@ -12,6 +12,7 @@ import ImageListView from '@views/components/image/ImageList';
 import ImageView from '@views/components/image/ImageView';
 import TipList from '@views/tips/TipList';
 import BasicProject from '@views/tips/project/BasicProject';
+import WebStormESLint from '@views/tips/project/WebStormESLint';
 import Yalc from '@views/tips/node/Yalc';
 import UseEffect from '@views/tips/react/UseEffect';
 import CreatePortal from '@views/tips/react/CreatePortal';
@@ -27,7 +28,7 @@ export {
   NotFound, Home, Welcome,
   ComponentList, MyTitle, ImageListView, ImageView,
   TipList, ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
-  Yalc, ParentComponents, UseEffect,
+  Yalc, ParentComponents, UseEffect, WebStormESLint,
   ResourceList,
   DebugList, EchartsYError, InitialingGradle
 };
