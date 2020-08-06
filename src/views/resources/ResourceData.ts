@@ -25,6 +25,18 @@ export const reactResourceList: Array<Resource> = [{
     link: 'https://g2plot.antv.vision/zh'
   }]
 }, {
+  type: '代码检查',
+  introduceComponentList: [{
+    name: 'eslint',
+    link: 'https://github.com/eslint/eslint'
+  }]
+}, {
+  type: 'canvas',
+  introduceComponentList: [{
+    name: 'fabric',
+    link: 'https://github.com/fabricjs/fabric.js'
+  }]
+}, {
   type: '流程图',
   introduceComponentList: [{
     name: 'react-flow-chart',
@@ -35,6 +47,12 @@ export const reactResourceList: Array<Resource> = [{
   introduceComponentList: [{
     name: 'react-image-crop',
     link: 'https://github.com/DominicTobias/react-image-crop'
+  }]
+}, {
+  type: '大图加载',
+  introduceComponentList: [{
+    name: 'openseadragon',
+    link: 'https://github.com/openseadragon/openseadragon'
   }]
 }, {
   type: '拖拽',
