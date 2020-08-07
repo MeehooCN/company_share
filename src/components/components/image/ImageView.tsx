@@ -13,6 +13,7 @@ import './imageView.less';
 
 const clientHeight: number = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 const clientWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+const arrowTop: number = clientHeight / 2 - 15;
 // 最大放大倍数
 const maxScale: number = 3;
 // 最小缩放倍数
@@ -26,7 +27,6 @@ interface IProps {
 }
 
 interface IState {
-  arrowTop: number,
   originWidth: number,
   originHeight: number,
   showWidth: number,
@@ -50,7 +50,6 @@ class ImageView extends React.Component<IProps, IState> {
     document.body.appendChild(this.node);
   }
   public readonly state: Readonly<IState> = {
-    arrowTop: 0,
     originWidth: 0,
     originHeight: 0,
     showWidth: 0,
@@ -75,8 +74,6 @@ class ImageView extends React.Component<IProps, IState> {
   };
   componentDidMount(): void {
     const { imageList, index } = this.props;
-    const arrowTop = clientHeight / 2 - 15;
-    this.setState({ arrowTop });
     // 设置查看图片时图片的宽高
     if (index >= 0 && imageList.length > 0) {
       this.setState({ viewImage: imageList[index], viewIndex: index }, this.setImageSize);
@@ -112,7 +109,7 @@ class ImageView extends React.Component<IProps, IState> {
         // 如果图片宽度和浏览器差距更大
         if (widthRatio > heightRatio) {
           showWidth = clientWidth;
-          showHeight = showWidth * ratio;
+          showHeight = showWidth / ratio;
         } else {
           showHeight = clientHeight;
           showWidth = showHeight * ratio;
@@ -274,7 +271,7 @@ class ImageView extends React.Component<IProps, IState> {
   };
   render(): React.ReactNode {
     const {
-      arrowTop, showWidth, showHeight, viewImage, moveX,
+      showWidth, showHeight, viewImage, moveX,
       moveY, imageView, imageLoading, canDragImage, viewIndex
     } = this.state;
     const { imageList } = this.props;
