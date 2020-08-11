@@ -23,6 +23,10 @@ import ResourceList from '@views/resources/ResourceList';
 import DebugList from '@views/debug/DebugList';
 import EchartsYError from '@views/debug/react/EchartsYError';
 import InitialingGradle from '@views/debug/flutter/InitialingGradle';
+import FormDemoHook from '@views/components/form/FormDemo';
+import FormDemoClass from '@views/components/form/FormDemoClass';
+import HookForm from './components/form/HookForm';
+import InlineSearchFormDemo from '@views/components/form/InlineSearchFormDemo';
 
 export {
   NotFound, Home, Welcome,
@@ -30,5 +34,5 @@ export {
   TipList, ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
   Yalc, ParentComponents, UseEffect, WebStormESLint,
   ResourceList,
-  DebugList, EchartsYError, InitialingGradle
+  DebugList, EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm, InlineSearchFormDemo
 };

@@ -12,7 +12,7 @@ import { TitleWithDescription } from '..';
 interface APIData {
   name: string,
   description: string,
-  type: string,
+  type: string | React.ReactNode,
   defaultValue: string
 }
 
@@ -32,7 +32,10 @@ const API = (props: IProps) => {
     dataIndex: 'description'
   }, {
     title: '类型',
-    dataIndex: 'type'
+    dataIndex: 'type',
+    render: (text: any) => {
+      return text;
+    }
   }, {
     title: '默认值',
     dataIndex: 'defaultValue'

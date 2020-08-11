@@ -23,4 +23,24 @@ export const menuList: Array<MenuData> = [{
     name: 'ImageView 图片浏览',
     key: 'imageView'
   }]
+}, {
+  name: '表单',
+  key: 'form',
+  children: [{
+    name: '搜索表单',
+    key: 'searchForm',
+    children: []
+  }, {
+    name: 'Hook表单',
+    key: 'hookForm',
+    children: []
+  }, {
+    name: 'React Hook使用class表单',
+    key: 'commonForm',
+    children: []
+  }, {
+    name: 'class使用class表单',
+    key: 'commonFormClass',
+    children: []
+  }]
 }];
