@@ -4,10 +4,10 @@
  * @createTime: 2020/7/22 9:35
  **/
 /* eslint no-unused-vars:0 */
+import React from 'react';
 import { MenuData } from '@utils/CommonInterface';
 import { Menu } from 'antd';
-import {Link} from 'react-router-dom';
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
