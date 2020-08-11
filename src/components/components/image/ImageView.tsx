@@ -312,7 +312,8 @@ class ImageView extends React.Component<IProps, IState> {
           </Spin>
           {viewIndex + 1 <= totalIndex && <RightCircleOutlined className="right-arrow" style={{ top: arrowTop }} onClick={this.toNextImage} />}
         </div>
-      ), this.node);
+      ), this.node
+    );
   }
 }
 export default ImageView;

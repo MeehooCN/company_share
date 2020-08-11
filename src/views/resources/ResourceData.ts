@@ -110,6 +110,12 @@ export const flutterResourceList: Array<Resource> = [{
     link: 'https://pub.dev/packages/dio'
   }]
 }, {
+  type: '相机',
+  introduceComponentList: [{
+    name: 'camera',
+    link: 'https://github.com/flutter/plugins/tree/master/packages/camera'
+  }]
+}, {
   type: '图片显示',
   introduceComponentList: [{
     name: 'cached_network_image',

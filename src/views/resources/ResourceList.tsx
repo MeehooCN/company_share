@@ -5,7 +5,7 @@
  **/
 /* eslint no-unused-vars:0 */
 import React from 'react';
-import {Col, Row, Space, Table} from 'antd';
+import { Col, Row, Space, Table } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 import { TitleWithDescription } from '@components/index';
 import { IntroduceComponent, Resource } from '@utils/CommonInterface';
@@ -32,26 +32,26 @@ const ResourceList = () => {
   }];
   return (
     <Row style={{ width: '100%', padding: 10 }} justify="center">
-        <Col span={20}>
-            <TitleWithDescription title="React 资源分享" content="" />
-            <Table<Resource>
-                columns={columns}
-                dataSource={reactResourceList}
-                bordered={true}
-                pagination={false}
-                rowKey={(record: Resource) => record.type}
-                style={{ width: '100%', marginTop: 10 }}
-            />
-            <TitleWithDescription title="Flutter 资源分享" content="" style={{ marginTop: 30 }} />
-            <Table<Resource>
-                columns={columns}
-                dataSource={flutterResourceList}
-                bordered={true}
-                pagination={false}
-                rowKey={(record: Resource) => record.type}
-                style={{ width: '100%', marginTop: 10 }}
-            />
-        </Col>
+      <Col span={20}>
+        <TitleWithDescription title="React 资源分享" content="" />
+        <Table<Resource>
+          columns={columns}
+          dataSource={reactResourceList}
+          bordered={true}
+          pagination={false}
+          rowKey={(record: Resource) => record.type}
+          style={{ width: '100%', marginTop: 10 }}
+        />
+        <TitleWithDescription title="Flutter 资源分享" content="" style={{ marginTop: 30 }} />
+        <Table<Resource>
+          columns={columns}
+          dataSource={flutterResourceList}
+          bordered={true}
+          pagination={false}
+          rowKey={(record: Resource) => record.type}
+          style={{ width: '100%', marginTop: 10 }}
+        />
+      </Col>
     </Row>
   );
 };
