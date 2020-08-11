@@ -131,7 +131,11 @@ class CommonHorizForm extends React.Component<IProps, any> {
           style={item.style}
           placeholder={item.placeholder}
           mode={item.mode}
-          onChange={item.onChange ? item.onChange : null}
+          onChange={(value, option) => {
+            if (item.onChange) {
+              item.onChange(value, option);
+            }
+          }}
           filterOption={(input: string, option: any) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
         >
           {
@@ -148,7 +152,11 @@ class CommonHorizForm extends React.Component<IProps, any> {
             allowClear
             multiple={item.multiple}
             treeDefaultExpandAll
-            onChange={item.onChange ? item.onChange : null}
+            onChange={(value, label, extra) => {
+              if (item.onChange) {
+                item.onChange(value, label, extra);
+              }
+            }}
             treeData={item.option}
           />
         );
@@ -156,7 +164,11 @@ class CommonHorizForm extends React.Component<IProps, any> {
         case 'dateNoTime': return (<DatePicker disabled={item.disabled} style={{ width: '100%' }} />);
         case 'rangeDate': return (<RangePicker showTime={{ format: 'HH:mm:ss' }} format="YYYY-MM-DD HH:mm:ss" disabled={item.disabled} style={{ width: '100%' }} />);
         case 'radio': return (
-          <RadioGroup disabled={item.disabled} buttonStyle="solid" onChange={item.onChange ? item.onChange : null}>
+          <RadioGroup disabled={item.disabled} buttonStyle="solid" onChange={(e) => {
+            if (item.onChange) {
+              item.onChange(e);
+            }
+          }}>
             {
               item.option.map((optionItem: any) => (
                 <RadioButton key={optionItem.key} value={optionItem.key}>{optionItem.value}</RadioButton>
@@ -168,7 +180,11 @@ class CommonHorizForm extends React.Component<IProps, any> {
           <Cascader
             options={item.option} placeholder={item.placeholder}
             showSearch={true}
-            onChange={item.onChange ? item.onChange : null}
+            onChange={(value, selectedOptions) => {
+              if (item.onChange) {
+                item.onChange(value, selectedOptions);
+              }
+            }}
           />
         );
         case 'hidden': return (<Input />);

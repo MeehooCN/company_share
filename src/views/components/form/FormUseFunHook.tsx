@@ -25,7 +25,7 @@ const FormUseFunHook = () => {
     { label: '下拉选择', type: 'select', name: 'select', rules: [{ required: true }], option: selectOption },
     { label: '数字', type: 'inputNumber', name: 'inputNumber', rules: [{ required: true }] }
   ];
-  return <div>
+  return <div style={{ width: '100%' }}>
     <Row justify="end" style={{ marginBottom: 10 }}>
       <Button type="primary" onClick={setValue} style={{ marginRight: 10 }}>赋值</Button>
       <Button type="primary" onClick={clearValue}>清空</Button>

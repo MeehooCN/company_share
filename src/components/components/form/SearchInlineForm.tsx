@@ -101,7 +101,13 @@ const SearchInlineForm = (props: IProps) => {
         style={item.style}
         placeholder={item.placeholder}
         mode={item.mode}
-        onChange={onChangeSearch}
+        onChange={(value, option) => {
+          if (item.onChange) {
+            item.onChange(value, option);
+          } else {
+            onChangeSearch(value, { ref: item.name });
+          }
+        }}
         filterOption={(input: string, option: any) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
       >
         {
@@ -118,7 +124,13 @@ const SearchInlineForm = (props: IProps) => {
           allowClear
           multiple={item.multiple}
           treeDefaultExpandAll
-          onChange={item.onChange ? item.onChange : onChangeSearch}
+          onChange={(value, label, extra) => {
+            if (item.onChange) {
+              item.onChange(value, label, extra);
+            } else {
+              onChangeSearch(value, { ref: item.name });
+            }
+          }}
           treeData={item.option}
           style={item.style}
         />
@@ -129,7 +141,13 @@ const SearchInlineForm = (props: IProps) => {
       case 'rangeDateNoTime': return (<RangePicker format="YYYY-MM-DD" disabled={item.disabled} style={{ width: '100%' }} />);
       case 'rangeDate': return (<RangePicker showTime={{ format: 'HH:mm:ss' }} format="YYYY-MM-DD HH:mm:ss" disabled={item.disabled} style={{ width: '100%' }} />);
       case 'radio': return (
-        <RadioGroup disabled={item.disabled} buttonStyle="solid" onChange={(e: any) => onChangeSearch(e.target.value, { ref: item.name })}>
+        <RadioGroup disabled={item.disabled} buttonStyle="solid" onChange={(e: any) => {
+          if (item.onChange) {
+            item.onChange(e);
+          } else {
+            onChangeSearch(e.target.value, { ref: item.name });
+          }
+        }}>
           {
             item.option.map((optionItem: any) => (
               <RadioButton key={optionItem.key} value={optionItem.key}>{optionItem.value}</RadioButton>
@@ -141,7 +159,13 @@ const SearchInlineForm = (props: IProps) => {
         <Cascader
           options={item.option} placeholder={item.placeholder}
           showSearch={true}
-          onChange={onChangeSearch}
+          onChange={(value, selectedOptions) => {
+            if (item.onChange) {
+              item.onChange(value, selectedOptions);
+            } else {
+              onChangeSearch(value, { ref: item.name });
+            }
+          }}
         />
       );
     }
