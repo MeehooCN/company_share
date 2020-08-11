@@ -110,7 +110,6 @@ const CommonHorizFormHook = (props: IProps) => {
       span: 18
     },
   };
-
   const formItems = (item: IFormColumns) => {
     switch (item.type) {
       case 'text': return (<Input disabled={item.disabled} readOnly={item.readOnly} placeholder={item.placeholder} style={item.style} />);
@@ -197,8 +196,6 @@ const CommonHorizFormHook = (props: IProps) => {
       </Form.Item>
     </Col>
   ));
-
-
   return (
     <Form {...itemLayOut} form={form} onFinish={onFinish} autoComplete="off">
       <Row>

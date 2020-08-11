@@ -3,7 +3,7 @@
  * @author: cy
  * @createTime: 2020/7/28 14:20
  **/
-import { DatePicker, Form, Input, InputNumber, Select, TreeSelect, Radio, Cascader, Button} from 'antd';
+import { DatePicker, Form, Input, InputNumber, Select, TreeSelect, Radio, Cascader, Button } from 'antd';
 import React from 'react';
 const { TextArea, Search } = Input;
 const { Option } = Select;
@@ -50,7 +50,6 @@ interface ISearchFormColumns {
   initialValue?: any,
   placeholder?: string
 }
-
 /**
  * @description 公共表单的参数
  * @property formColumns 表单项
@@ -80,7 +79,6 @@ const SearchInlineForm = (props: IProps) => {
     value[option.ref] = v;
     props.search(value);
   };
-
   const formItems = (item: ISearchFormColumns) => {
     switch (item.type) {
       case 'text': return (<Search onSearch={(value) => onChangeSearch(value, { ref: item.name })} disabled={item.disabled} readOnly={item.readOnly} placeholder={item.placeholder} style={item.style} />);
@@ -169,14 +167,12 @@ const SearchInlineForm = (props: IProps) => {
         />
       );
     }
-  }
+  };
   let columns = props.formColumns.map((item: ISearchFormColumns, index: number) => (
     <Form.Item key={index} label={item.label} name={item.name} initialValue={item.initialValue} style={{ marginBottom: 5 }}>
       {formItems(item)}
     </Form.Item>
-  ))
-
-
+  ));
   return (
     <Form layout="inline" form={form}>
       {columns}
@@ -190,6 +186,6 @@ const SearchInlineForm = (props: IProps) => {
       </> : ''}
     </Form>
   );
-}
+};
 
 export { SearchInlineForm, ISearchFormColumns };

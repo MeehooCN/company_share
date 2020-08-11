@@ -82,8 +82,7 @@ class CommonHorizForm extends React.Component<IProps, any> {
   handleCancel = () => {
     this.formRef.current.resetFields();
     if (this.props.cancel) this.props.cancel();
-
-  }
+  };
   handleOK = () => {
     this.formRef.current.validateFields().then((value : any) => {
       if (this.props.notReset && this.props.OK) {
@@ -95,7 +94,7 @@ class CommonHorizForm extends React.Component<IProps, any> {
         }
       }
     });
-  }
+  };
   render(): React.ReactNode {
     const { formItemLayout, inlineSpan, formColumns, footerBtn } = this.props;
     const itemLayOut = formItemLayout ? formItemLayout : {
@@ -110,7 +109,6 @@ class CommonHorizForm extends React.Component<IProps, any> {
         span: 18
       },
     };
-
     const formItems = (item: IFormColumns) => {
       switch (item.type) {
         case 'text': return (<Input disabled={item.disabled} readOnly={item.readOnly} placeholder={item.placeholder} style={item.style} />);
@@ -197,8 +195,6 @@ class CommonHorizForm extends React.Component<IProps, any> {
         </Form.Item>
       </Col>
     ));
-
-
     return (
       <Form {...itemLayOut} ref={this.formRef}>
         <Row>
