@@ -31,7 +31,6 @@ const FormDemoHook = () => {
     setTimeout(() => {
       setSubmitLoading(false);
     }, 1000);
-
   };
   const handleCancel = () => {
     message.info('取消表单填写');
@@ -127,7 +126,6 @@ const FormDemoHook = () => {
     <CodeExample viewComponents={viewComponents} code={code} />
     <TitleWithDescription title="Hook 组件中使用表单方法，表单赋值等" titleSize={24} content="使用 useRef 创建一个 ref 对象返回子组件，class 中使用 React.createRef() 创建 ref 对象" style={{ marginTop: 50, marginBottom: 10 }} />
     <CodeExample viewComponents={funComponent} code={funCode} />
-
     <API title="CommonHorizForm" dataList={apiList} />
     <API title="IFormColumns" description="表单项" dataList={iFormColumnsAPIList} />
   </Row>;

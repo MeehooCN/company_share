@@ -13,6 +13,7 @@ import {
   treeData,
   residences,
 } from '@views/components/form/FormCommonVar';
+
 interface IState {
   inlineSpan: any,
   submitLoading: boolean
@@ -21,10 +22,10 @@ class FormDemoClass extends React.Component<any, IState> {
   public readonly state: Readonly<IState> = {
     inlineSpan: 8,
     submitLoading: false
-  }
+  };
   spanChange = (e: any) => {
     this.setState({ inlineSpan: e.target.value });
-  }
+  };
   handleOK = (content: any) => {
     this.setState({ submitLoading: true });
     console.log(content);
@@ -32,11 +33,10 @@ class FormDemoClass extends React.Component<any, IState> {
     setTimeout(() => {
       this.setState({ submitLoading: false });
     }, 1000);
-
-  }
+  };
   handleCancel = () => {
     message.info('取消表单填写');
-  }
+  };
   render(): React.ReactNode {
     const { submitLoading, inlineSpan } = this.state;
     const formColumns: Array<IFormColumns> = [
@@ -103,7 +103,6 @@ class FormDemoClass extends React.Component<any, IState> {
       '  return <CommonHorizForm submitLoading={submitLoading} formColumns={formColumns} footerBtn={true} inlineSpan={inlineSpan} OK={this.handleOK} cancel={this.handleCancel} />\n' +
       ' }\n' +
       '}';
-
     return <Row>
       <TitleWithDescription title="CommonHorizForm-Class 版" content="公共的基础表单，有 class 组件版和 React Hook 版。" />
       <TitleWithDescription title="示例" titleSize={24} content="" style={{ marginTop: 50, marginBottom: 10 }} />

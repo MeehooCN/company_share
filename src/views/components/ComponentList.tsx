@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import {MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass, HookForm, InlineSearchFormDemo } from '@views/index';
+import { MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass, HookForm, InlineSearchFormDemo } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
 import { MenuData } from '@utils/CommonInterface';

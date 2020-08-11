@@ -6,7 +6,7 @@
 import React, { useState } from 'react';
 import { Row, Table } from 'antd';
 import { ISearchFormColumns, SearchInlineForm } from '@components/components/form/SearchInlineForm';
-import {sexOption, searchFormAPIList, ISearchFormColumnsAPIList} from '@views/components/form/FormCommonVar';
+import { sexOption, searchFormAPIList, ISearchFormColumnsAPIList } from '@views/components/form/FormCommonVar';
 import TitleWithDescription from '@components/components/TitleWithDescription';
 import CodeExample from '@components/components/CodeExample';
 import API from '@components/components/API';
@@ -105,11 +105,11 @@ const InlineSearchFormDemo = () => {
     '}';
   return (
     <Row>
-      <TitleWithDescription title="搜索表单" content="" />
+      <TitleWithDescription title="搜索表单" content="" style={{ marginBottom: 50 }} />
       <CodeExample viewComponents={viewComponents} code={code} />
       <API title="SearchInlineForm" description="" dataList={searchFormAPIList} />
       <API title="ISearchFormColumns" description="每一个表单项的属性" dataList={ISearchFormColumnsAPIList} />
     </Row>
   );
-}
+};
 export default InlineSearchFormDemo;

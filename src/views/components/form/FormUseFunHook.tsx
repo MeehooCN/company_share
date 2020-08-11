@@ -1,16 +1,13 @@
-import { useRef, useState } from 'react';
-import { CommonHorizForm, IFormColumns } from '@components/components/form/CommonHorizForm';
-import React from 'react';
-import { selectOption } from '@views/components/form/FormCommonVar';
-import { Row, Button } from 'antd';
-
 /**
  * @description: 使用公共表单的方法-Hook
  * @author: cy
  * @createTime: 2020/8/11 11:24
  **/
+import React, { useRef } from 'react';
+import { CommonHorizForm, IFormColumns } from '@components/components/form/CommonHorizForm';
+import { selectOption } from '@views/components/form/FormCommonVar';
+import { Row, Button } from 'antd';
 const FormUseFunHook = () => {
-
   const comFormRef: any = useRef();
   const setValue = () => {
     let value = {

@@ -31,15 +31,15 @@ export const menuList: Array<MenuData> = [{
     key: 'searchForm',
     children: []
   }, {
-    name: 'Hook表单',
+    name: 'Hook 表单',
     key: 'hookForm',
     children: []
   }, {
-    name: 'React Hook使用class表单',
+    name: 'React Hook 使用 class 表单',
     key: 'commonForm',
     children: []
   }, {
-    name: 'class使用class表单',
+    name: 'class 使用 class 表单',
     key: 'commonFormClass',
     children: []
   }]

@@ -9,7 +9,8 @@ import { CodeExample, TitleWithDescription } from '@components/index';
 import { IFormColumns } from '@components/components/form/CommonHorizForm';
 import API from '@components/components/API';
 import { CommonHorizFormHook } from '@components/components/form/CommonHorizFormHook';
-import {sexOption} from '@views/components/form/FormCommonVar';
+import { sexOption } from '@views/components/form/FormCommonVar';
+
 const initList = [
   { id: '1', name: 'jack', sex: '男', age: 18 },
   { id: '2', name: 'rose', sex: '女', age: 16 },
@@ -42,7 +43,6 @@ const HookForm = () => {
       setSubmitLoading(false);
       setUpdateView(false);
     }, 1000);
-
   };
   const handleCancel = () => {
     message.info('取消表单填写');
@@ -163,10 +163,12 @@ const HookForm = () => {
     '  </Modal>\n' +
     ' </Row>\n' +
     '}';
-  return <Row>
-    <TitleWithDescription title="CommonHorizFormHook" content="使用 Hook 写的公共表单，可以赋值不需要模态框 forcerender" />
-    <CodeExample viewComponents={viewComponents} code={code} />
-    <API title="CommonHorizFormHook" description="属性和 class 版本的一样，添加了一个表单值的属性" dataList={apiList} />
-  </Row>;
+  return (
+    <Row>
+      <TitleWithDescription title="CommonHorizFormHook" content="使用 Hook 写的公共表单，可以赋值不需要模态框 forcerender" style={{ marginBottom: 50 }} />
+      <CodeExample viewComponents={viewComponents} code={code} />
+      <API title="CommonHorizFormHook" description="属性和 class 版本的一样，添加了一个表单值的属性" dataList={apiList} />
+    </Row>
+  );
 };
 export default HookForm;

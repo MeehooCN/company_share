@@ -1,5 +1,4 @@
 import React from 'react';
-import {ISearchFormColumns} from '@components/components/form/SearchInlineForm';
 
 const residences = [
   {
