@@ -6,18 +6,29 @@
 import React, { useState } from 'react';
 import { Row } from 'antd';
 import { API, CodeExample, TitleWithDescription, ImageCompare } from '@components/index';
+// @ts-ignore
+import origin from '@static/images/misaka-origin.jpg';
+// @ts-ignore
+import retouch from '@static/images/misaka-retouch.jpg';
 
 const ImageCompareView = () => {
   const [comparisonView, setComparisonView] = useState<boolean>(false);
+  const [openTimes, setOpenTimes] = useState<number>(0);
   const image = {
     name: 'misaka',
-    originUrl: '',
-    retouchUrl: '',
+    originUrl: origin,
+    retouchUrl: retouch,
     height: 0,
     width: 0,
-    thumbnailUrl: ''
+    thumbnailUrl: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3044907555,2122407846&fm=26&gp=0.jpg'
   };
-  const code = '';
+  const code = '<ImageCompare\n' +
+    '  retouchUrl={image.retouchUrl}\n' +
+    '  initUrl={image.originUrl}\n' +
+    '  comparisonView={comparisonView}\n' +
+    '  setComparisonView={setComparisonViews}\n' +
+    '  openTimes={openTimes}\n' +
+    '/>';
   const paramList = [{
     name: 'retouchUrl',
     description: '修后图。',
@@ -48,7 +59,10 @@ const ImageCompareView = () => {
     setComparisonView(false);
   };
   const clickImage = () => {
+    // 隐藏滚动条
+    document.documentElement.style.overflow = 'hidden';
     setComparisonView(true);
+    setOpenTimes(openTimes + 1);
   };
   const showImage = (
     <div style={{ height: image.height || 150, width: image.width || undefined, margin: 5, cursor: 'pointer' }} onClick={clickImage}>
@@ -61,7 +75,13 @@ const ImageCompareView = () => {
       <TitleWithDescription title="示例" titleSize={24} content="" style={{ marginTop: 50, marginBottom: 10 }} />
       <CodeExample viewComponents={showImage} code={code} />
       <API dataList={paramList} />
-      <ImageCompare retouchUrl="" initUrl="" comparisonView={comparisonView} setComparisonView={setComparisonViews} openTimes={0} />
+      <ImageCompare
+        retouchUrl={image.retouchUrl}
+        initUrl={image.originUrl}
+        comparisonView={comparisonView}
+        setComparisonView={setComparisonViews}
+        openTimes={openTimes}
+      />
     </Row>
   );
 };

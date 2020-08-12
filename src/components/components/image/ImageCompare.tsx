@@ -21,7 +21,6 @@ interface IProps {
 }
 
 interface IState {
-  isPCFlag: boolean,
   clientWidth: number,
   clientHeight: number,
   initWidth: number,
@@ -48,7 +47,6 @@ class ImageCompare extends React.Component<IProps, IState> {
     this.initDiv = React.createRef();
   }
   readonly state: Readonly<IState> = {
-    isPCFlag: true,
     clientWidth: 0,
     clientHeight: 0,
     initWidth: 0,
@@ -67,29 +65,18 @@ class ImageCompare extends React.Component<IProps, IState> {
     moveX: 0,
     moveY: 0
   };
-  componentWillMount() {
-    // 判断是否是PC
-    let isPCFlag = this.isPC();
-    let clientWidth = 1520;
-    let clientHeight = 1050;
-    if (isPCFlag) {
-      clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
-      clientHeight = document.documentElement ? document.documentElement.clientHeight : document.body.clientHeight;
-    }
-    this.setState({ isPCFlag, clientWidth, clientHeight });
-  }
   componentDidMount() {
+    const clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+    const clientHeight = document.documentElement ? document.documentElement.clientHeight : document.body.clientHeight;
     window.addEventListener('resize', this.windowResize);
     const { retouchUrl, initUrl } = this.props;
-    this.setState({ retouchUrl, initUrl }, this.handleImgLoadStatus);
+    this.setState({ retouchUrl, initUrl, clientWidth, clientHeight }, this.handleImgLoadStatus);
   }
   componentWillReceiveProps(nextProps: IProps, nextContext: any) {
     const { openTimes, comparisonView } = nextProps;
     if (openTimes !== this.props.openTimes && comparisonView) {
       const { retouchUrl, initUrl } = nextProps;
-      this.setState({ retouchUrl, initUrl }, () => {
-        this.handleImgLoadStatus();
-      });
+      this.setState({ retouchUrl, initUrl }, this.handleImgLoadStatus);
     }
   }
   componentWillUnmount() {
@@ -97,19 +84,6 @@ class ImageCompare extends React.Component<IProps, IState> {
   }
   private readonly imgDiv: React.RefObject<any>;
   private readonly initDiv: React.RefObject<any>;
-
-  public isPC = () => {
-    let userAgentInfo = navigator.userAgent;
-    let Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
-    let flag: boolean = true;
-    for (let v = 0; v < Agents.length; v++) {
-      if (userAgentInfo.indexOf(Agents[v]) > 0) {
-        flag = false;
-        break;
-      }
-    }
-    return flag;
-  };
   public windowResize = () => {
     let clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
     let clientHeight = document.documentElement ? document.documentElement.clientHeight : document.body.clientHeight;
@@ -157,6 +131,9 @@ class ImageCompare extends React.Component<IProps, IState> {
   };
   // 关闭对比模式
   private setComparisonView = () => {
+    // 显示滚动条
+    // @ts-ignore
+    document.documentElement.style.overflow = 'auto';
     const { setComparisonView } = this.props;
     setComparisonView(false);
     this.setState({ retouchUrl: '', initUrl: '' });
