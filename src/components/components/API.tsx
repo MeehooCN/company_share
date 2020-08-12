@@ -26,10 +26,12 @@ const API = (props: IProps) => {
   const { dataList, description, title } = props;
   const columns: ColumnProps<APIData>[] = [{
     title: '属性',
-    dataIndex: 'name'
+    dataIndex: 'name',
+    width: 200
   }, {
     title: '说明',
-    dataIndex: 'description'
+    dataIndex: 'description',
+    width: 300
   }, {
     title: '类型',
     dataIndex: 'type',
@@ -38,7 +40,8 @@ const API = (props: IProps) => {
     }
   }, {
     title: '默认值',
-    dataIndex: 'defaultValue'
+    dataIndex: 'defaultValue',
+    width: 80
   }];
   return (
     <div style={{ width: '100%', marginTop: 50 }}>
