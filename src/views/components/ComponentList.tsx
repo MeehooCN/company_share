@@ -7,7 +7,10 @@
 import React, { useState } from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass, HookForm, InlineSearchFormDemo } from '@views/index';
+import {
+  MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
+  HookForm, InlineSearchFormDemo, ImageCompare
+} from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
 import { MenuData } from '@utils/CommonInterface';
@@ -32,6 +35,7 @@ const ComponentList = () => {
         <Route path="/components/myTitle" component={MyTitle} />
         <Route path="/components/imageList" component={ImageListView} />
         <Route path="/components/imageView" component={ImageView} />
+        <Route path="/components/imageCompare" component={ImageCompare} />
         <Route path="/components/hookForm" component={HookForm} />
         <Route path="/components/searchForm" component={InlineSearchFormDemo} />
         <Route path="/components/commonForm" component={FormDemoHook} />

@@ -22,6 +22,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'ImageView 图片浏览',
     key: 'imageView'
+  }, {
+    name: 'ImageCompare 图片对比',
+    key: 'imageCompare'
   }]
 }, {
   name: '表单',

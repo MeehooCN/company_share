@@ -7,7 +7,6 @@ import React from 'react';
 import { Row, Layout, BackTop } from 'antd';
 import { VerticalAlignTopOutlined } from '@ant-design/icons';
 import { Header } from '@components/index';
-import { colors } from '@utils/CommonVars';
 import './index.less';
 
 const { Content } = Layout;
@@ -25,7 +24,7 @@ const Home = (props: IProps) => {
         {children}
       </Content>
       <BackTop>
-        <div className="back-top" style={{ backgroundColor: colors.primaryColor }}>
+        <div className="back-top">
           <VerticalAlignTopOutlined style={{ color: '#fff', fontSize: 20 }} />
         </div>
       </BackTop>
