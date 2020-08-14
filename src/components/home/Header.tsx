@@ -33,6 +33,9 @@ const Header = () => {
         <Menu.Item key="tips">
           <Link to="/tips/basicProject">Tips</Link>
         </Menu.Item>
+        <Menu.Item key="designRules">
+          <Link to="/designRules/buttonPosition">设计规范</Link>
+        </Menu.Item>
         <Menu.Item key="sources">
           <Link to="/resources">资源</Link>
         </Menu.Item>
@@ -41,6 +44,6 @@ const Header = () => {
         </Menu.Item>
       </Menu>
     </Row>
-  )
+  );
 };
 export default Header;

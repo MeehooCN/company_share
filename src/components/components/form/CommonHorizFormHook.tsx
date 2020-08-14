@@ -3,7 +3,20 @@
  * @author: cy
  * @createTime: 2020/7/28 14:20
  **/
-import { Col, DatePicker, Form, Input, InputNumber, Select, TreeSelect, Radio, Cascader, Row, Button } from 'antd';
+import {
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  TreeSelect,
+  Radio,
+  Cascader,
+  Row,
+  Button,
+  Divider
+} from 'antd';
 import React, { useEffect } from 'react';
 import { Rule } from 'antd/lib/form';
 const { TextArea } = Input;
@@ -197,15 +210,20 @@ const CommonHorizFormHook = (props: IProps) => {
     </Col>
   ));
   return (
-    <Form {...itemLayOut} form={form} onFinish={onFinish} autoComplete="off">
-      <Row>
-        {columns}
-      </Row>
-      {props.footerBtn ? <Row justify="end">
-        <Button onClick={handleCancel}>取消</Button>
-        <Button type="primary" loading={props.submitLoading} style={{ marginLeft: 8 }} htmlType="submit" >确定</Button>
-      </Row> : ''}
-    </Form>
+    <>
+      <Form {...itemLayOut} form={form} onFinish={onFinish} autoComplete="off">
+        <Row>
+          {columns}
+        </Row>
+      </Form>
+      {props.footerBtn ? <>
+        <div style={{ borderBottom: '1px solid #f0f0f0', margin: '16px -24px', height: 1 }}></div>
+        <Row justify="end">
+          <Button onClick={handleCancel}>取消</Button>
+          <Button type="primary" loading={props.submitLoading} style={{ marginLeft: 8 }} htmlType="submit" >确定</Button>
+        </Row>
+      </> : ''}
+    </>
   );
 };
 

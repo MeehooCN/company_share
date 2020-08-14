@@ -200,10 +200,13 @@ class CommonHorizForm extends React.Component<IProps, any> {
         <Row>
           {columns}
         </Row>
-        {footerBtn ? <Row justify="end">
-          <Button onClick={this.handleCancel}>取消</Button>
-          <Button type="primary" loading={this.props.submitLoading} style={{ marginLeft: 8 }} onClick={this.handleOK} >确定</Button>
-        </Row> : ''}
+        {footerBtn ? <>
+          <div style={{ borderBottom: '1px solid #f0f0f0', margin: '16px -24px', height: 1 }}></div>
+          <Row justify="end">
+            <Button onClick={this.handleCancel}>取消</Button>
+            <Button type="primary" loading={this.props.submitLoading} style={{ marginLeft: 8 }} onClick={this.handleOK} >确定</Button>
+          </Row>
+        </> : ''}
       </Form>
     );
   }
