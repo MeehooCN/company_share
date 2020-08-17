@@ -42,4 +42,11 @@ export const menuList: Array<MenuData> = [{
     name: 'yalc 将源代码打包用在自己项目中',
     key: 'yalc'
   }]
+}, {
+  name: 'Flutter 技巧',
+  key: 'flutter',
+  children: [{
+    name: '命令行生成应用图标',
+    key: 'launcherIcons'
+  }]
 }];

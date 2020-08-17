@@ -8,7 +8,7 @@ import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
 import {
   CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents,
-  Yalc, UseEffect, WebStormESLint
+  Yalc, UseEffect, WebStormESLint, BuildIcon
 } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
@@ -49,6 +49,7 @@ const TipList = () => {
         <Route path="/tips/parentComponents" component={ParentComponents} />
         <Route path="/tips/yalc" component={Yalc} />
         <Route path="/tips/useEffect" component={UseEffect} />
+        <Route path="/tips/launcherIcons" component={BuildIcon} />
       </Col>
     </Row>
   );

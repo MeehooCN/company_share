@@ -24,12 +24,13 @@ import FormDemoClass from '@views/components/form/FormDemoClass';
 import HookForm from './components/form/HookForm';
 import InlineSearchFormDemo from '@views/components/form/InlineSearchFormDemo';
 import ImageCompare from '@views/components/image/ImageCompare';
+import BuildIcon from '@views/tips/flutter/BuildIcon';
 
 export {
   NotFound, Home, Welcome,
   MyTitle, ImageListView, ImageView,
   ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
-  Yalc, ParentComponents, UseEffect, WebStormESLint,
+  Yalc, ParentComponents, UseEffect, WebStormESLint, BuildIcon,
   EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm,
   InlineSearchFormDemo, ImageCompare
 };
