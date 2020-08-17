@@ -14,9 +14,10 @@ import ImageComponent from '@components/components/image/ImageComponent';
 import ImageList from '@components/components/image/ImageList';
 import ImageView from '@components/components/image/ImageView';
 import ImageCompare from '@components/components/image/ImageCompare';
+import Loading from '@components/components/Loading';
 
 export {
   ErrorBoundary, MyTitle, Header, TitleWithDescription, API,
   CodeExample, CodeBox, ImageComponent, ImageList, ImageView,
-  ImageCompare
+  ImageCompare, Loading
 };
