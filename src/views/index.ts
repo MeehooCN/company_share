@@ -9,6 +9,7 @@ import Home from '@views/home/Home';
 import MyTitle from '@views/components/text/MyTitle';
 import ImageListView from '@views/components/image/ImageList';
 import ImageView from '@views/components/image/ImageView';
+import LoadingView from '@views/components/feedback/LoadingView';
 import BasicProject from '@views/tips/project/BasicProject';
 import WebStormESLint from '@views/tips/project/WebStormESLint';
 import Yalc from '@views/tips/node/Yalc';
@@ -32,5 +33,5 @@ export {
   ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
   Yalc, ParentComponents, UseEffect, WebStormESLint, BuildIcon,
   EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm,
-  InlineSearchFormDemo, ImageCompare
+  InlineSearchFormDemo, ImageCompare, LoadingView
 };

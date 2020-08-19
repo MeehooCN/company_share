@@ -46,4 +46,11 @@ export const menuList: Array<MenuData> = [{
     key: 'commonFormClass',
     children: []
   }]
+}, {
+  name: '反馈',
+  key: 'feedback',
+  children: [{
+    name: 'Loading 居中显示加载效果',
+    key: 'loading'
+  }]
 }];
