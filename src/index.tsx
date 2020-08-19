@@ -7,33 +7,32 @@ import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 // @ts-ignore
 import Loadable from 'react-loadable';
-import { ErrorBoundary } from '@components/index';
+import { ErrorBoundary, Loading } from '@components/index';
 import { NotFound, Home, Welcome } from '@views/index';
-import { Spin } from 'antd';
 
-const Loading = () => {
-  return <Spin />;
+const RenderLoading = () => {
+  return <Loading loading={true} />;
 };
 
 // 组件列表
 const ComponentList = Loadable({
   loader: () => import('@views/components/ComponentList'),
-  loading: Loading
+  loading: RenderLoading
 });
 // 技巧列表
 const TipList = Loadable({
   loader: () => import('@views/tips/TipList'),
-  loading: Loading
+  loading: RenderLoading
 });
 // 资源列表
 const ResourceList = Loadable({
   loader: () => import('@views/resources/ResourceList'),
-  loading: Loading
+  loading: RenderLoading
 });
 // Debug 列表
 const DebugList = Loadable({
   loader: () => import('@views/debug/DebugList'),
-  loading: Loading
+  loading: RenderLoading
 });
 
 class App extends React.PureComponent {
