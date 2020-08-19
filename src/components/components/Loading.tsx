@@ -18,7 +18,14 @@ interface IProps {
 const Loading = (props: IProps) => {
   const { loading, height } = props;
   return (
-    <div style={{ width: '100%', height: height || 100, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div
+      style={{
+        width: '100%',
+        height: height || 100,
+        display: loading ? 'flex' : 'none',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
       <Spin spinning={loading} />
     </div>
   );
