@@ -215,14 +215,14 @@ const CommonHorizFormHook = (props: IProps) => {
         <Row>
           {columns}
         </Row>
+        {props.footerBtn ? <>
+          <div style={{ borderBottom: '1px solid #f0f0f0', margin: '16px -24px', height: 1 }}></div>
+          <Row justify="end">
+            <Button onClick={handleCancel}>取消</Button>
+            <Button type="primary" loading={props.submitLoading} style={{ marginLeft: 8 }} htmlType="submit" >确定</Button>
+          </Row>
+        </> : ''}
       </Form>
-      {props.footerBtn ? <>
-        <div style={{ borderBottom: '1px solid #f0f0f0', margin: '16px -24px', height: 1 }}></div>
-        <Row justify="end">
-          <Button onClick={handleCancel}>取消</Button>
-          <Button type="primary" loading={props.submitLoading} style={{ marginLeft: 8 }} htmlType="submit" >确定</Button>
-        </Row>
-      </> : ''}
     </>
   );
 };
