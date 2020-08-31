@@ -27,7 +27,7 @@ interface IProps {
 const ImageList = (props: IProps) => {
   const { imagePropList, containerWidth = 1200 } = props;
   const [imageList, setImageList] = useState<Array<ImageDataWithViewContainer>>([]);
-  const [isInit, setIsInit] = useState<boolean>(false);
+  const [isInit, setIsInit] = useState<boolean>(true);
   useEffect(() => {
     setIsInit(true);
     initImageList(imagePropList);
