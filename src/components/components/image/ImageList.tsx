@@ -27,7 +27,7 @@ interface IProps {
 const ImageList = (props: IProps) => {
   const { imagePropList, containerWidth = 1200 } = props;
   const [imageList, setImageList] = useState<Array<ImageDataWithViewContainer>>([]);
-  const [isInit, setIsInit] = useState<boolean>(true);
+  const [isInit, setIsInit] = useState<boolean>(false);
   useEffect(() => {
     setIsInit(true);
     initImageList(imagePropList);
@@ -39,16 +39,20 @@ const ImageList = (props: IProps) => {
   }, [imageList]);
   // 初始化图片列表
   const initImageList = (imagePropList: Array<ImageData>) => {
-    let imageTempList: Array<ImageDataWithViewContainer> = imagePropList.map((item: ImageData) => {
-      return {
-        ...item,
-        viewHeight: wishHeight,
-        viewWidth: wishHeight,
-        imageRatio: item.width / item.height
-      };
-    });
-    imageTempList = getImageView(imageTempList);
-    setImageList(imageTempList);
+    if (imagePropList.length > 0) {
+      let imageTempList: Array<ImageDataWithViewContainer> = imagePropList.map((item: ImageData) => {
+        return {
+          ...item,
+          viewHeight: wishHeight,
+          viewWidth: wishHeight,
+          imageRatio: item.width / item.height
+        };
+      });
+      imageTempList = getImageView(imageTempList);
+      setImageList(imageTempList);
+    } else {
+      setImageList([]);
+    }
   };
   // 滑动滚轮图片懒加载
   const handleWheel = (e: any) => {
