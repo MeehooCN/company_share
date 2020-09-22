@@ -66,9 +66,24 @@ const spanList = [
 ];
 const apiList = [
   {
+    name: 'ref',
+    description: '表单引用',
+    type: 'Ref',
+    defaultValue: ''
+  }, {
     name: 'formColumns',
     description: '必填，表单项',
     type: 'IFormColumns[]',
+    defaultValue: ''
+  }, {
+    name: 'formValue',
+    description: '必填，表单项的值',
+    type: 'any',
+    defaultValue: ''
+  }, {
+    name: 'name',
+    description: '表单的名称标识',
+    type: 'any',
     defaultValue: ''
   }, {
     name: 'submitLoading',
@@ -198,6 +213,11 @@ const iFormColumnsAPIList = [
     description: '输入框的提示信息',
     type: 'string',
     defaultValue: ''
+  }, {
+    name: 'disabledDate',
+    description: '日期选择器的不可选择的日期',
+    type: '(currentDate: moment) => boolean',
+    defaultValue: ''
   },
 ];
 const sexOption = [{ key: '男', value: '男' }, { key: '女', value: '女' }]
@@ -206,6 +226,11 @@ const searchFormAPIList = [
     name: 'formColumns',
     description: '必填，表单项',
     type: 'ISearchFormColumns[]',
+    defaultValue: ''
+  }, {
+    name: 'formValue',
+    description: '表单的值',
+    type: 'any',
     defaultValue: ''
   }, {
     name: 'submitLoading',

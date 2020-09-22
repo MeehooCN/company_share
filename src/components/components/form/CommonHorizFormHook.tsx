@@ -3,28 +3,15 @@
  * @author: cy
  * @createTime: 2020/7/28 14:20
  **/
-import {
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Select,
-  TreeSelect,
-  Radio,
-  Cascader,
-  Row,
-  Button,
-  Divider
-} from 'antd';
-import React, { useEffect } from 'react';
+import { Col, DatePicker, Form, Input, InputNumber, Select, TreeSelect, Radio, Cascader, Row, Button, Space } from 'antd';
+import React, { forwardRef, useEffect, useImperativeHandle } from 'react';
 import { Rule } from 'antd/lib/form';
 const { TextArea } = Input;
 const { Option } = Select;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
 const { RangePicker } = DatePicker;
-declare type FormItemType = 'text' | 'textArea' | 'inputNumber' | 'password' | 'select' | 'treeSelect' | 'date' | 'rangeDate'| 'dateNoTime' | 'radio' | 'switch' | 'cascader' | 'hidden';
+declare type FormItemType = 'text' | 'textArea' | 'inputNumber' | 'password' | 'select' | 'treeSelect' | 'date' | 'rangeDate'| 'rangeDateNoTime'| 'dateNoTime' | 'radio' | 'switch' | 'cascader' | 'hidden';
 /**
  * @description 表单项
  * @property label 标签名
@@ -63,7 +50,8 @@ interface IFormColumns {
   formatter?: any,
   multiple?: boolean,
   initialValue?: any,
-  placeholder?: string
+  placeholder?: string,
+  disabledDate?: any
 }
 /**
  * @description 公共表单的参数
@@ -79,6 +67,7 @@ interface IFormColumns {
 interface IProps {
   formColumns: IFormColumns[],
   formValue: any,
+  name?: any,
   submitLoading?: boolean,
   formItemLayout?: any,
   inlineSpan?: number,
@@ -87,7 +76,7 @@ interface IProps {
   OK?: (data: any) => void,
   notReset?: boolean
 }
-const CommonHorizFormHook = (props: IProps) => {
+const CommonHorizFormHookItem = (props: IProps, ref?: any) => {
   const [form] = Form.useForm();
   useEffect(() => {
     if (props.formValue) {
@@ -96,6 +85,9 @@ const CommonHorizFormHook = (props: IProps) => {
       form.resetFields();
     }
   }, [props.formValue]);
+  useImperativeHandle(ref, () => ({
+    form: () => form
+  }));
   const handleCancel = () => {
     form.resetFields();
     if (props.cancel) props.cancel();
@@ -123,6 +115,7 @@ const CommonHorizFormHook = (props: IProps) => {
       span: 18
     },
   };
+
   const formItems = (item: IFormColumns) => {
     switch (item.type) {
       case 'text': return (<Input disabled={item.disabled} readOnly={item.readOnly} placeholder={item.placeholder} style={item.style} />);
@@ -173,10 +166,11 @@ const CommonHorizFormHook = (props: IProps) => {
         />
       );
       case 'date': return (<DatePicker showTime disabled={item.disabled} style={{ width: '100%' }} />);
-      case 'dateNoTime': return (<DatePicker disabled={item.disabled} style={{ width: '100%' }} />);
+      case 'dateNoTime': return (<DatePicker disabled={item.disabled} disabledDate={item.disabledDate} style={{ width: '100%' }} />);
       case 'rangeDate': return (<RangePicker showTime={{ format: 'HH:mm:ss' }} format="YYYY-MM-DD HH:mm:ss" disabled={item.disabled} style={{ width: '100%' }} />);
+      case 'rangeDateNoTime': return (<RangePicker format="YYYY-MM-DD" disabled={item.disabled} style={{ width: '100%' }} />);
       case 'radio': return (
-        <RadioGroup disabled={item.disabled} buttonStyle="solid" onChange={(e) => {
+        <RadioGroup disabled={item.disabled} onChange={(e) => {
           if (item.onChange) {
             item.onChange(e);
           }
@@ -209,22 +203,26 @@ const CommonHorizFormHook = (props: IProps) => {
       </Form.Item>
     </Col>
   ));
+
+
   return (
-    <>
-      <Form {...itemLayOut} form={form} onFinish={onFinish} autoComplete="off">
+    <div>
+      <Form {...itemLayOut} form={form} name={props.name || 'hook-form'} onFinish={onFinish} autoComplete="off" >
         <Row>
           {columns}
         </Row>
         {props.footerBtn ? <>
           <div style={{ borderBottom: '1px solid #f0f0f0', margin: '16px -24px', height: 1 }}></div>
           <Row justify="end">
-            <Button onClick={handleCancel}>取消</Button>
-            <Button type="primary" loading={props.submitLoading} style={{ marginLeft: 8 }} htmlType="submit" >确定</Button>
+            <Space>
+              <Button onClick={handleCancel}>取消</Button>
+              <Button type="primary" loading={props.submitLoading} htmlType="submit" >确定</Button>
+            </Space>
           </Row>
         </> : ''}
       </Form>
-    </>
+    </div>
   );
 };
-
+const CommonHorizFormHook = forwardRef(CommonHorizFormHookItem);
 export { CommonHorizFormHook, IFormColumns };
