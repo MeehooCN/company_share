@@ -9,6 +9,7 @@ import Home from '@views/home/Home';
 import MyTitle from '@views/components/text/MyTitle';
 import ImageListView from '@views/components/image/ImageList';
 import ImageView from '@views/components/image/ImageView';
+import LoadingView from '@views/components/feedback/LoadingView';
 import BasicProject from '@views/tips/project/BasicProject';
 import WebStormESLint from '@views/tips/project/WebStormESLint';
 import Yalc from '@views/tips/node/Yalc';
@@ -24,12 +25,13 @@ import FormDemoClass from '@views/components/form/FormDemoClass';
 import HookForm from './components/form/HookForm';
 import InlineSearchFormDemo from '@views/components/form/InlineSearchFormDemo';
 import ImageCompare from '@views/components/image/ImageCompare';
+import BuildIcon from '@views/tips/flutter/BuildIcon';
 
 export {
   NotFound, Home, Welcome,
   MyTitle, ImageListView, ImageView,
   ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
-  Yalc, ParentComponents, UseEffect, WebStormESLint,
+  Yalc, ParentComponents, UseEffect, WebStormESLint, BuildIcon,
   EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm,
-  InlineSearchFormDemo, ImageCompare
+  InlineSearchFormDemo, ImageCompare, LoadingView
 };

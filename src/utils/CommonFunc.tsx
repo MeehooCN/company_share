@@ -43,3 +43,27 @@ export const initMenu = (menuList: Array<MenuData>, type: string) => {
   }
   return subMenuList;
 };
+/**
+ * 设置当前激活的菜单
+ * **/
+export const setActiveMenu = (activeMenu: string) => {
+  sessionStorage.setItem('activeMenu', activeMenu || '');
+};
+/**
+ * 获取当前激活的菜单
+ * **/
+export const getActiveMenu = () => {
+  return sessionStorage.getItem('activeMenu') || '';
+};
+/**
+ * 设置当前激活的子菜单
+ * **/
+export const setActiveChildMenu = (activeChildMenu: string) => {
+  sessionStorage.setItem('activeChildMenu', activeChildMenu || '');
+};
+/**
+ * 获取当前激活的子菜单
+ * **/
+export const getActiveChildMenu = () => {
+  return sessionStorage.getItem('activeChildMenu') || '';
+};

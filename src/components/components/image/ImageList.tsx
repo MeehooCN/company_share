@@ -95,14 +95,14 @@ const ImageList = (props: IProps) => {
     for (let index: number = 0; index < imageTempList.length; index++) {
       rowTotalRatio = rowTotalRatio + imageTempList[index].imageRatio;
       // 分行，每行宽高比总和小于总宽高比
-      if (rowTotalRatio >= allRatio) {
+      // 当当前宽高比大于总宽高比时，说明应该是下一行了，当前的上一行为最后一个
+      if (rowTotalRatio > allRatio) {
         const spaceWidth: number = rowTotal * 10;
         const restWidth = containerWidth - spaceWidth;
         const height: number = restWidth / (rowTotalRatio - imageTempList[index].imageRatio);
         rowList.push({
           row: rowIndex,
           endIndex: index - 1, // 包括这张图
-          total: rowTotal,
           height
         });
         lastRowIndex = index - 1;
@@ -118,8 +118,7 @@ const ImageList = (props: IProps) => {
       rowList.push({
         row: rowIndex,
         endIndex: imageTempList.length - 1,
-        total: imageTempList.length - lastRowIndex,
-        height: wishHeight
+        height: wishHeight - 10
       });
     }
     for (let j: number = 0; j < rowList.length; j++) {
@@ -155,7 +154,7 @@ const ImageList = (props: IProps) => {
   return (
     <div
       style={{
-        width: containerWidth + 1,
+        width: containerWidth,
         display: 'flex',
         flexWrap: 'wrap',
         minWidth: containerWidth + 1

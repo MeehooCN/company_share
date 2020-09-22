@@ -12,6 +12,13 @@ const maxScale: number = 2;
 // 最小缩放倍数
 const minScale: number = 0.5;
 
+/**
+ * retouchUrl: 修后图路径
+ * initUrl: 原图路径
+ * comparisonView: 是否显示对比图
+ * setComparisonView: 设置是否显示对比图
+ * openTimes: 开启次数
+ * **/
 interface IProps {
   retouchUrl: string,
   initUrl: string,
@@ -176,13 +183,11 @@ class ImageCompare extends React.Component<IProps, IState> {
   // 正在拖动图片
   private handleImageDrag = (e: any) => {
     const { canDragImage, startX, startY } = this.state;
-    if (canDragImage) {
-      if (e.clientX % 5) {
-        // 防抖动
-        const newMoveX: number = e.clientX - startX;
-        const newMoveY: number = e.clientY - startY;
-        this.setState({ moveX: newMoveX, moveY: newMoveY });
-      }
+    if (canDragImage && e.clientX % 5) {
+      // 防抖动
+      const newMoveX: number = e.clientX - startX;
+      const newMoveY: number = e.clientY - startY;
+      this.setState({ moveX: newMoveX, moveY: newMoveY });
     }
   };
   // 停止拖动
@@ -256,7 +261,7 @@ class ImageCompare extends React.Component<IProps, IState> {
                 color: '#fff',
                 borderRadius: '0 2px 2px 0',
                 padding: '5px 10px',
-                zIndex: 999
+                zIndex: 999,
               }}>修图后</div>
               <img
                 alt="处理后的图"

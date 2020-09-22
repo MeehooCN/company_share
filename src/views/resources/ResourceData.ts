@@ -130,4 +130,10 @@ export const flutterResourceList: Array<Resource> = [{
     name: 'audioplayers',
     link: 'https://pub.dev/packages/audioplayers'
   }]
+}, {
+  type: '打包工具',
+  introduceComponentList: [{
+    name: 'flutter_launcher_icons',
+    link: 'https://pub.dev/packages/flutter_launcher_icons'
+  }]
 }];
