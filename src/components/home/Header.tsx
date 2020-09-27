@@ -27,8 +27,11 @@ const menuList = [{
   key: 'debug',
   name: 'Debug 分享',
   url: '/debugs/echartsYError'
+}, {
+  key: 'designRules',
+  name: '设计规范',
+  url: '/designRules/buttonPosition'
 }];
-
 const Header = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>();
   const setSelectedMenu = (selectedKeys: Array<string>) => {

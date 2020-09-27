@@ -34,7 +34,11 @@ const DebugList = Loadable({
   loader: () => import('@views/debug/DebugList'),
   loading: RenderLoading
 });
-
+// 设计规范列表
+const DesignRulesList = Loadable({
+  loader: () => import('@views/designRules/DesignRulesList'),
+  loading: Loading
+});
 class App extends React.PureComponent {
   render() {
     return (
@@ -48,6 +52,7 @@ class App extends React.PureComponent {
                 <Route path="/tips" component={TipList} />
                 <Route path="/resources" component={ResourceList} />
                 <Route path="/debugs" component={DebugList} />
+                <Route path="/designRules" component={DesignRulesList} />
               </ErrorBoundary>
               <Route component={NotFound} />
             </Switch>

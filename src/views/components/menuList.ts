@@ -55,5 +55,8 @@ export const menuList: Array<MenuData> = [{
   children: [{
     name: 'Loading 居中显示加载效果',
     key: 'loading'
+  }, {
+    name: '离开页面提示',
+    key: 'prompt'
   }]
 }];

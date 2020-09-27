@@ -14,6 +14,7 @@ import {
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
 import { MenuData } from '@utils/CommonInterface';
+import PromptIndex from '@views/components/prompt/PromptIndex';
 
 const ComponentList = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['myTitle']);
@@ -52,6 +53,7 @@ const ComponentList = () => {
         <Route path="/components/commonFormClass" component={FormDemoClass} />
         <Route path="/components/loading" component={LoadingView} />
         <Route path="/components/overText" component={OverTextView} />
+        <Route path="/components/prompt" component={PromptIndex} />
       </Col>
     </Row>
   );

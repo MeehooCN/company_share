@@ -3,8 +3,8 @@
  * @author: cy
  * @createTime: 2020/7/28 14:20
  **/
-import { DatePicker, Form, Input, InputNumber, Select, TreeSelect, Radio, Cascader, Button } from 'antd';
-import React from 'react';
+import { DatePicker, Form, Input, InputNumber, Select, TreeSelect, Radio, Cascader, Button} from 'antd';
+import React, {useEffect, useImperativeHandle} from 'react';
 const { TextArea, Search } = Input;
 const { Option } = Select;
 const RadioGroup = Radio.Group;
@@ -48,8 +48,9 @@ interface ISearchFormColumns {
   formatter?: any,
   multiple?: boolean,
   initialValue?: any,
-  placeholder?: string
+  placeholder?: string,
 }
+
 /**
  * @description 公共表单的参数
  * @property formColumns 表单项
@@ -62,9 +63,13 @@ interface IProps {
   search: (data: any) => void,
   submitLoading?: boolean,
   showBtn?: boolean,
+  formValue?: any
 }
 const SearchInlineForm = (props: IProps) => {
   const [form] = Form.useForm();
+  useEffect(() => {
+    form.setFieldsValue(props.formValue);
+  }, [props.formValue]);
   const handleSearch = () => {
     let value = form.getFieldsValue();
     props.search(value);
@@ -135,8 +140,18 @@ const SearchInlineForm = (props: IProps) => {
       );
       // onChange={(date: any) => onChangeSearch(date ? Dayjs(date).format('YYYY-MM-DD HH:mm:ss') : '', { ref: item.name })}
       case 'date': return (<DatePicker showTime disabled={item.disabled} style={{ width: '100%' }} />);
-      case 'dateNoTime': return (<DatePicker disabled={item.disabled} style={{ width: '100%' }} />);
-      case 'rangeDateNoTime': return (<RangePicker format="YYYY-MM-DD" disabled={item.disabled} style={{ width: '100%' }} />);
+      case 'dateNoTime': return (<DatePicker disabled={item.disabled} style={{ width: '100%' }} onChange={(date: any) => {
+        if (item.onChange) {
+          item.onChange(date);
+        } else {
+          onChangeSearch(date, { ref: item.name });
+        }
+      }} />);
+      case 'rangeDateNoTime': return (<RangePicker format="YYYY-MM-DD" disabled={item.disabled} style={{ width: '100%' }} onChange={(date: any) => {
+        if (item.onChange) {
+          item.onChange(date);
+        }
+      }} />);
       case 'rangeDate': return (<RangePicker showTime={{ format: 'HH:mm:ss' }} format="YYYY-MM-DD HH:mm:ss" disabled={item.disabled} style={{ width: '100%' }} />);
       case 'radio': return (
         <RadioGroup disabled={item.disabled} buttonStyle="solid" onChange={(e: any) => {
@@ -167,12 +182,14 @@ const SearchInlineForm = (props: IProps) => {
         />
       );
     }
-  };
+  }
   let columns = props.formColumns.map((item: ISearchFormColumns, index: number) => (
     <Form.Item key={index} label={item.label} name={item.name} initialValue={item.initialValue} style={{ marginBottom: 5 }}>
       {formItems(item)}
     </Form.Item>
-  ));
+  ))
+
+
   return (
     <Form layout="inline" form={form}>
       {columns}
@@ -186,6 +203,6 @@ const SearchInlineForm = (props: IProps) => {
       </> : ''}
     </Form>
   );
-};
+}
 
 export { SearchInlineForm, ISearchFormColumns };

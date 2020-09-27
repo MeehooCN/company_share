@@ -165,7 +165,7 @@ const HookForm = () => {
     '}';
   return (
     <Row>
-      <TitleWithDescription title="CommonHorizFormHook" content="使用 Hook 写的公共表单，可以赋值不需要模态框 forcerender" style={{ marginBottom: 50 }} />
+      <TitleWithDescription title="CommonHorizFormHook" content="使用 Hook 写的公共表单，可以赋值不需要模态框 forcerender, 建议大家使用 Hook 表单。" style={{ marginBottom: 50 }} />
       <CodeExample viewComponents={viewComponents} code={code} />
       <API title="CommonHorizFormHook" description="属性和 class 版本的一样，添加了一个表单值的属性" dataList={apiList} />
     </Row>
