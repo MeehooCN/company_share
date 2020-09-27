@@ -27,6 +27,7 @@ import InlineSearchFormDemo from '@views/components/form/InlineSearchFormDemo';
 import ImageCompare from '@views/components/image/ImageCompare';
 import BuildIcon from '@views/tips/flutter/BuildIcon';
 import OverTextView from '@views/components/text/OverTextView';
+import PromptIndex from '@views/components/prompt/PromptIndex';
 
 export {
   NotFound, Home, Welcome,
@@ -34,5 +35,5 @@ export {
   ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
   Yalc, ParentComponents, UseEffect, WebStormESLint, BuildIcon,
   EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm,
-  InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView
+  InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView, PromptIndex
 };

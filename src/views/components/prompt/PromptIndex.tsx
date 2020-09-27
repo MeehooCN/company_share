@@ -3,11 +3,13 @@
  * @author: cy
  * @createTime: 2020/9/22 10:59
  **/
-import React, {useEffect, useState} from 'react';
-import {Form, Input, Row, Button, Modal} from 'antd';
-import {CodeExample, TitleWithDescription} from '@components/index';
-import {Prompt, useHistory} from 'react-router-dom';
-const { confirm } = Modal
+import React, { useEffect, useState } from 'react';
+import { Form, Input, Row, Button, Modal } from 'antd';
+import { CodeExample, TitleWithDescription } from '@components/index';
+import { Prompt, useHistory } from 'react-router-dom';
+
+const { confirm } = Modal;
+
 const PromptIndex = () => {
   const [changed, setChanged] = useState(false);
   const [backFlag, setBackFlag] = useState(false);
@@ -101,6 +103,7 @@ const PromptIndex = () => {
   return (
     <Row>
       <TitleWithDescription title="Prompt 离开页面提示" content="React-router v4 后的离开页面提示信息" />
+      <TitleWithDescription title="示例" titleSize={24} content="" style={{ marginTop: 50, marginBottom: 10 }} />
       <CodeExample viewComponents={viewComponents} code={code} />
     </Row>
   );

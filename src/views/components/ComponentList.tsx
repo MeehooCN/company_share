@@ -9,12 +9,12 @@ import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
 import {
   MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
-  HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView
+  HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView,
+  PromptIndex
 } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
 import { MenuData } from '@utils/CommonInterface';
-import PromptIndex from '@views/components/prompt/PromptIndex';
 
 const ComponentList = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['myTitle']);
