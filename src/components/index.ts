@@ -15,9 +15,10 @@ import ImageList from '@components/components/image/ImageList';
 import ImageView from '@components/components/image/ImageView';
 import ImageCompare from '@components/components/image/ImageCompare';
 import Loading from '@components/components/Loading';
+import OverText from '@components/components/text/OverText';
 
 export {
   ErrorBoundary, MyTitle, Header, TitleWithDescription, API,
   CodeExample, CodeBox, ImageComponent, ImageList, ImageView,
-  ImageCompare, Loading
+  ImageCompare, Loading, OverText
 };

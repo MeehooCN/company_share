@@ -12,6 +12,9 @@ export const menuList: Array<MenuData> = [{
   children: [{
     name: 'MyTitle 标题',
     key: 'myTitle'
+  }, {
+    name: 'OverText 溢出文字',
+    key: 'overText'
   }]
 }, {
   name: '图片',

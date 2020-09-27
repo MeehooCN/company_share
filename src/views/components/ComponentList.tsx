@@ -9,7 +9,7 @@ import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
 import {
   MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
-  HookForm, InlineSearchFormDemo, ImageCompare, LoadingView
+  HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView
 } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
@@ -51,6 +51,7 @@ const ComponentList = () => {
         <Route path="/components/commonForm" component={FormDemoHook} />
         <Route path="/components/commonFormClass" component={FormDemoClass} />
         <Route path="/components/loading" component={LoadingView} />
+        <Route path="/components/overText" component={OverTextView} />
       </Col>
     </Row>
   );
