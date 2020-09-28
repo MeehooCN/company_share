@@ -69,6 +69,7 @@ const ImageListHorizontal = (props: IProps) => {
   };
   // 切换图片显示
   const changeCurrent = (image: ImageData, viewIndex: number) => {
+    toCurrentImage(image.leftPosition);
     onImageClick(image, viewIndex);
   };
   // 获取下方显示的图片列表
