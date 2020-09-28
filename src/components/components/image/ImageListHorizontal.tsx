@@ -50,10 +50,15 @@ const ImageListHorizontal = (props: IProps) => {
       toCurrentImage(imageList[viewIndex].leftPosition);
     }
   }, [bottomImageListWidth]);
-  // 图片懒加载
+  // 图片懒加载（预处理）
   const lazyLoad = () => {
     const tempImageList: Array<ImageData> = [...imageList];
+    let maxWidth = 0;
     for (let i = 0; i < tempImageList.length; i++) {
+      // 计算图片位置
+      imageList[i].leftPosition = maxWidth;
+      maxWidth = maxWidth + horizontalImageHeight / imageList[i].height * imageList[i].width + 10;
+      // 懒加载
       if (document.getElementById('image-' + tempImageList[i].id) !== null) {
         // @ts-ignore
         let reactObj = document.getElementById('image-' + tempImageList[i].id).getBoundingClientRect();

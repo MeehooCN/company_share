@@ -69,11 +69,6 @@ const ImageListHorizontalView = () => {
       height: 797,
       leftPosition: 0
     }];
-    let maxWidth = 0;
-    for (let i = 0, length = imageList.length; i < length; i++) {
-      imageList[i].leftPosition = maxWidth;
-      maxWidth = maxWidth + horizontalImageHeight / imageList[i].height * imageList[i].width + 10;
-    }
     setImageList(imageList);
   }, []);
   const onImageClick = (image: ImageData, index: number) => {
