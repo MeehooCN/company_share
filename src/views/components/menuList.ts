@@ -28,6 +28,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'ImageCompare 图片对比',
     key: 'imageCompare'
+  }, {
+    name: 'ImageListHorizontal 横向图片列表',
+    key: 'imageListHorizontal'
   }]
 }, {
   name: '表单',

@@ -10,7 +10,7 @@ import { Route } from 'react-router-dom';
 import {
   MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
   HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView,
-  PromptIndex
+  PromptIndex, ImageListHorizontalView
 } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
@@ -47,6 +47,7 @@ const ComponentList = () => {
         <Route path="/components/imageList" component={ImageListView} />
         <Route path="/components/imageView" component={ImageView} />
         <Route path="/components/imageCompare" component={ImageCompare} />
+        <Route path="/components/imageListHorizontal" component={ImageListHorizontalView} />
         <Route path="/components/hookForm" component={HookForm} />
         <Route path="/components/searchForm" component={InlineSearchFormDemo} />
         <Route path="/components/commonForm" component={FormDemoHook} />
