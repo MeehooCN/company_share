@@ -29,6 +29,7 @@ import BuildIcon from '@views/tips/flutter/BuildIcon';
 import OverTextView from '@views/components/text/OverTextView';
 import PromptIndex from '@views/components/prompt/PromptIndex';
 import ImageListHorizontalView from '@views/components/image/ImageListHorizontalView';
+import EvaluateView from '@views/components/evaluate/Evaluate';
 
 export {
   NotFound, Home, Welcome,
@@ -37,5 +38,5 @@ export {
   Yalc, ParentComponents, UseEffect, WebStormESLint, BuildIcon,
   EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm,
   InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView, PromptIndex,
-  ImageListHorizontalView
+  ImageListHorizontalView, EvaluateView
 };

@@ -62,4 +62,8 @@ export const menuList: Array<MenuData> = [{
     name: '离开页面提示',
     key: 'prompt'
   }]
+}, {
+  name: '评价',
+  key: 'evaluate',
+  children: []
 }];
