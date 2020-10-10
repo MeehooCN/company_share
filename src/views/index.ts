@@ -3,40 +3,30 @@
  * @author: cnn
  * @createTime: 2020/7/16 16:55
  **/
-import NotFound from '@views/error/NotFound';
-import Welcome from '@views/home/Welcome';
-import Home from '@views/home/Home';
-import MyTitle from '@views/components/text/MyTitle';
-import ImageListView from '@views/components/image/ImageList';
-import ImageView from '@views/components/image/ImageView';
-import LoadingView from '@views/components/feedback/LoadingView';
-import BasicProject from '@views/tips/project/BasicProject';
-import WebStormESLint from '@views/tips/project/WebStormESLint';
-import Yalc from '@views/tips/node/Yalc';
-import UseEffect from '@views/tips/react/UseEffect';
-import CreatePortal from '@views/tips/react/CreatePortal';
-import ReactFragments from '@views/tips/react/ReactFragments';
-import ErrorBoundaries from '@views/tips/react/ErrorBoundaries';
-import ParentComponents from '@views/tips/react/ParentComponents';
-import EchartsYError from '@views/debug/react/EchartsYError';
-import InitialingGradle from '@views/debug/flutter/InitialingGradle';
-import FormDemoHook from '@views/components/form/FormDemo';
-import FormDemoClass from '@views/components/form/FormDemoClass';
-import HookForm from './components/form/HookForm';
-import InlineSearchFormDemo from '@views/components/form/InlineSearchFormDemo';
-import ImageCompare from '@views/components/image/ImageCompare';
-import BuildIcon from '@views/tips/flutter/BuildIcon';
-import OverTextView from '@views/components/text/OverTextView';
-import PromptIndex from '@views/components/prompt/PromptIndex';
-import ImageListHorizontalView from '@views/components/image/ImageListHorizontalView';
-import EvaluateView from '@views/components/evaluate/Evaluate';
-
-export {
-  NotFound, Home, Welcome,
-  MyTitle, ImageListView, ImageView,
-  ReactFragments, CreatePortal, ErrorBoundaries, BasicProject,
-  Yalc, ParentComponents, UseEffect, WebStormESLint, BuildIcon,
-  EchartsYError, InitialingGradle, FormDemoHook, FormDemoClass, HookForm,
-  InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView, PromptIndex,
-  ImageListHorizontalView, EvaluateView
-};
+export { default as NotFound } from '@views/error/NotFound';
+export { default as Welcome } from '@views/home/Welcome';
+export { default as Home } from '@views/home/Home';
+export { default as MyTitle } from '@views/components/text/MyTitle';
+export { default as ImageListView } from '@views/components/image/ImageList';
+export { default as ImageView } from '@views/components/image/ImageView';
+export { default as LoadingView } from '@views/components/feedback/LoadingView';
+export { default as BasicProject } from '@views/tips/project/BasicProject';
+export { default as WebStormESLint } from '@views/tips/project/WebStormESLint';
+export { default as Yalc } from '@views/tips/node/Yalc';
+export { default as UseEffect } from '@views/tips/react/UseEffect';
+export { default as CreatePortal } from '@views/tips/react/CreatePortal';
+export { default as ReactFragments } from '@views/tips/react/ReactFragments';
+export { default as ErrorBoundaries } from '@views/tips/react/ErrorBoundaries';
+export { default as ParentComponents } from '@views/tips/react/ParentComponents';
+export { default as EchartsYError } from '@views/debug/react/EchartsYError';
+export { default as InitialingGradle } from '@views/debug/flutter/InitialingGradle';
+export { default as FormDemoHook } from '@views/components/form/FormDemo';
+export { default as FormDemoClass } from '@views/components/form/FormDemoClass';
+export { default as HookForm } from './components/form/HookForm';
+export { default as InlineSearchFormDemo } from '@views/components/form/InlineSearchFormDemo';
+export { default as ImageCompare } from '@views/components/image/ImageCompare';
+export { default as BuildIcon } from '@views/tips/flutter/BuildIcon';
+export { default as OverTextView } from '@views/components/text/OverTextView';
+export { default as PromptIndex } from '@views/components/prompt/PromptIndex';
+export { default as ImageListHorizontalView } from '@views/components/image/ImageListHorizontalView';
+export { default as EvaluateView } from '@views/components/evaluate/Evaluate';
