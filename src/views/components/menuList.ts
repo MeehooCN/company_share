@@ -63,7 +63,10 @@ export const menuList: Array<MenuData> = [{
     key: 'prompt'
   }]
 }, {
-  name: '评价',
-  key: 'evaluate',
-  children: []
+  name: '其他',
+  key: 'other',
+  children: [{
+    name: 'Evaluate 评价',
+    key: 'evaluate'
+  }]
 }];

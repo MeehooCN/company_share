@@ -29,4 +29,4 @@ export { default as BuildIcon } from '@views/tips/flutter/BuildIcon';
 export { default as OverTextView } from '@views/components/text/OverTextView';
 export { default as PromptIndex } from '@views/components/prompt/PromptIndex';
 export { default as ImageListHorizontalView } from '@views/components/image/ImageListHorizontalView';
-export { default as EvaluateView } from '@views/components/evaluate/Evaluate';
+export { default as EvaluateView } from '@views/components/other/Evaluate';
