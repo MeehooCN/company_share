@@ -11,7 +11,8 @@ export interface MenuData {
 
 export interface IntroduceComponent {
   name: string,
-  link: string
+  link: string,
+  description?: string
 }
 
 export interface Resource {

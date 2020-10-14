@@ -21,7 +21,7 @@ const ResourceList = () => {
     dataIndex: 'introduceComponentList',
     render: (introduceComponentList: Array<IntroduceComponent>) => {
       const introduceComponents = introduceComponentList.map((item: IntroduceComponent) => (
-        <a key={item.name} href={item.link} target="_blank">{item.name}</a>
+        <a key={item.name} href={item.link} title={item.description || ''} target="_blank">{item.name}</a>
       ));
       return (
         <Space size="middle">

@@ -77,6 +77,14 @@ export const reactResourceList: Array<Resource> = [{
   introduceComponentList: [{
     name: 'yalc',
     link: 'https://github.com/whitecolor/yalc'
+  }, {
+    name: 'tsdx',
+    link: 'https://github.com/formium/tsdx',
+    description: '项目初始化、开发以及打包大管家'
+  }, {
+    name: 'np',
+    link: 'https://github.com/sindresorhus/np',
+    description: '一键发布 npm 包'
   }]
 }];
 /**
