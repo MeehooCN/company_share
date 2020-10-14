@@ -19,3 +19,4 @@ export { default as OverText } from '@components/components/text/OverText';
 export { default as HorizontalImageComponent } from '@components/components/image/HorizontalImageComponent';
 export { default as ImageListHorizontal } from '@components/components/image/ImageListHorizontal';
 export { default as Evaluate } from '@components/components/evaluate/Evaluate';
+export { default as IconFontChoose } from '@components/components/icon/IconFontChoose';

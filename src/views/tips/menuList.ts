@@ -15,6 +15,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'WebStorm 开启 ESLint 校验',
     key: 'eslint'
+  }, {
+    name: 'Ant-design 结合 Iconfont 图标库的使用',
+    key: 'iconFont'
   }]
 }, {
   name: 'React 技巧',

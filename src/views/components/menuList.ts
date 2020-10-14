@@ -69,4 +69,11 @@ export const menuList: Array<MenuData> = [{
     name: 'Evaluate 评价',
     key: 'evaluate'
   }]
+}, {
+  name: '图标',
+  key: 'icon',
+  children: [{
+    name: 'IconFontChoose 选择图标',
+    key: 'iconFontChoose'
+  }]
 }];
