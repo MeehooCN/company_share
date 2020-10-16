@@ -4,9 +4,10 @@
  * @createTime: 2020/10/14 10:42
  **/
 import React from 'react';
-import { Row } from 'antd';
+import {Row, Typography} from 'antd';
 import { createFromIconfontCN } from '@ant-design/icons';
 import './iconFontChoose.less';
+const { Paragraph } = Typography;
 
 const iconList: Array<string> = require('./iconList.json');
 const IconFont = createFromIconfontCN({
@@ -26,7 +27,10 @@ const IconFontChoose = (props: IProps) => {
   return (
     <Row style={{ width: '100%' }}>
       {iconList.map((item: string) => (
-        <IconFont className="icon-font" key={item} type={item} onClick={() => onClick(item)} />
+        <Paragraph key={item} copyable={{
+          tooltips: false, text: item,
+          icon: [<IconFont key={item + 'copy-icon'} className="icon-font" type={item} onClick={() => onClick(item)} />]
+        }}></Paragraph>
       ))}
     </Row>
   );
