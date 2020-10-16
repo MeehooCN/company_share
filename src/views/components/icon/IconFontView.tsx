@@ -9,18 +9,23 @@ import { API, CodeExample, TitleWithDescription, IconFontChoose } from '@compone
 
 const IconFontView = () => {
   const [selectIcon, setSelectIcon] = useState<string>('');
-  const code = '<IconFontChoose onClick={(icon: string) => setSelectIcon(icon)} />';
+  const code = '<IconFontChoose onClick={(icon: string) => setSelectIcon(icon)} canCopy={true} />';
   const paramList = [{
     name: 'onClick',
     description: '点击图标后回调函数。',
     type: 'Function',
     defaultValue: ''
+  }, {
+    name: 'canCopy',
+    description: '点击后是否可复制。',
+    type: 'boolean',
+    defaultValue: ''
   }];
   const getViewComponents = () => {
     return (
       <div style={{ width: '100%' }}>
-        <Row style={{ marginBottom: 10 }}>当前选中图标： {selectIcon === '' ? '请点击图标' : selectIcon}</Row>
-        <IconFontChoose onClick={(icon: string) => setSelectIcon(icon)} />
+        <Row style={{ marginBottom: 10 }}>当前选中图标： {selectIcon === '' ? '点击图标可复制到剪贴板' : selectIcon}</Row>
+        <IconFontChoose onClick={(icon: string) => setSelectIcon(icon)} canCopy={true} />
       </div>
     );
   };
