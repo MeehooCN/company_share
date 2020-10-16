@@ -10,6 +10,15 @@ module.exports = {
         test: /[\\/]node_modules[\\/]/,
         name: 'common',
         chunks: 'all'
+      },
+      highlight: {
+        name: 'highlight',
+        chunks: 'all',
+        priority: 20,
+        test: function(module) {
+          var context = module.context;
+          return context && (context.indexOf('highlight.js') >= 0)
+        }
       }
     }
   }
