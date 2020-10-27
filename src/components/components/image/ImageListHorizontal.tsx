@@ -57,7 +57,7 @@ const ImageListHorizontal = (props: IProps) => {
     for (let i = 0; i < tempImageList.length; i++) {
       // 计算图片位置
       imageList[i].leftPosition = maxWidth;
-      maxWidth = maxWidth + horizontalImageHeight / imageList[i].height * imageList[i].width + 10;
+      maxWidth = maxWidth + horizontalImageHeight / imageList[i].height * imageList[i].width + 16;
       // 懒加载
       if (document.getElementById('image-' + tempImageList[i].id) !== null) {
         // @ts-ignore
@@ -74,8 +74,13 @@ const ImageListHorizontal = (props: IProps) => {
   };
   // 切换图片显示
   const changeCurrent = (image: ImageData, viewIndex: number) => {
-    toCurrentImage(image.leftPosition);
     onImageClick(image, viewIndex);
+    // 如果是没有显示完全的
+    const rightPosition: number = image.leftPosition + image.width / image.height * horizontalImageHeight + 6;
+    const scrollRight: number = imageListRef.current.scrollLeft + bottomImageListWidth;
+    if (rightPosition > scrollRight) {
+      toCurrentImage(image.leftPosition);
+    }
   };
   // 获取下方显示的图片列表
   const getImageList = useMemo(() => {

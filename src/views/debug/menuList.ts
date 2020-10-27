@@ -19,5 +19,8 @@ export const menuList: Array<MenuData> = [{
   children: [{
     name: 'flutter initializing gradle...',
     key: 'initialingGradle'
+  }, {
+    name: 'IOS 无法固定屏幕方向',
+    key: 'IOSNoFix'
   }]
 }];

@@ -6,7 +6,7 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { EchartsYError, InitialingGradle } from '@views/index';
+import { EchartsYError, InitialingGradle, IOSNoFix } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/debug/menuList';
 import { MenuData } from '@utils/CommonInterface';
@@ -40,6 +40,7 @@ const DebugList = () => {
       <Col span={20} style={{ padding: '20px 50px' }}>
         <Route path="/debugs/echartsYError" component={EchartsYError} />
         <Route path="/debugs/initialingGradle" component={InitialingGradle} />
+        <Route path="/debugs/IOSNoFix" component={IOSNoFix} />
       </Col>
     </Row>
   );

@@ -26,6 +26,7 @@ interface IProps {
 const IconFontChoose = (props: IProps) => {
   const { onClick, canCopy } = props;
   const inputRef: any = useRef();
+  // 点击图标
   const onIconClick = (e: any, item: string) => {
     onClick(item);
     if (canCopy) {

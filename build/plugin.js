@@ -7,7 +7,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolveAssetsRootDir } = require('./utils');
 // momentJs 替换成 dayJs
-const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
+// 打包分析
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = [
   new HtmlWebpackPlugin({
     template: 'build/template/index.html'
@@ -20,6 +22,7 @@ module.exports = [
     chunkFilename: resolveAssetsRootDir('css/[name].css')
   }),
   // 优化moment打包后体积
-  // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/)
-  new AntdDayjsWebpackPlugin()
+  // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),
+  new AntdDayjsWebpackPlugin(),
+  // new BundleAnalyzerPlugin()
 ];

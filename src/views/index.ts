@@ -32,3 +32,4 @@ export { default as ImageListHorizontalView } from '@views/components/image/Imag
 export { default as EvaluateView } from '@views/components/other/Evaluate';
 export { default as IconFont } from '@views/tips/project/IconFont';
 export { default as IconFontView } from '@views/components/icon/IconFontView';
+export { default as IOSNoFix } from '@views/debug/flutter/IOSNoFix';
