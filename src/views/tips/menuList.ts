@@ -3,7 +3,6 @@
  * @author: cnn
  * @createTime: 2020/7/22 9:28
  **/
-/* eslint no-unused-vars:0 */
 import { MenuData } from '@utils/CommonInterface';
 
 export const menuList: Array<MenuData> = [{
@@ -18,6 +17,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'Ant-design 结合 Iconfont 图标库的使用',
     key: 'iconFont'
+  }, {
+    name: '减小 Echarts 打包体积，按需引入所需图表',
+    key: 'smallerEcharts'
   }]
 }, {
   name: 'React 技巧',
