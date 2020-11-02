@@ -15,7 +15,7 @@ const clientHeight: number = window.innerHeight || document.documentElement.clie
 const clientWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 const arrowTop: number = clientHeight / 2 - 15;
 // 最大放大倍数
-const maxScale: number = 3;
+const maxScale: number = 10;
 // 最小缩放倍数
 const minScale: number = 0.5;
 
