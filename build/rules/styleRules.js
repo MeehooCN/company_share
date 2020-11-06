@@ -11,7 +11,12 @@ module.exports = [
   {
     test: /\.css$/,
     use: [
-      MiniCssExtractPlugin.loader,
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: '../../'
+        }
+      },
       {
         loader: 'css-loader',
         options: { importLoaders: 1 }
@@ -21,25 +26,27 @@ module.exports = [
   }, {
     test: /\.less$/,
     use: [
-      MiniCssExtractPlugin.loader,
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: '../../'
+        }
+      },
       'css-loader',
+      // 'postcss-loader',
       {
         loader: 'cache-loader',
         options: {
           cacheDirectory: resolve('.cache-loader')
         }
       },
-      // {
-      //   loader: 'postcss-loader',
-      //   options: {
-      //     sourceMap: true
-      //   }
-      // },
       {
         loader: 'less-loader',
         options: {
-          javascriptEnabled: true,
-          modifyVars: theme,
+          lessOptions: {
+            javascriptEnabled: true,
+            modifyVars: theme,
+          }
         }
       }
     ]

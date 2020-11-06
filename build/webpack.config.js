@@ -1,4 +1,5 @@
-const plugins = require('./plugin');
+const developmentPlugins = require('./plugins/developmentPlugins');
+const productionPlugin = require('./plugins/productionPlugin');
 const jsRules = require('./rules/jsRules');
 const styleRules = require('./rules/styleRules');
 const fileRules = require('./rules/fileRules');
@@ -27,19 +28,21 @@ let config = {
   module: {
     rules: [...styleRules, ...fileRules, ...jsRules],
   },
-  plugins: [...plugins],
+  plugins: [...developmentPlugins],
   optimization,
   devServer: {
-    port: 8087
+    port: 3000
   }
-  // 生成source map，方便调试
-  // devtool: 'cheap-eval-source-map'
 };
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     for (let item of styleRules) {
       item.use[0] = 'style-loader';
     }
+    // 生成source map，方便调试
+    config.devtool = 'cheap-module-source-map';
+  } else if (argv.mode === 'production') {
+    config.plugins = [...developmentPlugins, ...productionPlugin];
   }
   return config;
 };
