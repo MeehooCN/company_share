@@ -39,6 +39,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'useEffect 使用总结',
     key: 'useEffect'
+  }, {
+    name: 'useContext + useReducer 使用介绍',
+    key: 'useRedux'
   }]
 }, {
   name: 'Node.js 技巧',

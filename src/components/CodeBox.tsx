@@ -14,7 +14,7 @@ interface IProps {
 const CodeBox = (props: IProps) => {
   const { code } = props;
   return (
-    <SyntaxHighlighter language="javascript" style={{ ...github }} customStyle={{ width: '100%', padding: 20, marginBottom: 0 }}>
+    <SyntaxHighlighter language="javascript" style={{ ...github }} customStyle={{ width: '100%', padding: 20, marginBottom: 10 }}>
       {code}
     </SyntaxHighlighter>
   );

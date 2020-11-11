@@ -18,6 +18,7 @@ export { default as CreatePortal } from '@views/tips/react/CreatePortal';
 export { default as ReactFragments } from '@views/tips/react/ReactFragments';
 export { default as ErrorBoundaries } from '@views/tips/react/ErrorBoundaries';
 export { default as ParentComponents } from '@views/tips/react/ParentComponents';
+export { default as UseRedux } from '@views/tips/react/UseRedux';
 export { default as EchartsYError } from '@views/debug/react/EchartsYError';
 export { default as InitialingGradle } from '@views/debug/flutter/InitialingGradle';
 export { default as FormDemoHook } from '@views/components/form/FormDemo';

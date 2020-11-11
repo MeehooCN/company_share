@@ -9,7 +9,7 @@ import { Route } from 'react-router-dom';
 import {
   CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents,
   Yalc, UseEffect, WebStormESLint, BuildIcon, IconFont,
-  SmallerEcharts
+  SmallerEcharts, UseRedux
 } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
@@ -53,6 +53,7 @@ const TipList = () => {
         <Route path="/tips/useEffect" component={UseEffect} />
         <Route path="/tips/launcherIcons" component={BuildIcon} />
         <Route path="/tips/smallerEcharts" component={SmallerEcharts} />
+        <Route path="/tips/useRedux" component={UseRedux} />
       </Col>
     </Row>
   );
