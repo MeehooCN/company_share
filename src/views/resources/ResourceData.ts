@@ -23,6 +23,10 @@ export const reactResourceList: Array<Resource> = [{
   }, {
     name: 'antv',
     link: 'https://g2plot.antv.vision/zh'
+  }, {
+    name: 'datav-react',
+    link: 'http://datav-react.jiaminghi.com/guide/borderBox.html',
+    description: '大屏 UI 组件'
   }]
 }, {
   type: '代码检查',
@@ -85,6 +89,13 @@ export const reactResourceList: Array<Resource> = [{
     name: 'np',
     link: 'https://github.com/sindresorhus/np',
     description: '一键发布 npm 包'
+  }]
+}, {
+  type: '文件解析',
+  introduceComponentList: [{
+    name: 'xlsx',
+    link: 'https://github.com/SheetJS/sheetjs',
+    description: '解析 Excel 表格'
   }]
 }];
 /**
