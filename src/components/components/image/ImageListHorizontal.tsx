@@ -75,10 +75,10 @@ const ImageListHorizontal = (props: IProps) => {
   // 切换图片显示
   const changeCurrent = (image: ImageData, viewIndex: number) => {
     onImageClick(image, viewIndex);
-    // 如果是没有显示完全的
     const rightPosition: number = image.leftPosition + image.width / image.height * horizontalImageHeight + 6;
     const scrollRight: number = imageListRef.current.scrollLeft + bottomImageListWidth;
-    if (rightPosition > scrollRight) {
+    // 如果是没有显示完全的，则滑动
+    if (rightPosition > scrollRight || image.leftPosition < imageListRef.current.scrollLeft) {
       toCurrentImage(image.leftPosition);
     }
   };
