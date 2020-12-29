@@ -13,5 +13,13 @@ export const menuList: Array<MenuData> = [{
     name: '按钮位置',
     key: 'buttonPosition',
     children: []
+  }, {
+    name: '按钮顺序',
+    key: 'buttonType',
+    children: []
   }]
+}, {
+  name: '表格中的操作',
+  key: 'tableOption',
+  children: []
 }];

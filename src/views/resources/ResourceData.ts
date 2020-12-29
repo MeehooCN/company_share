@@ -75,6 +75,9 @@ export const reactResourceList: Array<Resource> = [{
   introduceComponentList: [{
     name: 'react-transition-group',
     link: 'https://github.com/reactjs/react-transition-group'
+  }, {
+    name: 'Ant Motion',
+    link: 'https://motion.ant.design/language/basic-cn'
   }]
 }, {
   type: '包管理',

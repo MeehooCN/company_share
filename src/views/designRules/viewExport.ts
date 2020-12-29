@@ -6,5 +6,6 @@
 
 import ButtonIndex from './button/ButtonIndex';
 import ButtonPosition from './button/ButtonPosition';
+import TableOption from './table/TableOption';
 
-export { ButtonIndex, ButtonPosition };
+export { ButtonIndex, ButtonPosition, TableOption };
