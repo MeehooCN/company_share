@@ -13,3 +13,7 @@ export const colors: Colors = {
   primaryColor: '#eb6383',
   error: '#f5222d'
 };
+/**
+ * API 接口路径
+ **/
+export const serverPath: string = '/api/';
