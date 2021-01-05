@@ -98,3 +98,13 @@ export const dateTimeToHour = (dateTime: Dayjs) => {
     return '';
   }
 };
+/**
+ * 日期转为分钟
+ * **/
+export const dateTimeToMinute = (dateTime: Dayjs) => {
+  if (dateTime) {
+    return dayJs(dateTime).format('YYYY-MM-DD HH:mm');
+  } else {
+    return '';
+  }
+};

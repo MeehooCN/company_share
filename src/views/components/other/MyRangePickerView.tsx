@@ -3,14 +3,17 @@
  * @author: cnn
  * @createTime: 2021/1/5 9:54
  **/
-import React, { useRef, useState } from 'react';
-import { API, CodeExample, MyRangePicker, TitleWithDescription } from '@components/index';
+import React, { useEffect, useRef, useState } from 'react';
+import { API, CodeExample, getTimeParams, MyRangePicker, TitleWithDescription } from '@components/index';
 import moment from 'moment';
 import { Row } from 'antd';
 
 const MyRangePickerView = () => {
   const timeRef: any = useRef();
   const [selectDate, setSelectDate] = useState<any>([moment().startOf('day'), moment()]);
+  useEffect(() => {
+    console.log(getTimeParams(timeRef.current.getTimeDimension, selectDate));
+  }, [selectDate]);
   const pickerParamList = [{
     name: 'rangeTypes',
     description: '需要显示的时间维度列表。',

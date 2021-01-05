@@ -6,7 +6,7 @@
 import React, { useState, useImperativeHandle, forwardRef } from 'react';
 import { Radio, TimePicker, DatePicker, Row } from 'antd';
 import moment from 'moment';
-import { dateTimeToHour, dateToDateString, dateToMonthString } from '@utils/CommonFunc';
+import { dateTimeToHour, dateTimeToMinute, dateToDateString, dateToMonthString } from '@utils/CommonFunc';
 
 declare type RangeType = 'minute' | 'hour' | 'day' | 'month';
 
@@ -26,23 +26,22 @@ interface IProps {
 
 // 获取时间参数
 export const getTimeParams = (timeDimension: RangeType, selectDate: Array<any>) => {
-  let timeType: number = 0;
   let beginTime: string = '';
   let endTime: string = '';
   if (timeDimension === 'hour') {
-    timeType = 0;
     beginTime = selectDate ? dateTimeToHour(selectDate[0]) : '';
     endTime = selectDate ? dateTimeToHour(selectDate[1]) : '';
   } else if (timeDimension === 'day') {
-    timeType = 1;
     beginTime = selectDate ? dateToDateString(selectDate[0]) : '';
     endTime = selectDate ? dateToDateString(selectDate[1]) : '';
   } else if (timeDimension === 'month') {
-    timeType = 2;
     beginTime = selectDate ? dateToMonthString(selectDate[0]) : '';
     endTime = selectDate ? dateToMonthString(selectDate[1]) : '';
+  } else if (timeDimension === 'minute') {
+    beginTime = selectDate ? dateTimeToMinute(selectDate[0]) : '';
+    endTime = selectDate ? dateTimeToMinute(selectDate[1]) : '';
   }
-  return { timeType, beginTime, endTime };
+  return { timeDimension, beginTime, endTime };
 };
 
 const MyRangePicker = (props: IProps, ref: any) => {
@@ -67,6 +66,7 @@ const MyRangePicker = (props: IProps, ref: any) => {
     }
     if (timeDimension === 'minute') {
       timeSpace = 'minutes';
+      maxDay = 60;
     }
     const tooLate = selectDate[0] && current.diff(selectDate[0], timeSpace) > maxDay;
     const tooEarly = selectDate[1] && selectDate[1].diff(current, timeSpace) > maxDay;
@@ -82,6 +82,8 @@ const MyRangePicker = (props: IProps, ref: any) => {
       setSelectDate([moment().startOf('month'), moment()]);
     } else if (dimension === 'month') {
       setSelectDate([moment().startOf('year'), moment()]);
+    } else if (dimension === 'minute') {
+      setSelectDate([moment().startOf('hour'), moment()]);
     }
   };
   // 展开日期选择框
