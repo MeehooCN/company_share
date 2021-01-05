@@ -20,3 +20,4 @@ export { default as HorizontalImageComponent } from '@components/components/imag
 export { default as ImageListHorizontal } from '@components/components/image/ImageListHorizontal';
 export { default as Evaluate } from '@components/components/evaluate/Evaluate';
 export { default as IconFontChoose } from '@components/components/icon/IconFontChoose';
+export { default as MyRangePicker, getTimeParams } from '@components/components/picker/MyRangePicker';
