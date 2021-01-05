@@ -4,7 +4,7 @@
  * @createTime: 2021/1/05 13:29
  **/
 import React from 'react';
-import { Form, message, Input } from 'antd';
+import { Form, message, Input, Button } from 'antd';
 import { VerifyCode } from '@components/index';
 import { useVerifyHook } from '@components/components/login/UseVerifyHook';
 import { post } from '@utils/Ajax';
@@ -46,9 +46,8 @@ const CodeLogin = () => {
         >
           <Input placeholder="请输入手机号" prefix={<PhoneOutlined />} />
         </Form.Item>
-        <Form.Item rules={[{ required: true, message: '请输入短信验证码' }]} name="verifyCode">
-          <VerifyCode verifyLoading={verifyLoading} countDown={countDown} getCode={getCode} />
-        </Form.Item>
+        {/* 下面是填写手机验证码表单部分 */}
+        <VerifyCode verifyLoading={verifyLoading} countDown={countDown} getCode={getCode} />
       </Form>
     </div>
   );

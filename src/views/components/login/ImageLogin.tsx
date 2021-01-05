@@ -21,8 +21,9 @@ const ImageLogin = () => {
   };
   return (
     <div>
+      {/* 只写了获取图片验证码的form表单部分，请根据项目需求，自行补充 */}
       <Form style={{ width: 400 }}>
-        {/* 只写了获取图片验证码的form表单部分，请根据项目需求，自行补充 */}
+        {/* 下面是填写图片验证码表单部分 */}
         <ImageCaptcha blob={blob} changeImage={getCode} />
       </Form>
     </div>
