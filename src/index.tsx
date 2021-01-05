@@ -4,7 +4,7 @@
  * @createTime: 2020/7/16 15:42
  **/
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // @ts-ignore
 import Loadable from 'react-loadable';
 import { ErrorBoundary, Loading } from '@components/index';
@@ -39,28 +39,26 @@ const DesignRulesList = Loadable({
   loader: () => import('@views/designRules/DesignRulesList'),
   loading: Loading
 });
-class App extends React.PureComponent {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Home>
-            <Switch>
-              <ErrorBoundary>
-                <Route exact path="/" component={Welcome} />
-                <Route path="/components" component={ComponentList} />
-                <Route path="/tips" component={TipList} />
-                <Route path="/resources" component={ResourceList} />
-                <Route path="/debugs" component={DebugList} />
-                <Route path="/designRules" component={DesignRulesList} />
-              </ErrorBoundary>
-              <Route component={NotFound} />
-            </Switch>
-          </Home>
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Home>
+          <Switch>
+            <ErrorBoundary>
+              <Route exact path="/" component={Welcome} />
+              <Route path="/components" component={ComponentList} />
+              <Route path="/tips" component={TipList} />
+              <Route path="/resources" component={ResourceList} />
+              <Route path="/debugs" component={DebugList} />
+              <Route path="/designRules" component={DesignRulesList} />
+            </ErrorBoundary>
+            <Route component={NotFound} />
+          </Switch>
+        </Home>
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
+  );
+};
 export default App;
