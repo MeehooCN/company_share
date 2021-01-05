@@ -68,6 +68,9 @@ export const menuList: Array<MenuData> = [{
   children: [{
     name: 'Evaluate 评价',
     key: 'evaluate'
+  }, {
+    name: 'MyRangePickerView 时间范围选择器',
+    key: 'rangePicker'
   }]
 }, {
   name: '图标',

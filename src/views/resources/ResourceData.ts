@@ -45,6 +45,9 @@ export const reactResourceList: Array<Resource> = [{
   introduceComponentList: [{
     name: 'react-flow-chart',
     link: 'https://github.com/MrBlenny/react-flow-chart'
+  }, {
+    name: 'gg-editor',
+    link: 'https://ggeditor.com/zh-CN'
   }]
 }, {
   type: '图片裁切',
@@ -75,6 +78,9 @@ export const reactResourceList: Array<Resource> = [{
   introduceComponentList: [{
     name: 'react-transition-group',
     link: 'https://github.com/reactjs/react-transition-group'
+  }, {
+    name: 'Ant Motion',
+    link: 'https://motion.ant.design/language/basic-cn'
   }]
 }, {
   type: '包管理',

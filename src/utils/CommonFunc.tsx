@@ -8,6 +8,7 @@ import React from 'react';
 import { MenuData } from '@utils/CommonInterface';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
+import dayJs, { Dayjs } from 'dayjs';
 
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
@@ -66,4 +67,44 @@ export const setActiveChildMenu = (activeChildMenu: string) => {
  * **/
 export const getActiveChildMenu = () => {
   return sessionStorage.getItem('activeChildMenu') || '';
+};
+/**
+ * 日期转为日期字符串
+ * **/
+export const dateToDateString = (date: Dayjs) => {
+  if (date) {
+    return dayJs(date).format('YYYY-MM-DD');
+  } else {
+    return '';
+  }
+};
+/**
+ * 日期转为月字符串
+ * **/
+export const dateToMonthString = (date: Dayjs) => {
+  if (date) {
+    return dayJs(date).format('YYYY-MM');
+  } else {
+    return '';
+  }
+};
+/**
+ * 时间转为小时
+ * **/
+export const dateTimeToHour = (dateTime: Dayjs) => {
+  if (dateTime) {
+    return dayJs(dateTime).format('HH');
+  } else {
+    return '';
+  }
+};
+/**
+ * 日期转为分钟
+ * **/
+export const dateTimeToMinute = (dateTime: Dayjs) => {
+  if (dateTime) {
+    return dayJs(dateTime).format('YYYY-MM-DD HH:mm');
+  } else {
+    return '';
+  }
 };

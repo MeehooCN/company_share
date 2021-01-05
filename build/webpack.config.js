@@ -14,7 +14,7 @@ let config = {
   },
   output: {
     path: resolve('dist'),
-    // publicPath: '/static/',
+    publicPath: '/',
     filename: 'js/[name].js'
   },
   resolve: {
@@ -31,7 +31,16 @@ let config = {
   plugins: [...developmentPlugins],
   optimization,
   devServer: {
-    port: 3000
+    port: 3000,
+    proxy: {
+      '/': {
+        bypass: (req) => {
+          if (req.headers.accept.indexOf('html') !== -1) {
+            return '/index.html';
+          }
+        }
+      },
+    }
   }
 };
 module.exports = (env, argv) => {
