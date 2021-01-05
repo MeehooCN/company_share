@@ -23,12 +23,7 @@ const ImageLogin = () => {
     <div>
       <Form style={{ width: 400 }}>
         {/* 只写了获取图片验证码的form表单部分，请根据项目需求，自行补充 */}
-        <Form.Item
-          name="verifyCode"
-          rules={[{ required: false, message: '请输入验证码' }]}
-        >
-          <ImageCaptcha blob={blob} changeImage={getCode} />
-        </Form.Item>
+        <ImageCaptcha blob={blob} changeImage={getCode} />
       </Form>
     </div>
   );
