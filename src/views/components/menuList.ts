@@ -79,4 +79,14 @@ export const menuList: Array<MenuData> = [{
     name: 'IconFontChoose 选择图标',
     key: 'iconFontChoose'
   }]
+}, {
+  name: '登录',
+  key: 'login',
+  children: [{
+    name: 'CodeLogin 手机验证码登录',
+    key: 'codeLogin'
+  }, {
+    name: 'ImageLogin 图片验证码登录',
+    key: 'imageLogin'
+  }]
 }];

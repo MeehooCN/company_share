@@ -29,8 +29,8 @@ const ImageCaptcha = (props: ImageCaptchaProps) => {
       rules={[{ required: true, message: '请输入验证码' }]}
     >
       <Row justify="space-between">
-        <Input prefix={<VerifiedOutlined />} placeholder="验证码，点击图片刷新" size="large" style={{ width: document.body.clientWidth < 1400 ? 'calc(100%)' : 'calc(60%)' }} />
-        <Row style={{ marginTop: document.body.clientWidth < 1400 ? 10 : 0 }}>
+        <Input prefix={<VerifiedOutlined />} placeholder="验证码，点击图片刷新" size="large" style={{ width: '60%' }} />
+        <Row>
           <img src="" alt="pic" ref={imageRef} onClick={changeImage} />
         </Row>
       </Row>

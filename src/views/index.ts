@@ -36,3 +36,5 @@ export { default as IconFont } from '@views/tips/project/IconFont';
 export { default as IconFontView } from '@views/components/icon/IconFontView';
 export { default as IOSNoFix } from '@views/debug/flutter/IOSNoFix';
 export { default as SmallerEcharts } from '@views/tips/project/SmallerEcharts';
+export { default as CodeLogin } from '@views/components/login/CodeLogin';
+export { default as ImageLogin } from '@views/components/login/ImageLogin';
