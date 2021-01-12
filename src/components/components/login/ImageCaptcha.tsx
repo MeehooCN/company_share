@@ -24,17 +24,16 @@ const ImageCaptcha = (props: ImageCaptchaProps) => {
     }
   }, [blob]);
   return (
-    <Form.Item
-      name="verifyCode"
-      rules={[{ required: true, message: '请输入验证码' }]}
-    >
-      <Row justify="space-between">
-        <Input prefix={<VerifiedOutlined />} placeholder="验证码，点击图片刷新" size="large" style={{ width: '60%' }} />
-        <Row>
-          <img src="" alt="pic" ref={imageRef} onClick={changeImage} />
-        </Row>
-      </Row>
-    </Form.Item>
+    <Row justify="space-between">
+      <Form.Item
+        name="verifyCode"
+        rules={[{ required: false, message: '请输入验证码' }]}
+        style={{ width: '60%' }}
+      >
+        <Input className="login-input" size="large" prefix={<VerifiedOutlined />} placeholder="验证码，点击图片刷新" />
+      </Form.Item>
+      <img src="" alt="pic" ref={imageRef} onClick={changeImage} height={46} />
+    </Row>
   );
 };
 export default ImageCaptcha;

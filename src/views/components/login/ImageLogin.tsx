@@ -70,6 +70,9 @@ const ImageLogin = () => {
     // 请求后台接口，改变验证码图片，使用该组件时只需要以下注释部分
     // get('security/kaptcha/getKaptchaImage', { responseType: 'blob' }, (data: any) => {
     //   setBlob(data);
+    //   form.setFieldsValue({
+    //     verifyCode: ''
+    //   });
     // });
     // 模仿点击图片，连接后台接口，改变图片验证码，使用该组件时不需要以下部分
     if (currCodeIndex < 4) {
