@@ -9,7 +9,7 @@ import { Empty, Row } from 'antd';
 import { ImageComponent } from '@components/index';
 import { ImageData } from '@utils/CommonInterface';
 
-// 图片列表容器宽度
+// 图片列表每张图期望高度
 const wishHeight: number = 200;
 
 interface ImageDataWithViewContainer extends ImageData {
