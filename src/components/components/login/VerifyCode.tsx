@@ -6,7 +6,6 @@
 import React from 'react';
 import { Input, Button, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
-import {  } from 'antd/lib/form';
 interface VerifyCodeProps {
   verifyLoading: boolean,
   countDown: number,
