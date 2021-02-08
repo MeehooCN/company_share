@@ -11,6 +11,7 @@ import { initMenu } from '@utils/CommonFunc';
 import { Route } from 'react-router';
 import { ButtonPosition, TableOption } from '@views/designRules/viewExport';
 import ButtonType from '@views/designRules/button/ButtonType';
+import { platform } from '@utils/CommonVars';
 
 const DesignRulesList = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['buttonPosition']);
@@ -25,13 +26,13 @@ const DesignRulesList = () => {
           onOpenChange={(openKeys: any) => setOpenKeys(openKeys)}
           mode="inline"
         >
-          {initMenu(menuList, '/designRules/')}
+          {initMenu(menuList, platform + 'designRules/')}
         </Menu>
       </Col>
       <Col span={20} style={{ padding: '20px 50px' }}>
-        <Route path="/designRules/buttonPosition" component={ButtonPosition} />
-        <Route path="/designRules/buttonType" component={ButtonType} />
-        <Route path="/designRules/tableOption" component={TableOption} />
+        <Route path={platform + 'designRules/buttonPosition'} component={ButtonPosition} />
+        <Route path={platform + 'designRules/buttonType'} component={ButtonType} />
+        <Route path={platform + 'designRules/tableOption'} component={TableOption} />
       </Col>
     </Row>
   );

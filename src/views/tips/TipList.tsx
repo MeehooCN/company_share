@@ -14,6 +14,7 @@ import {
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
 import { MenuData } from '@utils/CommonInterface';
+import { platform } from '@utils/CommonVars';
 
 const TipList = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['basicProject']);
@@ -38,22 +39,22 @@ const TipList = () => {
           onOpenChange={(openKeys: any) => setOpenKeys(openKeys)}
           mode="inline"
         >
-          {initMenu(menuList, '/tips/')}
+          {initMenu(menuList, platform + 'tips/')}
         </Menu>
       </Col>
       <Col span={20} style={{ padding: '20px 50px' }}>
-        <Route path="/tips/basicProject" component={BasicProject} />
-        <Route path="/tips/eslint" component={WebStormESLint} />
-        <Route path="/tips/iconFont" component={IconFont} />
-        <Route path="/tips/createPortal" component={CreatePortal} />
-        <Route path="/tips/reactFragments" component={ReactFragments} />
-        <Route path="/tips/errorBoundaries" component={ErrorBoundaries} />
-        <Route path="/tips/parentComponents" component={ParentComponents} />
-        <Route path="/tips/yalc" component={Yalc} />
-        <Route path="/tips/useEffect" component={UseEffect} />
-        <Route path="/tips/launcherIcons" component={BuildIcon} />
-        <Route path="/tips/smallerEcharts" component={SmallerEcharts} />
-        <Route path="/tips/useRedux" component={UseRedux} />
+        <Route path={platform + 'tips/basicProject'} component={BasicProject} />
+        <Route path={platform + 'tips/eslint'} component={WebStormESLint} />
+        <Route path={platform + 'tips/iconFont'} component={IconFont} />
+        <Route path={platform + 'tips/createPortal'} component={CreatePortal} />
+        <Route path={platform + 'tips/reactFragments'} component={ReactFragments} />
+        <Route path={platform + 'tips/errorBoundaries'} component={ErrorBoundaries} />
+        <Route path={platform + 'tips/parentComponents'} component={ParentComponents} />
+        <Route path={platform + 'tips/yalc'} component={Yalc} />
+        <Route path={platform + 'tips/useEffect'} component={UseEffect} />
+        <Route path={platform + 'tips/launcherIcons'} component={BuildIcon} />
+        <Route path={platform + 'tips/smallerEcharts'} component={SmallerEcharts} />
+        <Route path={platform + 'tips/useRedux'} component={UseRedux} />
       </Col>
     </Row>
   );

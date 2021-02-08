@@ -16,6 +16,7 @@ import {
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
 import { MenuData } from '@utils/CommonInterface';
+import { platform } from '@utils/CommonVars';
 
 const ComponentList = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['myTitle']);
@@ -40,27 +41,27 @@ const ComponentList = () => {
           onOpenChange={(openKeys: any) => setOpenKeys(openKeys)}
           mode="inline"
         >
-          {initMenu(menuList, '/components/')}
+          {initMenu(menuList, platform + 'components/')}
         </Menu>
       </Col>
       <Col span={20} style={{ padding: '20px 50px' }}>
-        <Route path="/components/myTitle" component={MyTitle} />
-        <Route path="/components/imageList" component={ImageListView} />
-        <Route path="/components/imageView" component={ImageView} />
-        <Route path="/components/imageCompare" component={ImageCompare} />
-        <Route path="/components/imageListHorizontal" component={ImageListHorizontalView} />
-        <Route path="/components/hookForm" component={HookForm} />
-        <Route path="/components/searchForm" component={InlineSearchFormDemo} />
-        <Route path="/components/commonForm" component={FormDemoHook} />
-        <Route path="/components/commonFormClass" component={FormDemoClass} />
-        <Route path="/components/loading" component={LoadingView} />
-        <Route path="/components/overText" component={OverTextView} />
-        <Route path="/components/prompt" component={PromptIndex} />
-        <Route path="/components/evaluate" component={EvaluateView} />
-        <Route path="/components/iconFontChoose" component={IconFontView} />
-        <Route path="/components/rangePicker" component={MyRangePickerView} />
-        <Route path="/components/codeLogin" component={CodeLogin} />
-        <Route path="/components/imageLogin" component={ImageLogin} />
+        <Route path={platform + 'components/myTitle'} component={MyTitle} />
+        <Route path={platform + 'components/imageList'} component={ImageListView} />
+        <Route path={platform + 'components/imageView'} component={ImageView} />
+        <Route path={platform + 'components/imageCompare'} component={ImageCompare} />
+        <Route path={platform + 'components/imageListHorizontal'} component={ImageListHorizontalView} />
+        <Route path={platform + 'components/hookForm'} component={HookForm} />
+        <Route path={platform + 'components/searchForm'} component={InlineSearchFormDemo} />
+        <Route path={platform + 'components/commonForm'} component={FormDemoHook} />
+        <Route path={platform + 'components/commonFormClass'} component={FormDemoClass} />
+        <Route path={platform + 'components/loading'} component={LoadingView} />
+        <Route path={platform + 'components/overText'} component={OverTextView} />
+        <Route path={platform + 'components/prompt'} component={PromptIndex} />
+        <Route path={platform + 'components/evaluate'} component={EvaluateView} />
+        <Route path={platform + 'components/iconFontChoose'} component={IconFontView} />
+        <Route path={platform + 'components/rangePicker'} component={MyRangePickerView} />
+        <Route path={platform + 'components/codeLogin'} component={CodeLogin} />
+        <Route path={platform + 'components/imageLogin'} component={ImageLogin} />
       </Col>
     </Row>
   );

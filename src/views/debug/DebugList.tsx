@@ -10,6 +10,7 @@ import { EchartsYError, InitialingGradle, IOSNoFix } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/debug/menuList';
 import { MenuData } from '@utils/CommonInterface';
+import { platform } from '@utils/CommonVars';
 
 const DebugList = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['echartsYError']);
@@ -34,13 +35,13 @@ const DebugList = () => {
           onOpenChange={(openKeys: any) => setOpenKeys(openKeys)}
           mode="inline"
         >
-          {initMenu(menuList, '/debugs/')}
+          {initMenu(menuList, platform + 'debugs/')}
         </Menu>
       </Col>
       <Col span={20} style={{ padding: '20px 50px' }}>
-        <Route path="/debugs/echartsYError" component={EchartsYError} />
-        <Route path="/debugs/initialingGradle" component={InitialingGradle} />
-        <Route path="/debugs/IOSNoFix" component={IOSNoFix} />
+        <Route path={platform + 'debugs/echartsYError'} component={EchartsYError} />
+        <Route path={platform + 'debugs/initialingGradle'} component={InitialingGradle} />
+        <Route path={platform + 'debugs/IOSNoFix'} component={IOSNoFix} />
       </Col>
     </Row>
   );

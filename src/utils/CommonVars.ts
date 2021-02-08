@@ -17,3 +17,7 @@ export const colors: Colors = {
  * API 接口路径
  **/
 export const serverPath: string = '/api/';
+/**
+ * 服务器部署前缀路径
+ * **/
+export const { platform } = require('./../../projectConfig.js');

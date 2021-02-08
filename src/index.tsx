@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { ErrorBoundary, Loading } from '@components/index';
 import { NotFound, Home, Welcome } from '@views/index';
+import { platform } from '@utils/CommonVars';
 
 const RenderLoading = () => {
   return <Loading loading={true} />;
@@ -46,12 +47,12 @@ const App = () => {
         <Home>
           <Switch>
             <ErrorBoundary>
-              <Route exact path="/" component={Welcome} />
-              <Route path="/components" component={ComponentList} />
-              <Route path="/tips" component={TipList} />
-              <Route path="/resources" component={ResourceList} />
-              <Route path="/debugs" component={DebugList} />
-              <Route path="/designRules" component={DesignRulesList} />
+              <Route exact path={platform} component={Welcome} />
+              <Route path={platform + 'components'} component={ComponentList} />
+              <Route path={platform + 'tips'} component={TipList} />
+              <Route path={platform + 'resources'} component={ResourceList} />
+              <Route path={platform + 'debugs'} component={DebugList} />
+              <Route path={platform + 'designRules'} component={DesignRulesList} />
             </ErrorBoundary>
             <Route component={NotFound} />
           </Switch>

@@ -7,30 +7,30 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Menu } from 'antd';
 import { SmileTwoTone } from '@ant-design/icons';
-import { colors } from '@utils/CommonVars';
+import { colors, platform } from '@utils/CommonVars';
 import { setActiveMenu, getActiveMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import './index.less';
 
 const menuList = [{
   key: 'components',
   name: '组件',
-  url: '/components/myTitle'
+  url: platform + 'components/myTitle'
 }, {
   key: 'tips',
   name: 'Tips',
-  url: '/tips/basicProject'
+  url: platform + 'tips/basicProject'
 }, {
   key: 'sources',
   name: '资源',
-  url: '/resources'
+  url: platform + 'resources'
 }, {
   key: 'debug',
   name: 'Debug 分享',
-  url: '/debugs/echartsYError'
+  url: platform + 'debugs/echartsYError'
 }, {
   key: 'designRules',
   name: '设计规范',
-  url: '/designRules/buttonPosition'
+  url: platform + 'designRules/buttonPosition'
 }];
 const Header = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<string>>();
@@ -47,7 +47,7 @@ const Header = () => {
   }, []);
   return (
     <Row className="header header-shadow" justify="space-between" style={{ width: '100%' }}>
-      <Link to="/" style={{ display: 'flex', alignItems: 'center' }} onClick={() => setSelectedMenu([])}>
+      <Link to={platform} style={{ display: 'flex', alignItems: 'center' }} onClick={() => setSelectedMenu([])}>
         <Row justify="center" align="middle">
           <SmileTwoTone twoToneColor={colors.primaryColor} style={{ fontSize: 24 }} />
           <div style={{ marginLeft: 10, marginRight: 10, color: colors.primaryColor }}>分享平台</div>
