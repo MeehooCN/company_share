@@ -101,9 +101,19 @@ export const dateTimeToHour = (dateTime: Dayjs) => {
 /**
  * 日期转为分钟
  * **/
-export const dateTimeToMinute = (dateTime: Dayjs) => {
+export const dateToMinute = (dateTime: Dayjs) => {
   if (dateTime) {
     return dayJs(dateTime).format('YYYY-MM-DD HH:mm');
+  } else {
+    return '';
+  }
+};
+/**
+ * 时间转为带日期小时
+ * **/
+export const dateTimeToHourWithDate = (dateTime: Dayjs) => {
+  if (dateTime) {
+    return dayJs(dateTime).format('YYYY-MM-DD HH');
   } else {
     return '';
   }

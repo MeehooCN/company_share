@@ -29,6 +29,11 @@ const MyRangePickerView = () => {
     description: '设置选中的时间。',
     type: 'Function',
     defaultValue: '无'
+  }, {
+    name: 'onlyHour',
+    description: '小时中是否只显示小时。',
+    type: 'boolean',
+    defaultValue: '无'
   }];
   const viewComponents = <MyRangePicker rangeTypes={['minute', 'hour', 'day', 'month']} setSelectDate={setSelectDate} ref={timeRef} selectDate={selectDate} />;
   const code: string = 'import React, { useRef, useState } from \'react\';\n' +

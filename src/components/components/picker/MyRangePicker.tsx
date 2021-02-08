@@ -4,53 +4,60 @@
  * @createTime: 2021/1/4 16:28
  **/
 import React, { useState, useImperativeHandle, forwardRef } from 'react';
-import { Radio, TimePicker, DatePicker, Row } from 'antd';
+import { Radio, TimePicker, DatePicker } from 'antd';
 import moment from 'moment';
-import { dateTimeToHour, dateTimeToMinute, dateToDateString, dateToMonthString } from '@utils/CommonFunc';
+import { dateTimeToHour, dateTimeToHourWithDate, dateToDateString, dateToMinute, dateToMonthString } from '@utils/CommonFunc';
 
 declare type RangeType = 'minute' | 'hour' | 'day' | 'month';
 
 const { RangePicker } = DatePicker;
-const TimeRangePicker = TimePicker.RangePicker;
 
 /**
  * rangeTypes: 要显示的时间维度，
  * selectDate: 选中的时间，
  * setSelectDate: 设置选中的时间
-**/
+ * onlyHour: 是否只显示小时
+ **/
 interface IProps {
   rangeTypes: Array<RangeType>,
   selectDate: any,
-  setSelectDate(selectDate: any): void
+  setSelectDate(selectDate: any): void,
+  onlyHour?: boolean
 }
 
 // 获取时间参数
-export const getTimeParams = (timeDimension: RangeType, selectDate: Array<any>) => {
+export const getTimeParams = (timeDimension: RangeType, selectDate: Array<any>, onlyHour?: boolean) => {
+  let timeType: number = 0;
   let beginTime: string = '';
   let endTime: string = '';
   if (timeDimension === 'hour') {
-    beginTime = selectDate ? dateTimeToHour(selectDate[0]) : '';
-    endTime = selectDate ? dateTimeToHour(selectDate[1]) : '';
+    timeType = 0;
+    if (onlyHour) {
+      beginTime = selectDate ? dateTimeToHour(selectDate[0]) : '';
+      endTime = selectDate ? dateTimeToHour(selectDate[1]) : '';
+    } else {
+      beginTime = selectDate ? dateTimeToHourWithDate(selectDate[0]) : '';
+      endTime = selectDate ? dateTimeToHourWithDate(selectDate[1]) : '';
+    }
   } else if (timeDimension === 'day') {
+    timeType = 1;
     beginTime = selectDate ? dateToDateString(selectDate[0]) : '';
     endTime = selectDate ? dateToDateString(selectDate[1]) : '';
   } else if (timeDimension === 'month') {
+    timeType = 2;
     beginTime = selectDate ? dateToMonthString(selectDate[0]) : '';
     endTime = selectDate ? dateToMonthString(selectDate[1]) : '';
   } else if (timeDimension === 'minute') {
-    beginTime = selectDate ? dateTimeToMinute(selectDate[0]) : '';
-    endTime = selectDate ? dateTimeToMinute(selectDate[1]) : '';
+    timeType = -1;
+    beginTime = selectDate ? dateToMinute(selectDate[0]) : '';
+    endTime = selectDate ? dateToMinute(selectDate[1]) : '';
   }
-  return { timeDimension, beginTime, endTime };
+  return { timeType, beginTime, endTime };
 };
 
 const MyRangePicker = (props: IProps, ref: any) => {
-  const { selectDate, setSelectDate } = props;
-  let rangeTypes = props.rangeTypes;
-  if (rangeTypes.length === 0) {
-    rangeTypes = ['hour', 'day', 'month'];
-  }
-  const [timeDimension, setTimeDimension] = useState<any>('hour');
+  const { rangeTypes, selectDate, setSelectDate, onlyHour } = props;
+  const [timeDimension, setTimeDimension] = useState<any>('minute');
   useImperativeHandle(ref, () => ({
     getTimeDimension: timeDimension,
   }));
@@ -66,7 +73,10 @@ const MyRangePicker = (props: IProps, ref: any) => {
     }
     if (timeDimension === 'minute') {
       timeSpace = 'minutes';
-      maxDay = 60;
+    }
+    if (timeDimension === 'hour') {
+      maxDay = 23;
+      timeSpace = 'hours';
     }
     const tooLate = selectDate[0] && current.diff(selectDate[0], timeSpace) > maxDay;
     const tooEarly = selectDate[1] && selectDate[1].diff(current, timeSpace) > maxDay;
@@ -108,7 +118,22 @@ const MyRangePicker = (props: IProps, ref: any) => {
           />
         );
       case 'hour':
-        return <TimeRangePicker picker="time" value={selectDate} onChange={(time) => setSelectDate(time)} format="HH" />;
+        if (onlyHour) {
+          // @ts-ignore
+          return <TimePicker.RangePicker value={selectDate} onChange={(time) => setSelectDate(time)} format="HH" />;
+        } else {
+          return (
+            <RangePicker
+              showTime={{ format: 'HH' }}
+              format="YYYY-MM-DD HH"
+              value={selectDate}
+              onChange={(date) => setSelectDate(date)}
+              onCalendarChange={(val) => setSelectDate(val)}
+              disabledDate={disabledDate}
+              onOpenChange={onOpenChange}
+            />
+          );
+        }
       case 'day':
       case 'month':
       default:
@@ -125,7 +150,7 @@ const MyRangePicker = (props: IProps, ref: any) => {
     }
   };
   return (
-    <Row align="middle">
+    <>
       <div style={{ marginRight: 10 }}>时间维度：</div>
       <Radio.Group value={timeDimension} onChange={onTimeDimensionChange} buttonStyle="solid" style={{ marginRight: 20 }}>
         {rangeTypes.indexOf('minute') !== -1 && <Radio.Button key="minute" value="minute">分钟</Radio.Button>}
@@ -135,7 +160,7 @@ const MyRangePicker = (props: IProps, ref: any) => {
       </Radio.Group>
       <div style={{ marginRight: 10 }}>时间范围：</div>
       {getTimeRange()}
-    </Row>
+    </>
   );
 };
 export default forwardRef(MyRangePicker);
