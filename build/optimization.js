@@ -3,6 +3,7 @@ module.exports = {
     name: 'manifest'
   },
   splitChunks: {
+    // 最大 split js 数，会包含入口文件的 js，默认为 3
     maxInitialRequests: 5,
     // 第三方打包
     cacheGroups: {
@@ -12,11 +13,11 @@ module.exports = {
         name: 'common',
         chunks: 'all'
       },
-      highlight: {
-        name: 'highlight',
+      react: {
+        name: 'react',
         chunks: 'all',
         priority: 1,
-        test: /highlight.js/
+        test: /react/
       },
       antd: {
         name: 'antd',
@@ -33,11 +34,11 @@ module.exports = {
           );
         }
       },
-      react: {
-        name: 'react',
+      iconfont: {
+        name: 'iconfont',
         chunks: 'all',
         priority: 3,
-        test: /react/
+        test: /iconfont/
       }
     }
   }
