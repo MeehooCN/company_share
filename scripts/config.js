@@ -8,5 +8,6 @@ module.exports = {
   host: '',
   user: '',
   password: '',
-  path: '/opt/view/dist.zip'
+  path: '/opt/view/dist.zip',
+  shPath: '/opt/sh'
 };
