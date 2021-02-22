@@ -11,9 +11,9 @@
  * @shPath 脚本目录 '/opt/sh'
  **/
 module.exports = {
-  host: '47.114.87.97',
-  user: 'root',
-  password: 'meehoo2012!',
+  host: '',
+  user: '',
+  password: '',
   path: '/opt/view/dist.zip',
   shPath: '/opt/sh'
 };
