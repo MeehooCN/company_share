@@ -11,7 +11,7 @@ import {
   MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
   HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView,
   PromptIndex, ImageListHorizontalView, EvaluateView, IconFontView, MyRangePickerView,
-  CodeLogin, ImageLogin
+  CodeLogin, ImageLogin, SearchInputView
 } from '@views/index';
 import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
@@ -58,6 +58,7 @@ const ComponentList = () => {
         <Route path={platform + 'components/overText'} component={OverTextView} />
         <Route path={platform + 'components/prompt'} component={PromptIndex} />
         <Route path={platform + 'components/evaluate'} component={EvaluateView} />
+        <Route path={platform + 'components/searchInput'} component={SearchInputView} />
         <Route path={platform + 'components/iconFontChoose'} component={IconFontView} />
         <Route path={platform + 'components/rangePicker'} component={MyRangePickerView} />
         <Route path={platform + 'components/codeLogin'} component={CodeLogin} />
