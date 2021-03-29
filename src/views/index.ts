@@ -31,6 +31,7 @@ export { default as OverTextView } from '@views/components/text/OverTextView';
 export { default as PromptIndex } from '@views/components/prompt/PromptIndex';
 export { default as ImageListHorizontalView } from '@views/components/image/ImageListHorizontalView';
 export { default as EvaluateView } from '@views/components/other/Evaluate';
+export { default as SearchInputView } from '@views/components/other/SearchInput';
 export { default as MyRangePickerView } from '@views/components/other/MyRangePickerView';
 export { default as IconFont } from '@views/tips/project/IconFont';
 export { default as IconFontView } from '@views/components/icon/IconFontView';

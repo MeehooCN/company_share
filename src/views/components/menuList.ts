@@ -71,6 +71,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'MyRangePickerView 时间范围选择器',
     key: 'rangePicker'
+  }, {
+    name: 'SearchInput 带搜索下拉框',
+    key: 'searchInput'
   }]
 }, {
   name: '图标',
