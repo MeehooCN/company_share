@@ -24,3 +24,4 @@ export { default as ImageCaptcha } from '@components/components/login/ImageCaptc
 export { default as VerifyCode } from '@components/components/login/VerifyCode';
 export { default as SearchInput } from '@components/components/searchInput/SearchInput';
 export { default as MyRangePicker, getTimeParams } from '@components/components/picker/MyRangePicker';
+export { default as useMenuHook } from '@components/components/hook/useMenuHook';

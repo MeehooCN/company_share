@@ -3,7 +3,7 @@
  * @author: cnn
  * @createTime: 2020/7/21 15:12
  **/
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
 import {
@@ -11,24 +11,16 @@ import {
   Yalc, UseEffect, WebStormESLint, BuildIcon, IconFont,
   SmallerEcharts, UseRedux
 } from '@views/index';
-import { getActiveChildMenu, initMenu, setActiveChildMenu } from '@utils/CommonFunc';
+import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
-import { MenuData } from '@utils/CommonInterface';
 import { platform } from '@utils/CommonVars';
+import { useMenuHook } from '@components/index';
 
 const TipList = () => {
-  const [selectedKeys, setSelectedKeys] = useState<Array<string>>(['basicProject']);
-  const [openKeys, setOpenKeys] = useState<Array<string>>(menuList.map((menu: MenuData) => menu.key));
-  const setSelectedMenu = (selectedKeys: Array<string>) => {
-    setSelectedKeys(selectedKeys);
-    setActiveChildMenu(selectedKeys.length > 0 ? selectedKeys[0] : '');
-  };
-  useEffect(() => {
-    const activeMenu = getActiveChildMenu();
-    if (activeMenu) {
-      setSelectedKeys([activeMenu]);
-    }
-  }, []);
+  const { selectedKeys, openKeys, setOpenKeys, setSelectedMenu } = useMenuHook({
+    menuList,
+    defaultSelectedKeys: ['myTitle']
+  });
   return (
     <Row>
       <Col span={4}>
