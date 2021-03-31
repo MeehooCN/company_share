@@ -26,7 +26,8 @@ const SearchInput = (props: IProps, ref: any) => {
   const [selectValue, setSelectValue] = useState<any>(undefined);
   const [randomData, setRandomData] = useState<Array<IOption>>([]);
   const [options, setOptions] = useState<Array<object>>([]);
-  const count: number = 20;
+  const [currentCount, setCurrentCount] = useState<number>(0);
+  const count: number = 20; // 初始数组长度
   useEffect(() => {
     getRandomOption();
   }, []);
@@ -43,6 +44,9 @@ const SearchInput = (props: IProps, ref: any) => {
       });
     }
     setRandomData(randomData);
+    setOption();
+  };
+  const setOption = () => {
     let optionList: Array<object> = randomData.map((item: any) => {
       return (
         <Option key={item.key} value={item.value}>
@@ -58,13 +62,24 @@ const SearchInput = (props: IProps, ref: any) => {
   };
   // 根据用户输入的搜索值得到下拉框的值
   const getOption = (searchValue: string) => {
-    let List: Array<IOption> = [];
+    let list: Array<IOption> = [];
+    let currentCount: number = 0;
     for (let i = 0; i < randomData.length; i++) {
       if (randomData[i].value.indexOf(searchValue) !== -1) {
-        List.push(randomData[i]);
+        list.push(randomData[i]);
+      } else {
+        currentCount++;
       }
     }
-    let optionList: Array<object> = List.map((item: any) => {
+    if (currentCount === randomData.length) {
+      const addValue = {
+        key: currentCount + 1,
+        value: searchValue
+      };
+      list.unshift(addValue);
+      setCurrentCount(currentCount);
+    }
+    const optionList = list.map((item: any) => {
       return (
         <Option key={item.key} value={item.value}>
           {item.value}
@@ -94,10 +109,20 @@ const SearchInput = (props: IProps, ref: any) => {
       if (value) {
         getOption(value);
       } else {
-        getRandomOption();
+        setOption();
       }
     };
     timeout = setTimeout(getList, 300);
+  };
+  // 选中时调用函数 当用户选中的值不在已有的选择范围内则新增这个值
+  const handleSelect = (value: string) => {
+    if (currentCount === randomData.length) {
+      const addValue = {
+        key: currentCount + 1,
+        value
+      };
+      randomData.unshift(addValue);
+    }
   };
   return (
     <Select
@@ -112,7 +137,9 @@ const SearchInput = (props: IProps, ref: any) => {
       filterOption={false}
       onChange={handleChange}
       onSearch={handleSearch}
-      onClear={getRandomOption}
+      onClear={setOption}
+      onSelect={handleSelect}
+      onBlur={setOption}
       // onPopupScroll={onPopupScroll}
       notFoundContent={<Empty />}
     >
