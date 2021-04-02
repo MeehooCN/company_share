@@ -1,8 +1,8 @@
 /**
-   @descrption 搜索后将获取的数据以下拉框形式展示
-   @author: sml
-   @time: 2021/2/22 10:21
-**/
+ * @description: 搜索后将获取的数据以下拉框形式展示
+ * @author: sml
+ * @createTime: 2021/2/22 10:21
+ **/
 import React, { useRef } from 'react';
 import { Row } from 'antd';
 import { API, CodeExample, SearchInput, TitleWithDescription } from '@components/index';

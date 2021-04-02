@@ -1,15 +1,15 @@
 /**
-   @descrption 搜索后将获取的数据以下拉框形式展示
-   @author: sml
-   @time: 2021/2/22 10:07
-**/
-
+ * @description: 搜索后将获取的数据以下拉框形式展示
+ * @author: sml
+ * @createTime: 2021/2/22 10:07
+ **/
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { Select, Empty } from 'antd';
 import { mock } from 'mockjs';
 
 let timeout: any;
 const { Option } = Select;
+
 interface IOption {
   key: number,
   value: string
@@ -28,13 +28,16 @@ const SearchInput = (props: IProps, ref: any) => {
   const [options, setOptions] = useState<Array<object>>([]);
   const [currentCount, setCurrentCount] = useState<number>(0);
   const count: number = 20; // 初始数组长度
-  useEffect(() => {
-    getRandomOption();
-  }, []);
   useImperativeHandle(ref, () => ({
     // 向父组件暴露的方法
     setSelectValue: (value: string) => setSelectValue(value)
   }));
+  useEffect(() => {
+    getRandomOption();
+  }, []);
+  useEffect(() => {
+    setOption();
+  }, [randomData]);
   // 为下拉框生成随机数据
   const getRandomOption = () => {
     for (let i = 0; i < count; i++) {
@@ -44,7 +47,6 @@ const SearchInput = (props: IProps, ref: any) => {
       });
     }
     setRandomData(randomData);
-    setOption();
   };
   const setOption = () => {
     let optionList: Array<object> = randomData.map((item: any) => {
@@ -116,12 +118,14 @@ const SearchInput = (props: IProps, ref: any) => {
   };
   // 选中时调用函数 当用户选中的值不在已有的选择范围内则新增这个值
   const handleSelect = (value: string) => {
-    if (currentCount === randomData.length) {
+    const tempRandomData = [...randomData];
+    if (currentCount === tempRandomData.length) {
       const addValue = {
         key: currentCount + 1,
         value
       };
-      randomData.unshift(addValue);
+      tempRandomData.unshift(addValue);
+      setRandomData(tempRandomData);
     }
   };
   return (
