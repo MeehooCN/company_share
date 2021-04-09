@@ -3,16 +3,24 @@
  * @author: cnn
  * @createTime: 2020/7/22 16:43
  **/
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row } from 'antd';
 import Mock, { Random } from 'mockjs';
 import { API, CodeExample, ImageList, TitleWithDescription } from '@components/index';
+import { getClientWidth } from '@utils/CommonFunc';
 
 const ImageListView = () => {
+  const [containerWidth, setContainerWidth] = useState<number>(getClientWidth() / 24 * 20 - 150);
+  useEffect(() => {
+    window.addEventListener('resize', onWindowResize);
+    return () => {
+      window.removeEventListener('resize', () => {});
+    };
+  }, []);
   // 初始化图片列表
   const initImageList = () => {
     return Mock.mock({
-      'imageList|10-15': [{
+      'imageList|16-35': [{
         'id|+1': 1,
         'sourceUrl': Random.dataImage('300x250'),
         'thumbnailUrl|+1': [
@@ -29,6 +37,10 @@ const ImageListView = () => {
         'height|+1': [250, 300, 500, 600, 400, 400]
       }]
     }).imageList;
+  };
+  // 监听窗口变化
+  const onWindowResize = () => {
+    setContainerWidth(getClientWidth() / 24 * 20 - 150);
   };
   const paramList = [{
     name: 'imageList',
@@ -82,7 +94,7 @@ const ImageListView = () => {
     type: 'number',
     defaultValue: '无'
   }];
-  const viewComponents = <ImageList imagePropList={initImageList()} listChange={false} containerWidth={1000} />;
+  const viewComponents = <ImageList imagePropList={initImageList()} listChange={false} containerWidth={containerWidth} />;
   const code: string = '<ImageList imageList={[]} changeList={false} containerWidth={1000} />';
   return (
     <Row>

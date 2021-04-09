@@ -118,3 +118,17 @@ export const dateTimeToHourWithDate = (dateTime: Dayjs) => {
     return '';
   }
 };
+/**
+ * 获取当前浏览器高度
+ * **/
+export const getClientHeight = () => {
+  // @ts-ignore
+  return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+};
+/**
+ * 获取当前浏览器宽度
+ * **/
+export const getClientWidth = () => {
+  // @ts-ignore
+  return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+};
