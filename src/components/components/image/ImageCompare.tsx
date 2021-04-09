@@ -225,8 +225,8 @@ class ImageCompare extends React.Component<IProps, IState> {
           position: 'fixed',
           top: 0,
           left: 0,
-          width: clientWidth,
-          height: clientHeight,
+          width: '100vw',
+          height: '100vh',
           backgroundColor: 'rgba(0,0,0,.9)',
           display: comparisonView ? 'block' : 'none',
           zIndex: 999
