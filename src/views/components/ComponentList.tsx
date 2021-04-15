@@ -11,7 +11,7 @@ import {
   MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
   HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView,
   PromptIndex, ImageListHorizontalView, EvaluateView, IconFontView, MyRangePickerView,
-  CodeLogin, ImageLogin, SearchInputView
+  CodeLogin, ImageLogin, SearchInputView, AttachmentView
 } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
@@ -55,6 +55,7 @@ const ComponentList = () => {
         <Route path={platform + 'components/rangePicker'} component={MyRangePickerView} />
         <Route path={platform + 'components/codeLogin'} component={CodeLogin} />
         <Route path={platform + 'components/imageLogin'} component={ImageLogin} />
+        <Route path={platform + 'components/attachmentView'} component={AttachmentView} />
       </Col>
     </Row>
   );

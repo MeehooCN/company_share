@@ -92,4 +92,11 @@ export const menuList: Array<MenuData> = [{
     name: 'ImageLogin 图片验证码登录',
     key: 'imageLogin'
   }]
+}, {
+  name: '附件',
+  key: 'attachment',
+  children: [{
+    name: 'AttachmentView 附件浏览',
+    key: 'attachmentView'
+  }]
 }];

@@ -29,3 +29,13 @@ export interface ImageData {
   width: number,
   height: number
 }
+
+export interface AttachmentData {
+  id: string,
+  filename: string,
+  size: string,
+  updateTime: string,
+  sourceUrl: string,
+  thumbnailUrl: string,
+  thumbnailTrueUrl: string,
+}
