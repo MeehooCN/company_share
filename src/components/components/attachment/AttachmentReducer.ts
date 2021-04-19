@@ -3,20 +3,19 @@
  * @author: lll
  * @createTime: 2021/4/8 10:14
  **/
-import { AttachmentData, ImageData } from '@utils/CommonInterface';
+import { AttachmentData, ImageData, MusicData } from '@utils/CommonInterface';
 
 interface ImageInfo {
   imageView: boolean,
   imageIndex: number
 }
 interface VideoInfo {
-  videoUrl: string,
+  videoUrl?: string,
   videoView: boolean
 }
 interface MusicInfo {
-  musicUrl: string,
-  musicName: string,
-  musicView: boolean
+  musicView: boolean,
+  musicIndex: number
 }
 interface AttachmentInit {
   attachmentList: Array<AttachmentData>,
@@ -24,6 +23,7 @@ interface AttachmentInit {
   imageInfo: ImageInfo,
   videoInfo: VideoInfo,
   musicInfo: MusicInfo,
+  musicList: Array<MusicData>,
 }
 const attachmentInit: AttachmentInit = {
   attachmentList: [],
@@ -36,10 +36,10 @@ const attachmentInit: AttachmentInit = {
     videoUrl: '',
     videoView: false
   },
+  musicList: [],
   musicInfo: {
-    musicUrl: '',
-    musicName: '',
-    musicView: false
+    musicView: false,
+    musicIndex: -1
   }
 };
 const attachmentReducer = (state = attachmentInit, action: any) => {
@@ -49,6 +49,7 @@ const attachmentReducer = (state = attachmentInit, action: any) => {
     ['setImageInfo', { ...state, imageInfo: action.imageInfo }],
     ['setVideoInfo', { ...state, videoInfo: action.videoInfo }],
     ['setMusicInfo', { ...state, musicInfo: action.musicInfo }],
+    ['setMusicList', { ...state, musicList: action.musicList }],
   ]);
   return actionMaps.get(action.type) || state;
 };

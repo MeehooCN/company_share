@@ -39,3 +39,9 @@ export interface AttachmentData {
   thumbnailUrl: string,
   thumbnailTrueUrl: string,
 }
+
+export interface MusicData {
+  id: string,
+  name: string,
+  sourceUrl: string
+}

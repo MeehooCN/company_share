@@ -6,7 +6,7 @@
 import React, { useEffect, useState, createContext, useReducer } from 'react';
 import { Card } from 'antd';
 import { MenuOutlined, AppstoreOutlined } from '@ant-design/icons';
-import { AttachmentData, ImageData } from '@utils/CommonInterface';
+import { AttachmentData, ImageData, MusicData } from '@utils/CommonInterface';
 import { AttachmentTable, AttachmentWall, ImageView as ImageViewComponent, VideoView, MusicView } from '@components/index';
 import { attachmentInit, attachmentReducer } from './AttachmentReducer';
 
@@ -17,7 +17,7 @@ interface IProps {
 export const AttachmentContext = createContext({ attachmentState: attachmentInit, attachmentDispatch: (value: any) => {} });
 // 获取附件类型 （参数：附件的url，必传）
 export const getFileType = (sourceUrl: string) => {
-  // 附件类型的后缀对应表（可自行添加对应附件类型下的附件后缀，此处未罗列完整!）
+// 附件类型的后缀对应表（可自行添加对应附件类型下的附件后缀，此处未罗列完整!）
   const fileTypeList = [{
     type: 'picture',
     suffix: ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff'],
@@ -55,6 +55,7 @@ export const getFileType = (sourceUrl: string) => {
   }
   return fileType;
 };
+
 const AttachmentView = (props: IProps) => {
   const { loading, attachmentList } = props;
   const [attachmentState, attachmentDispatch] = useReducer(attachmentReducer, attachmentInit);
@@ -73,8 +74,9 @@ const AttachmentView = (props: IProps) => {
   // 获取图片列表
   const getImageList = () => {
     const imageViewList: Array<ImageData> = [];
+    const musicViewList: Array<MusicData> = [];
     attachmentState.attachmentList.forEach((item: AttachmentData) => {
-      const fileType = getFileType(item.sourceUrl);
+      const fileType: string = getFileType(item.sourceUrl);
       if (fileType === 'picture') {
         imageViewList.push({
           id: item.id,
@@ -85,11 +87,22 @@ const AttachmentView = (props: IProps) => {
           width: 0,
           height: 0
         });
-        attachmentDispatch({
-          type: 'setImageList',
-          imageList: imageViewList
+      }
+      if (fileType === 'music') {
+        musicViewList.push({
+          id: item.id,
+          name: item.filename,
+          sourceUrl: item.sourceUrl
         });
       }
+    });
+    attachmentDispatch({
+      type: 'setImageList',
+      imageList: imageViewList
+    });
+    attachmentDispatch({
+      type: 'setMusicList',
+      musicList: musicViewList
     });
   };
   // 点击附件，查看详情
@@ -98,7 +111,7 @@ const AttachmentView = (props: IProps) => {
     if (fileType === 'picture') {
       // 隐藏滚动条
       document.documentElement.style.overflow = 'hidden';
-      const imageIndex: number = attachmentState.imageList.findIndex((imageItem: any) => imageItem.id === file.id);
+      const imageIndex: number = attachmentState.imageList.findIndex((imageItem: ImageData) => imageItem.id === file.id);
       attachmentDispatch({
         type: 'setImageInfo',
         imageInfo: {
@@ -119,12 +132,12 @@ const AttachmentView = (props: IProps) => {
         }
       });
     } else if (fileType === 'music') {
+      const musicIndex: number = attachmentState.musicList.findIndex((musicItem: MusicData) => musicItem.id === file.id);
       attachmentDispatch({
         type: 'setMusicInfo',
         musicInfo: {
-          musicUrl: file.sourceUrl,
-          musicName: file.filename,
-          musicView: true
+          musicView: true,
+          musicIndex
         }
       });
     } else {
@@ -163,16 +176,16 @@ const AttachmentView = (props: IProps) => {
       <Card
         title="附件列表"
         size="small"
-        style={{ width: '100%' }}
         extra={isList ? <MenuOutlined onClick={() => setIsList(false)} /> : <AppstoreOutlined onClick={() => setIsList(true)} />}
+        style={{ width: '100%' }}
       >
         {isList ? <AttachmentTable loading={loading} handleClick={handleClick} /> : <AttachmentWall handleClick={handleClick} />}
       </Card>
       <ImageViewComponent
         index={attachmentState.imageInfo.imageIndex}
         imageList={attachmentState.imageList}
-        closeView={handleImageClose}
         imageView={attachmentState.imageInfo.imageView}
+        closeView={handleImageClose}
       />
       <VideoView
         videoUrl={attachmentState.videoInfo.videoUrl}
@@ -180,8 +193,8 @@ const AttachmentView = (props: IProps) => {
         closeView={handleVideoClose}
       />
       <MusicView
-        musicUrl={attachmentState.musicInfo.musicUrl}
-        musicName={attachmentState.musicInfo.musicName}
+        index={attachmentState.musicInfo.musicIndex}
+        musicList={attachmentState.musicList}
         musicView={attachmentState.musicInfo.musicView}
         closeView={handleMusicClose}
       />

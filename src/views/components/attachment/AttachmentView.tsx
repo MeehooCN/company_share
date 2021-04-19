@@ -32,7 +32,7 @@ const AttachmentView = () => {
         thumbnailTrueUrl: 'https://img2.baidu.com/it/u=1842750661,82505179&fm=26&fmt=auto&gp=0.jpg',
       }, {
         id: '2',
-        filename: '美少女，元气可爱美少女',
+        filename: '美少女,元气可爱美少女',
         size: '4.6M',
         updateTime: '2021-3-30',
         sourceUrl: 'http://zyjy.meehoo.com/testStatic/testImage.png',
@@ -43,7 +43,8 @@ const AttachmentView = () => {
         filename: '横屏视频.mp4',
         size: '3.2M',
         updateTime: '2021-3-30',
-        sourceUrl: 'https://v-cdn.zjol.com.cn/277002.mp4',
+        sourceUrl: 'https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4',
+        // sourceUrl: 'https://v-cdn.zjol.com.cn/276993.mp4',
         thumbnailUrl: '',
         thumbnailTrueUrl: '',
       }, {
@@ -92,6 +93,15 @@ const AttachmentView = () => {
         size: '3.2M',
         updateTime: '2021-4-14',
         sourceUrl: 'https://v-cdn.zjol.com.cn/276993.mp4',
+        // sourceUrl: 'https://v-cdn.zjol.com.cn/276998.mp4',
+        thumbnailUrl: '',
+        thumbnailTrueUrl: '',
+      }, {
+        id: '10',
+        filename: '夏天的风.mp3',
+        size: '3.2M',
+        updateTime: '2021-4-16',
+        sourceUrl: 'http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_96145895&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3',
         thumbnailUrl: '',
         thumbnailTrueUrl: '',
       }];
