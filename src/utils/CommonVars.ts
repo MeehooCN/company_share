@@ -21,3 +21,14 @@ export const serverPath: string = '/api/';
  * 服务器部署前缀路径
  * **/
 export const { platform } = require('./../../projectConfig.js');
+/**
+ * 文件后缀
+ **/
+export const fileAccept = {
+  doc: ['.doc', '.docx'],
+  pdf: ['.pdf'],
+  excel: ['.xls', '.xlsx'],
+  zip: ['.rar', '.zip'],
+  img: ['.jpg', '.jpeg', '.png', '.bmp'],
+  all: ['.doc', '.docx', '.pdf', '.xls', '.xlsx', '.rar', '.zip', '.jpg', '.jpeg', '.png', '.bmp']
+};

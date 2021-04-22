@@ -20,6 +20,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: '减小 Echarts 打包体积，按需引入所需图表',
     key: 'smallerEcharts'
+  }, {
+    name: '文件上传限制',
+    key: 'uploadLimit'
   }]
 }, {
   name: 'React 技巧',

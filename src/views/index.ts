@@ -40,4 +40,5 @@ export { default as SmallerEcharts } from '@views/tips/project/SmallerEcharts';
 export { default as CodeLogin } from '@views/components/login/CodeLogin';
 export { default as ImageLogin } from '@views/components/login/ImageLogin';
 export { default as AttachmentView } from '@views/components/attachment/AttachmentView';
+export { default as UploadLimit } from '@views/tips/project/UploadLimit';
 

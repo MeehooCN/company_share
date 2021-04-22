@@ -9,7 +9,7 @@ import { Route } from 'react-router-dom';
 import {
   CreatePortal, ReactFragments, ErrorBoundaries, BasicProject, ParentComponents,
   Yalc, UseEffect, WebStormESLint, BuildIcon, IconFont,
-  SmallerEcharts, UseRedux
+  SmallerEcharts, UseRedux, UploadLimit
 } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/tips/menuList';
@@ -38,6 +38,8 @@ const TipList = () => {
         <Route path={platform + 'tips/basicProject'} component={BasicProject} />
         <Route path={platform + 'tips/eslint'} component={WebStormESLint} />
         <Route path={platform + 'tips/iconFont'} component={IconFont} />
+        <Route path={platform + 'tips/smallerEcharts'} component={SmallerEcharts} />
+        <Route path={platform + 'tips/uploadLimit'} component={UploadLimit} />
         <Route path={platform + 'tips/createPortal'} component={CreatePortal} />
         <Route path={platform + 'tips/reactFragments'} component={ReactFragments} />
         <Route path={platform + 'tips/errorBoundaries'} component={ErrorBoundaries} />
@@ -45,7 +47,6 @@ const TipList = () => {
         <Route path={platform + 'tips/yalc'} component={Yalc} />
         <Route path={platform + 'tips/useEffect'} component={UseEffect} />
         <Route path={platform + 'tips/launcherIcons'} component={BuildIcon} />
-        <Route path={platform + 'tips/smallerEcharts'} component={SmallerEcharts} />
         <Route path={platform + 'tips/useRedux'} component={UseRedux} />
       </Col>
     </Row>
