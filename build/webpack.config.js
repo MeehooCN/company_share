@@ -9,7 +9,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 // 压缩代码
 const TerserPlugin = require('terser-webpack-plugin');
 const { resolve } = require('./utils');
-const { platform } = require('./../projectConfig');
+const { platform } = require('./../scripts/config');
 
 let config = {
   entry: {
@@ -73,6 +73,8 @@ module.exports = (env, argv) => {
     // 生成source map，方便调试
     config.devtool = 'cheap-module-source-map';
   } else if (argv.mode === 'production') {
+    // 打包时能在 IE11 上正常运行
+    config.target = ['web', 'es5'];
     config.plugins = [...developmentPlugins, ...productionPlugin];
     // 去掉 LICENSE.txt 文件
     config.optimization.minimize = true;

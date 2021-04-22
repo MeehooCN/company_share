@@ -20,7 +20,7 @@ export const serverPath: string = '/api/';
 /**
  * 服务器部署前缀路径
  * **/
-export const { platform } = require('./../../projectConfig.js');
+export const { platform } = require('./../../scripts/config');
 /**
  * 文件后缀
  **/
