@@ -20,7 +20,6 @@ interface IProps {
 const VideoView = (props: IProps) => {
   const { videoUrl, videoView, closeView } = props;
   const videoRef: any = useRef(null);
-  const screenRef: any = useRef(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [VDuration, setVDuration] = useState<number>(0);
   const [duration, setDuration] = useState<string>('00:00');
@@ -131,7 +130,6 @@ const VideoView = (props: IProps) => {
       </Row>
       <Spin spinning={loading}>
         <div
-          ref={screenRef}
           className="play-screen-container"
           style={{ width: isFullScreen ? clientWidth : 1132, height: isFullScreen ? clientHeight : 637 }}
           onMouseOver={() => setIsControls(true)}
