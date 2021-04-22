@@ -16,7 +16,7 @@ export const colors: Colors = {
 /**
  * API 接口路径
  **/
-export const serverPath: string = '/api/';
+export const { serverPath } = require('./../../scripts/config');
 /**
  * 服务器部署前缀路径
  * **/
