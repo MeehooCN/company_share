@@ -162,7 +162,7 @@ export const beforeUploadLimit = (limitSize: number, limitType: Array<string>, l
   for (let i = 0; i < limitFileName.length; i++) {
     const item = limitFileName[i];
     if (file.name.indexOf(item) !== -1) {
-      message.error('文件名中不应包含字符 ' + limitFileName.join(',') + ' 字符');
+      message.error('文件名中不应包含字符 ' + limitFileName.join(' ') + ' 字符');
       return Upload.LIST_IGNORE;
     }
   }
