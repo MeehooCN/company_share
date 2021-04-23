@@ -66,7 +66,7 @@ const UploadLimit = () => {
       }
     },
     beforeUpload: (file: any) => {
-      return beforeUploadLimit(10, [...fileAccept.doc, ...fileAccept.zip], 20, file);
+      return beforeUploadLimit(20, [...fileAccept.doc, ...fileAccept.zip], 20, ['#', '&'], file);
     }
   };
   return (
@@ -77,7 +77,7 @@ const UploadLimit = () => {
       />
       <div style={{ marginTop: 20 }}>
         <Row style={{ marginBottom: 10 }}>
-          仅能上传大小限制 10MB，文件类型为 .doc，.docx, .zip, .rar，文件名长度小于 20 的文件。
+          仅能上传大小限制 20MB，文件类型为 .doc，.docx, .zip, .rar，文件名长度小于 20 的文件，且文件名不应包含 ‘#’ ‘&’ 字符。
         </Row>
         <Upload {...uploadProps}>
           <Button icon={<UploadOutlined />}>上传文件</Button>
