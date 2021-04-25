@@ -86,6 +86,18 @@ const UploadLimit = () => {
       />
       <div style={{ marginTop: 20 }}>
         <Row style={{ marginBottom: 10 }}>
+          上传文件特别是上传到 oss 需要限制文件名不能包含 '#' '&'。
+        </Row>
+        <Row style={{ marginBottom: 10 }}>
+          文件 url 需要编码，特别是 '+' 需转为 '%2B'。
+        </Row>
+        <Row style={{ marginBottom: 20 }}>
+          公司的附件上传因为后台转了文件名所以没出现这些问题，但上传到 oss 就会有这些问题，可以注意一下。
+        </Row>
+        <Row style={{ marginBottom: 10 }}>
+          下面是个例子：
+        </Row>
+        <Row style={{ marginBottom: 10 }}>
           仅能上传大小限制 20MB，文件类型为 .doc，.docx, .zip, .rar，文件名长度小于 20 的文件，且文件名不应包含 ‘#’ ‘&’ 字符。
         </Row>
         <Upload {...uploadProps}>
