@@ -6,7 +6,7 @@
 import React from 'react';
 import { Menu, Row, Col } from 'antd';
 import { Route } from 'react-router-dom';
-import { EchartsYError, InitialingGradle, IOSNoFix } from '@views/index';
+import { EchartsYError, InitialingGradle, IOSNoFix, ImageDrag } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/debug/menuList';
 import { platform } from '@utils/CommonVars';
@@ -34,6 +34,7 @@ const DebugList = () => {
         <Route path={platform + 'debugs/echartsYError'} component={EchartsYError} />
         <Route path={platform + 'debugs/initialingGradle'} component={InitialingGradle} />
         <Route path={platform + 'debugs/IOSNoFix'} component={IOSNoFix} />
+        <Route path={platform + 'debugs/imageDrag'} component={ImageDrag} />
       </Col>
     </Row>
   );

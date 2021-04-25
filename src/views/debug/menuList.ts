@@ -23,4 +23,11 @@ export const menuList: Array<MenuData> = [{
     name: 'IOS 无法固定屏幕方向',
     key: 'IOSNoFix'
   }]
+}, {
+  name: '浏览器兼容',
+  key: 'compatible',
+  children: [{
+    name: '图片拖拽兼容性问题',
+    key: 'imageDrag'
+  }]
 }];
