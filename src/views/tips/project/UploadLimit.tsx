@@ -26,9 +26,10 @@ const UploadLimit = () => {
     ' * limitSize: 文件限制大小（MB）\n' +
     ' * limitType： 限制文件的 格式\n' +
     ' * limitFileNameLength: 限制文件名长度\n' +
+    ' * limitFileName: 文件名中不应包含字符\n' +
     ' * file: 文件\n' +
     ' **/\n' +
-    'export const beforeUploadLimit = (limitSize: number, limitType: Array<any>, limitFileNameLength: number, file?: any) => {\n' +
+    'export const beforeUploadLimit = (limitSize: number, limitType: Array<string>, limitFileNameLength: number, limitFileName: Array<string>, file: any) => {\n' +
     '  const isLtLimitSize = file.size / 1024 / 1024 < limitSize;\n' +
     '  // 限制文件大小\n' +
     '  if (!isLtLimitSize) {\n' +
@@ -46,6 +47,14 @@ const UploadLimit = () => {
     '  if (file.name.length > limitFileNameLength) {\n' +
     '    message.error(\'文件名长度不能超过 \' + limitFileNameLength + \' 字\');\n' +
     '    return Upload.LIST_IGNORE;\n' +
+    '  }\n' +
+    '  // 限制文件名中不应包含字符\n' +
+    '  for (let i = 0; i < limitFileName.length; i++) {\n' +
+    '    const item = limitFileName[i];\n' +
+    '    if (file.name.indexOf(item) !== -1) {\n' +
+    '      message.error(\'文件名中不应包含字符 \' + limitFileName.join(\' \') + \' 字符\');\n' +
+    '      return Upload.LIST_IGNORE;\n' +
+    '    }\n' +
     '  }\n' +
     '  return true;\n' +
     '};';

@@ -282,6 +282,8 @@ class ImageView extends React.Component<IProps, IState> {
           className="view-image-container"
           style={{ display: imageView ? 'flex' : 'none' }}
           onWheel={this.changeImageSize}
+          onDragEnter={(e: any) => e.preventDefault()}
+          onDragOver={(e: any) => e.preventDefault()}
         >
           <Row className="top-icon-container">
             <Space size="middle">
