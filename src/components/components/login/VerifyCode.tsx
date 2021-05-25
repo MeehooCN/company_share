@@ -6,11 +6,13 @@
 import React from 'react';
 import { Input, Button, Form } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
+
 interface VerifyCodeProps {
   verifyLoading: boolean,
   countDown: number,
   getCode(): void
 }
+
 const VerifyCode = (props: VerifyCodeProps) => {
   const { verifyLoading, countDown, getCode } = props;
   return (

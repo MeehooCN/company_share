@@ -6,10 +6,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Row, Input, Form } from 'antd';
 import { VerifiedOutlined } from '@ant-design/icons';
+
 interface ImageCaptchaProps {
   blob: any
   changeImage(): void
 }
+
 const ImageCaptcha = (props: ImageCaptchaProps) => {
   const { blob, changeImage } = props;
   const imageRef: any = useRef();

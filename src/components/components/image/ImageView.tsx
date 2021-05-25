@@ -129,6 +129,11 @@ class ImageView extends React.Component<IProps, IState> {
         imageLoading: false
       });
     };
+    image.onerror = () => {
+      this.setState({
+        imageLoading: false
+      });
+    };
   };
   // 取消查看图片
   private hiddenImage = () => {

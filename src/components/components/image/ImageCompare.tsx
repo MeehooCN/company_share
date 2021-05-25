@@ -228,7 +228,7 @@ class ImageCompare extends React.Component<IProps, IState> {
           width: '100vw',
           height: '100vh',
           backgroundColor: 'rgba(0,0,0,.9)',
-          display: comparisonView ? 'block' : 'none',
+          display: comparisonView ? 'flex' : 'none',
           zIndex: 999
         }}>
         <Row style={{ position: 'fixed', right: 10, top: 10, display: 'flex', fontSize: 24, zIndex: 3 }}>
@@ -245,8 +245,6 @@ class ImageCompare extends React.Component<IProps, IState> {
             onMouseMove={(e: any) => this.handleMouseOver(e)}
             onWheel={this.changeImageSize}
             style={{
-              maxWidth: clientWidth,
-              maxHeight: clientHeight,
               cursor: 'move',
               display: isLoaded ? 'block' : 'none'
             }}

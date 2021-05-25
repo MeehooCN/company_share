@@ -1,10 +1,10 @@
-import React from 'react';
-
 /**
  * @description: Card的底部分割线
  * @author: cy
  * @createTime: 2020/8/14 9:45
  **/
+import React from 'react';
+
 
 const CardFooterLine = () => {
   return (
