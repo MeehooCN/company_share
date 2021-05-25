@@ -15,12 +15,12 @@ const OverTextView = () => {
     defaultValue: ''
   }, {
     name: 'overflowLength',
-    description: '显示字符串长度',
+    description: '显示字符串宽度',
     type: 'number',
     defaultValue: ''
   }];
-  const viewComponents = <OverText content="御坂美琴是世界上最可爱的初中生！" overflowLength={10} />;
-  const code: string = '<OverText content="御坂美琴是世界上最可爱的初中生！" overflowLength={10} />';
+  const viewComponents = <OverText content="御坂美琴是世界上最可爱的初中生！" overflowLength={200} />;
+  const code: string = '<OverText content="御坂美琴是世界上最可爱的初中生！" overflowLength={200} />';
   return (
     <Row>
       <TitleWithDescription title="OverText" content="文字超出长度显示省略号，移上去显示全部文字。" />
