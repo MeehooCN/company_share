@@ -2,12 +2,11 @@
  * @description: 图片列表
  * @author: cnn
  * @createTime: 2020/7/27 11:27
- * @param: imageList: 图片列表数据，listChange: 是否改变图片列表，containerWidth: 容器宽度
+ * @param: imageList: 图片列表数据，containerWidth: 容器宽度
  **/
 import React, { useState, useEffect } from 'react';
 import { Empty, Row } from 'antd';
-import { ImageComponent } from '@components/index';
-import { ImageData } from '@utils/CommonInterface';
+import { default as ImageComponent, ImageData } from './ImageComponent';
 
 // 图片列表每张图期望高度
 const wishHeight: number = 200;
@@ -20,9 +19,14 @@ interface ImageDataWithViewContainer extends ImageData {
 
 interface IProps {
   imagePropList: Array<ImageData>,
-  listChange?: boolean,
   containerWidth?: number
 }
+
+export const useImageListHook = (containerInitWidth?: number) => {
+  const [imagePropList, setImagePropList] = useState<Array<ImageData>>([]);
+  const [containerWidth, setContainerWidth] = useState<number>(containerInitWidth || 1200);
+  return { imagePropList, setImagePropList, containerWidth, setContainerWidth };
+};
 
 const ImageList = (props: IProps) => {
   const { imagePropList, containerWidth = 1200 } = props;
@@ -65,24 +69,26 @@ const ImageList = (props: IProps) => {
   // 图片懒加载
   const lazyLoad = () => {
     const tempImageList: Array<ImageDataWithViewContainer> = [...imageList];
-    // 设备可用高度
-    let availHeight: number = window.screen.availHeight;
-    // 滚动的高度
-    let scrollHeight: number = document.documentElement.scrollTop;
-    // 距img元素显露出的距离
-    // 有个问题，最后两个始终处于懒加载下面一排不知道为啥
-    let diff = 100;
-    for (let i = 0; i < tempImageList.length; i++) {
-      // @ts-ignore
-      let reactObj = document.getElementById(tempImageList[i].id).getBoundingClientRect();
-      // div距顶部高度
-      let contentTop = reactObj.top;
-      if (scrollHeight + diff > contentTop - availHeight) {
-        tempImageList[i].thumbnailTrueUrl = tempImageList[i].thumbnailUrl;
+    if (tempImageList.length > 0) {
+      // 设备可用高度
+      let availHeight: number = window.screen.availHeight;
+      // 滚动的高度
+      let scrollHeight: number = document.documentElement.scrollTop;
+      // 距img元素显露出的距离
+      // 有个问题，最后两个始终处于懒加载下面一排不知道为啥
+      let diff = 100;
+      for (let i = 0; i < tempImageList.length; i++) {
+        // @ts-ignore
+        let reactObj = document.getElementById(tempImageList[i].id).getBoundingClientRect();
+        // div距顶部高度
+        let contentTop = reactObj.top;
+        if (scrollHeight + diff > contentTop - availHeight) {
+          tempImageList[i].thumbnailTrueUrl = tempImageList[i].thumbnailUrl;
+        }
       }
+      setImageList(tempImageList);
+      setIsInit(false);
     }
-    setImageList(tempImageList);
-    setIsInit(false);
   };
   // 计算图片宽高
   const getImageView = (imageTempList: Array<ImageDataWithViewContainer>) => {
@@ -141,20 +147,24 @@ const ImageList = (props: IProps) => {
     }
     return imageTempList;
   };
-  let imageHtml: any = <Row justify="center" style={{ width: '100%' }}><Empty description="暂无图片" /></Row>;
-  if (imageList.length > 0) {
-    imageHtml = imageList.map((item: ImageDataWithViewContainer, index: number) => (
-      <div id={item.id} key={item.id}>
-        <ImageComponent
-          index={index}
-          image={item}
-          height={item.viewHeight}
-          width={item.viewWidth}
-          onClick={() => {}}
-        />
-      </div>
-    ));
-  }
+  // 获取图片列表显示
+  const getImageListView = () => {
+    let imageHtml: any = <Row justify="center" style={{ width: '100%' }}><Empty description="暂无图片" /></Row>;
+    if (imageList.length > 0) {
+      imageHtml = imageList.map((item: ImageDataWithViewContainer, index: number) => (
+        <div id={item.id} key={item.id}>
+          <ImageComponent
+            index={index}
+            image={item}
+            height={item.viewHeight}
+            width={item.viewWidth}
+            onClick={() => {}}
+          />
+        </div>
+      ));
+    }
+    return imageHtml;
+  };
   return (
     <div
       style={{
@@ -165,7 +175,7 @@ const ImageList = (props: IProps) => {
       }}
       onWheel={handleWheel}
     >
-      {imageHtml}
+      {getImageListView()}
     </div>
   );
 };

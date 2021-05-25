@@ -3,23 +3,26 @@
  * @author: cnn
  * @createTime: 2020/7/22 16:43
  **/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Row } from 'antd';
 import Mock, { Random } from 'mockjs';
-import { API, CodeExample, ImageList, TitleWithDescription } from '@components/index';
+import { API, CodeExample, ImageList, TitleWithDescription, useImageListHook } from '@components/index';
 import { getClientWidth } from '@utils/CommonFunc';
 
 const ImageListView = () => {
-  const [containerWidth, setContainerWidth] = useState<number>(getClientWidth() / 24 * 20 - 150);
+  const { containerWidth, setContainerWidth, imagePropList, setImagePropList } = useImageListHook(getClientWidth() / 24 * 20 - 150);
   useEffect(() => {
     window.addEventListener('resize', onWindowResize);
     return () => {
       window.removeEventListener('resize', () => {});
     };
   }, []);
+  useEffect(() => {
+    initImageList();
+  }, []);
   // 初始化图片列表
   const initImageList = () => {
-    return Mock.mock({
+    return setImagePropList(Mock.mock({
       'imageList|16-35': [{
         'id|+1': 1,
         'sourceUrl': Random.dataImage('300x250'),
@@ -36,7 +39,7 @@ const ImageListView = () => {
         'width|+1': [300, 450, 300, 300, 400, 400],
         'height|+1': [250, 300, 500, 600, 400, 400]
       }]
-    }).imageList;
+    }).imageList);
   };
   // 监听窗口变化
   const onWindowResize = () => {
@@ -47,11 +50,6 @@ const ImageListView = () => {
     description: '图片列表',
     type: 'Array<ImageData>',
     defaultValue: '[]'
-  }, {
-    name: 'listChange',
-    description: '可选，是否改变图片列表',
-    type: 'bool',
-    defaultValue: ''
   }, {
     name: 'containerWidth',
     description: '可选，容器宽度',
@@ -94,8 +92,45 @@ const ImageListView = () => {
     type: 'number',
     defaultValue: '无'
   }];
-  const viewComponents = <ImageList imagePropList={initImageList()} listChange={false} containerWidth={containerWidth} />;
-  const code: string = '<ImageList imageList={[]} changeList={false} containerWidth={1000} />';
+  const viewComponents = <ImageList imagePropList={imagePropList} containerWidth={containerWidth} />;
+  const code: string = 'import React, { useEffect } from \'react\';\n' +
+    'import { Row } from \'antd\';\n' +
+    'import Mock, { Random } from \'mockjs\';\n' +
+    'import { ImageList, useImageListHook } from \'@components/index\';\n' +
+    '\n' +
+    'const ImageListView = () => {\n' +
+    '  const { containerWidth, setContainerWidth, imagePropList, setImagePropList } = useImageListHook(1000);\n' +
+    '  useEffect(() => {\n' +
+    '    initImageList();\n' +
+    '  }, []);\n' +
+    '  // 初始化图片列表\n' +
+    '  const initImageList = () => {\n' +
+    '    return setImagePropList(Mock.mock({\n' +
+    '      \'imageList|16-35\': [{\n' +
+    '        \'id|+1\': 1,\n' +
+    '        \'sourceUrl\': Random.dataImage(\'300x250\'),\n' +
+    '        \'thumbnailUrl|+1\': [\n' +
+    '          Random.dataImage(\'300x250\'),\n' +
+    '          Random.dataImage(\'450x300\'),\n' +
+    '          Random.dataImage(\'300x500\'),\n' +
+    '          Random.dataImage(\'300x600\'),\n' +
+    '          Random.dataImage(\'400x400\'),\n' +
+    '          Random.dataImage(\'400x400\'),\n' +
+    '        ],\n' +
+    '        \'thumbnailTrueUrl|+1\': \'\',\n' +
+    '        \'name\': Random.cname(),\n' +
+    '        \'width|+1\': [300, 450, 300, 300, 400, 400],\n' +
+    '        \'height|+1\': [250, 300, 500, 600, 400, 400]\n' +
+    '      }]\n' +
+    '    }).imageList);\n' +
+    '  };\n' +
+    '  return (\n' +
+    '    <Row style={{ width: 1000 }}>\n' +
+    '      <ImageList imagePropList={imagePropList} containerWidth={containerWidth} />\n' +
+    '    </Row>\n' +
+    '  );\n' +
+    '};\n' +
+    'export default ImageListView;';
   return (
     <Row>
       <TitleWithDescription title="ImageList" content="图片列表。" />

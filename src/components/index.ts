@@ -11,7 +11,7 @@ export { default as API } from '@components/components/API';
 export { default as CodeExample } from '@components/components/CodeExample';
 export { default as CodeBox } from '@components/CodeBox';
 export { default as ImageComponent } from '@components/components/image/ImageComponent';
-export { default as ImageList } from '@components/components/image/ImageList';
+export { default as ImageList, useImageListHook } from '@components/components/image/ImageList/ImageList';
 export { default as ImageView } from '@components/components/image/ImageView';
 export { default as ImageCompare } from '@components/components/image/ImageCompare';
 export { default as Loading } from '@components/components/Loading';
