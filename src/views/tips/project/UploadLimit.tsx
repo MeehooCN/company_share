@@ -75,7 +75,7 @@ const UploadLimit = () => {
       }
     },
     beforeUpload: (file: any) => {
-      return beforeUploadLimit(20, [...fileAccept.doc, ...fileAccept.zip], 20, ['#', '&'], file);
+      return beforeUploadLimit([...fileAccept.doc, ...fileAccept.zip], file, 20, 20, ['#', '&']);
     }
   };
   return (
