@@ -22,6 +22,7 @@ interface IProps {
   containerWidth?: number
 }
 
+// 使用该组件的 hook
 export const useImageListHook = (containerInitWidth?: number) => {
   const [imagePropList, setImagePropList] = useState<Array<ImageData>>([]);
   const [containerWidth, setContainerWidth] = useState<number>(containerInitWidth || 1200);

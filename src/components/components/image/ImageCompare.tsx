@@ -3,7 +3,7 @@
  * @author: cnn
  * @createTime: 2020/8/11 17:26
  **/
-import React from 'react';
+import React, { useState } from 'react';
 import { Row } from 'antd';
 import { CloseOutlined, FullscreenExitOutlined, LoadingOutlined } from '@ant-design/icons';
 
@@ -46,6 +46,24 @@ interface IState {
   moveX: number,
   moveY: number
 }
+
+// 使用该组件 hook
+export const useImageCompareHook = () => {
+  const [comparisonView, setComparisonView] = useState<boolean>(false);
+  const [openTimes, setOpenTimes] = useState<number>(0);
+  // 显示对比图
+  const clickCompareImage = () => {
+    // 隐藏滚动条
+    document.documentElement.style.overflow = 'hidden';
+    setComparisonView(true);
+    setOpenTimes(openTimes + 1);
+  };
+  // 隐藏对比显示
+  const closeCompareView = () => {
+    setComparisonView(false);
+  };
+  return { comparisonView, setComparisonView, openTimes, setOpenTimes, clickCompareImage, closeCompareView };
+};
 
 class ImageCompare extends React.Component<IProps, IState> {
   constructor(props: IProps) {

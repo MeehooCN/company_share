@@ -6,7 +6,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Row } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons';
-import { HorizontalImageComponent } from '@components/index';
+import HorizontalImageComponent from './HorizontalImageComponent';
 import './imageListHorizontal.less';
 
 export interface ImageData {
@@ -27,6 +27,21 @@ interface IProps {
   viewIndex: number,
   horizontalImageHeight: number
 }
+
+/**
+ * 使用该组件 hook
+ * initialHeight: 图片高度
+**/
+export const useImageListHorizontalHook = (initialHeight: number) => {
+  const horizontalImageHeight: number = initialHeight;
+  const [imageList, setImageList] = useState<Array<ImageData>>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  // 点击图片
+  const onImageClick = (image: ImageData, index: number) => {
+    setCurrentImageIndex(index);
+  };
+  return { horizontalImageHeight, imageList, setImageList, currentImageIndex, setCurrentImageIndex, onImageClick };
+};
 
 const ImageListHorizontal = (props: IProps) => {
   const { propImageList, bottomImageListWidth, onImageClick, viewIndex, horizontalImageHeight } = props;

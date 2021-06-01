@@ -4,11 +4,10 @@
  * @params: index: 浏览的图片位于当前图片列表第几张，imageView: 是否显示图片浏览窗口，imageList: 图片列表, closeView: 关闭图片显示回调函数
  * @createTime: 2020/8/3 11:01
  **/
-import React from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Row, Space, message, Spin } from 'antd';
 import { LeftCircleOutlined, RightCircleOutlined, CloseOutlined, FullscreenExitOutlined } from '@ant-design/icons';
-import { ImageData } from '@utils/commonInterface';
 import './imageView.less';
 
 const clientHeight: number = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
@@ -18,6 +17,16 @@ const arrowTop: number = clientHeight / 2 - 15;
 const maxScale: number = 10;
 // 最小缩放倍数
 const minScale: number = 0.5;
+
+interface ImageData {
+  id: string,
+  sourceUrl: string,
+  thumbnailUrl: string,
+  thumbnailTrueUrl: string,
+  name: string,
+  width: number,
+  height: number
+}
 
 interface IProps {
   index: number,
@@ -41,6 +50,26 @@ interface IState {
   imageView: boolean,
   imageLoading: boolean
 }
+
+// 使用该组件的 hook
+export const useImageViewHook = () => {
+  const [imageList, setImageList] = useState<Array<ImageData>>([]);
+  const [imageView, setImageView] = useState<boolean>(false);
+  const [imageIndex, setImageIndex] = useState<number>(-1);
+  // 打开显示
+  const clickImage = (image: ImageData) => {
+    // 隐藏滚动条
+    document.documentElement.style.overflow = 'hidden';
+    const imageIndex: number = imageList.findIndex((imageItem) => imageItem.id === image.id);
+    setImageView(true);
+    setImageIndex(imageIndex);
+  };
+  // 关闭显示
+  const closeView = () => {
+    setImageView(false);
+  };
+  return { imageList, setImageList, imageView, setImageView, imageIndex, setImageIndex, closeView, clickImage };
+};
 
 class ImageView extends React.Component<IProps, IState> {
   constructor(props: any) {

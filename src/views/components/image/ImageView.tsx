@@ -3,15 +3,16 @@
  * @author: cnn
  * @createTime: 2020/8/3 10:29
  **/
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Row } from 'antd';
-import { TitleWithDescription, API, CodeExample, ImageComponent, ImageView as ImageViewComponent } from '@components/index';
+import {
+  TitleWithDescription, API, CodeExample, ImageComponent, ImageView as ImageViewComponent,
+  useImageViewHook
+} from '@components/index';
 import { ImageData } from '@utils/CommonInterface';
 
 const ImageView = () => {
-  const [imageList, setImageList] = useState<Array<ImageData>>([]);
-  const [imageView, setImageView] = useState<boolean>(false);
-  const [imageIndex, setImageIndex] = useState<number>(-1);
+  const { imageList, setImageList, imageView, imageIndex, closeView, clickImage } = useImageViewHook();
   useEffect(() => {
     const imageList: Array<ImageData> = [{
       id: '1',
@@ -40,13 +41,6 @@ const ImageView = () => {
     }];
     setImageList(imageList);
   }, []);
-  const clickImage = (image: ImageData) => {
-    // 隐藏滚动条
-    document.documentElement.style.overflow = 'hidden';
-    const imageIndex: number = imageList.findIndex((imageItem) => imageItem.id === image.id);
-    setImageView(true);
-    setImageIndex(imageIndex);
-  };
   const getImageListComponent = (imageList: Array<ImageData>) => {
     return imageList.map((image: ImageData, index: number) => (
       <ImageComponent key={image.id} index={index} image={image} onClick={clickImage} />
@@ -114,16 +108,62 @@ const ImageView = () => {
       {getImageListComponent(imageList)}
     </Row>
   );
-  const code: string = '// 关闭显示\n' +
-    'private closeView = () => {\n' +
-    '  this.setState({ imageView: false });\n' +
+  const code: string = 'import React, { useEffect } from \'react\';\n' +
+    'import { Row } from \'antd\';\n' +
+    'import { ImageComponent, ImageView as ImageViewComponent, useImageViewHook } from \'@components/index\';\n' +
+    'import { ImageData } from \'@utils/CommonInterface\';\n' +
+    '\n' +
+    'const ImageView = () => {\n' +
+    '  const { imageList, setImageList, imageView, imageIndex, closeView, clickImage } = useImageViewHook();\n' +
+    '  useEffect(() => {\n' +
+    '    const imageList: Array<ImageData> = [{\n' +
+    '      id: \'1\',\n' +
+    '      thumbnailUrl: \'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4087715081,784938553&fm=26&gp=0.jpg\',\n' +
+    '      thumbnailTrueUrl: \'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4087715081,784938553&fm=26&gp=0.jpg\',\n' +
+    '      sourceUrl: \'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597147531787&di=bbc49d2e18f148d851f26e75e3e1375d&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F7c7bf85a6038c76fc5cc0ac8e6bdc176a9bea574a6f8c-GvTWgT_fw658\',\n' +
+    '      name: \'misaka-1\',\n' +
+    '      width: 0,\n' +
+    '      height: 0\n' +
+    '    }, {\n' +
+    '      id: \'2\',\n' +
+    '      thumbnailUrl: \'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4030263907,556408717&fm=26&gp=0.jpg\',\n' +
+    '      thumbnailTrueUrl: \'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4030263907,556408717&fm=26&gp=0.jpg\',\n' +
+    '      sourceUrl: \'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596433123754&di=44649d15c301cc97bfabbbd4d81d413c&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dbea2e73f8e18367aad897fd51e728b68%2F90f955a7d933c895dfb0b26dd91373f083020032.jpg\',\n' +
+    '      name: \'misaka-2\',\n' +
+    '      width: 0,\n' +
+    '      height: 0\n' +
+    '    }, {\n' +
+    '      id: \'3\',\n' +
+    '      thumbnailUrl: \'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3044907555,2122407846&fm=26&gp=0.jpg\',\n' +
+    '      thumbnailTrueUrl: \'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3044907555,2122407846&fm=26&gp=0.jpg\',\n' +
+    '      sourceUrl: \'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597147588837&di=ffa801b9c9dc77d5d0b40e4db0b33331&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fce9f4aaaf1b253030e7b9ba2e6c14dc45320b5f2.jpg\',\n' +
+    '      name: \'misaka-3\',\n' +
+    '      width: 0,\n' +
+    '      height: 0\n' +
+    '    }];\n' +
+    '    setImageList(imageList);\n' +
+    '  }, []);\n' +
+    '  // 获取图片列表\n' +
+    '  const getImageListComponent = (imageList: Array<ImageData>) => {\n' +
+    '    return imageList.map((image: ImageData, index: number) => (\n' +
+    '      <ImageComponent key={image.id} index={index} image={image} onClick={clickImage} />\n' +
+    '    ));\n' +
+    '  };\n' +
+    '  return (\n' +
+    '    <Row>\n' +
+    '      <Row>\n' +
+    '        {getImageListComponent(imageList)}\n' +
+    '      </Row>\n' +
+    '      <ImageViewComponent\n' +
+    '        index={imageIndex}\n' +
+    '        imageList={imageList}\n' +
+    '        closeView={closeView}\n' +
+    '        imageView={imageView}\n' +
+    '      />\n' +
+    '    </Row>\n' +
+    '  );\n' +
     '};\n' +
-    '<ImageViewComponent\n' +
-    '  index={imageIndex}\n' +
-    '  imageList={imageList}\n' +
-    '  closeView={this.closeView}\n' +
-    '  imageView={imageView}\n' +
-    '/>';
+    'export default ImageView;';
   return (
     <Row>
       <TitleWithDescription title="ImageView" content="图片浏览。" />
@@ -134,7 +174,7 @@ const ImageView = () => {
       <ImageViewComponent
         index={imageIndex}
         imageList={imageList}
-        closeView={() => setImageView(false)}
+        closeView={closeView}
         imageView={imageView}
       />
     </Row>

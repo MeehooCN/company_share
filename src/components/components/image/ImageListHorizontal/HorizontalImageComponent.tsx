@@ -5,8 +5,17 @@
  **/
 import React from 'react';
 import { colors } from '@utils/CommonVars';
-import { ImageData } from '@utils/CommonInterface';
 import './horizontalImageComponent.less';
+
+interface ImageData {
+  id: string,
+  sourceUrl: string,
+  thumbnailUrl: string,
+  thumbnailTrueUrl: string,
+  name: string,
+  width: number,
+  height: number
+}
 
 interface IProps {
   index: number,
