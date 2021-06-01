@@ -31,6 +31,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'ImageListHorizontal 横向图片列表',
     key: 'imageListHorizontal'
+  }, {
+    name: 'ImageListWithView 图片列表，点击看大图',
+    key: 'imageListWithView'
   }]
 }, {
   name: '表单',

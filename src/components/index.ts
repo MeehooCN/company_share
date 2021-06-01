@@ -17,6 +17,7 @@ export { default as ImageCompare, useImageCompareHook } from '@components/compon
 export { default as Loading } from '@components/components/Loading';
 export { default as OverText } from '@components/components/text/OverText';
 export { default as ImageListHorizontal, useImageListHorizontalHook } from '@components/components/image/ImageListHorizontal/ImageListHorizontal';
+export { default as ImageListWithView, useImageListWithViewHook } from '@components/components/image/ImageListWithView/ImageListWithView';
 export { default as Evaluate } from '@components/components/evaluate/Evaluate';
 export { default as IconFontChoose } from '@components/components/icon/IconFontChoose';
 export { default as ImageCaptcha } from '@components/components/login/ImageCaptcha';

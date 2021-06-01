@@ -4,15 +4,15 @@
  * @params: index: 浏览的图片位于当前图片列表第几张，imageView: 是否显示图片浏览窗口，imageList: 图片列表, closeView: 关闭图片显示回调函数
  * @createTime: 2020/8/3 11:01
  **/
-import React, { useState } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
-import { Row, Space, message, Spin } from 'antd';
-import { LeftCircleOutlined, RightCircleOutlined, CloseOutlined, FullscreenExitOutlined } from '@ant-design/icons';
+import { Row, Space, Spin } from 'antd';
+import { CloseOutlined, FullscreenExitOutlined } from '@ant-design/icons';
 import './imageView.less';
+import ImageListHorizontal from './ImageListHorizontal';
 
-const clientHeight: number = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+const clientHeight: number = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 170;
 const clientWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-const arrowTop: number = clientHeight / 2 - 15;
 // 最大放大倍数
 const maxScale: number = 10;
 // 最小缩放倍数
@@ -25,14 +25,16 @@ interface ImageData {
   thumbnailTrueUrl: string,
   name: string,
   width: number,
-  height: number
+  height: number,
+  leftPosition: number
 }
 
 interface IProps {
   index: number,
   imageView: boolean,
   imageList: Array<ImageData>,
-  closeView(): void
+  closeView(): void,
+  onHorImageClick(image: ImageData, viewIndex: number): void,
 }
 
 interface IState {
@@ -50,26 +52,6 @@ interface IState {
   imageView: boolean,
   imageLoading: boolean
 }
-
-// 使用该组件的 hook
-export const useImageViewHook = () => {
-  const [imageList, setImageList] = useState<Array<ImageData>>([]);
-  const [imageView, setImageView] = useState<boolean>(false);
-  const [imageIndex, setImageIndex] = useState<number>(-1);
-  // 打开显示
-  const clickImage = (image: ImageData) => {
-    // 隐藏滚动条
-    document.documentElement.style.overflow = 'hidden';
-    const imageIndex: number = imageList.findIndex((imageItem) => imageItem.id === image.id);
-    setImageView(true);
-    setImageIndex(imageIndex);
-  };
-  // 关闭显示
-  const closeView = () => {
-    setImageView(false);
-  };
-  return { imageList, setImageList, imageView, setImageView, imageIndex, setImageIndex, closeView, clickImage };
-};
 
 class ImageView extends React.Component<IProps, IState> {
   constructor(props: any) {
@@ -90,7 +72,8 @@ class ImageView extends React.Component<IProps, IState> {
       sourceUrl: '',
       name: '',
       width: 0,
-      height: 0
+      height: 0,
+      leftPosition: 0
     },
     viewIndex: this.props.index,
     canDragImage: false,
@@ -179,43 +162,6 @@ class ImageView extends React.Component<IProps, IState> {
       startY: 0,
       canDragImage: false
     }, this.setImageSize);
-  };
-  // 下一张图
-  private toNextImage = () => {
-    const { imageList } = this.props;
-    const { viewIndex } = this.state;
-    const totalIndex: number = imageList.length - 1;
-    if (viewIndex + 1 <= totalIndex) {
-      this.setState({
-        viewImage: imageList[viewIndex + 1],
-        viewIndex: viewIndex + 1,
-        moveX: 0,
-        moveY: 0,
-        startX: 0,
-        startY: 0,
-        canDragImage: false
-      }, this.setImageSize);
-    } else {
-      message.warning('已经是最后一张了！');
-    }
-  };
-  // 上一张图
-  private toPreviousImage = () => {
-    const { imageList } = this.props;
-    const { viewIndex } = this.state;
-    if (viewIndex - 1 >= 0) {
-      this.setState({
-        viewImage: imageList[viewIndex - 1],
-        viewIndex: viewIndex - 1,
-        moveX: 0,
-        moveY: 0,
-        startX: 0,
-        startY: 0,
-        canDragImage: false
-      }, this.setImageSize);
-    } else {
-      message.warning('已经是第一张了！');
-    }
   };
   // 监听鼠标滚轮，放大缩小图片
   private changeImageSize = (e: any) => {
@@ -306,47 +252,53 @@ class ImageView extends React.Component<IProps, IState> {
   render(): React.ReactNode {
     const {
       showWidth, showHeight, viewImage, moveX,
-      moveY, imageView, imageLoading, canDragImage, viewIndex
+      moveY, imageView, imageLoading, canDragImage,
     } = this.state;
-    const { imageList } = this.props;
-    const totalIndex: number = imageList.length - 1;
+    const { imageList, onHorImageClick, index } = this.props;
     return createPortal(
       (
         <div
-          className="view-image-container-only"
-          style={{ display: imageView ? 'flex' : 'none' }}
+          className="view-container"
+          style={{ display: imageView ? 'block' : 'none' }}
           onWheel={this.changeImageSize}
           onDragEnter={(e: any) => e.preventDefault()}
           onDragOver={(e: any) => e.preventDefault()}
         >
-          <Row className="top-icon-container">
-            <Space size="middle">
-              <FullscreenExitOutlined className="center-icon" title="居中" onClick={this.centerImage} />
-              <CloseOutlined className="close-icon" title="退出" onClick={this.hiddenImage} />
-            </Space>
-          </Row>
-          {viewIndex - 1 >= 0 && <LeftCircleOutlined className="left-arrow" style={{ top: arrowTop }} onClick={this.toPreviousImage} />}
-          <Spin spinning={imageLoading}>
-            <img
-              src={viewImage.sourceUrl}
-              alt={viewImage.name}
-              style={{
-                width: showWidth,
-                height: showHeight,
-                transitionProperty: 'width, height',
-                transitionDuration: '0.3s',
-                position: 'relative',
-                top: moveY,
-                left: moveX,
-                cursor: canDragImage ? 'move' : 'default'
-              }}
-              draggable={true}
-              onDragStart={this.handleDragStart}
-              onDrag={this.handleImageDrag}
-              onDragEnd={this.handleDragEnd}
-            />
-          </Spin>
-          {viewIndex + 1 <= totalIndex && <RightCircleOutlined className="right-arrow" style={{ top: arrowTop }} onClick={this.toNextImage} />}
+          <div className="view-image-container">
+            <Row className="top-icon-container">
+              <Space size="middle">
+                <FullscreenExitOutlined className="center-icon" title="居中" onClick={this.centerImage} />
+                <CloseOutlined className="close-icon" title="退出" onClick={this.hiddenImage} />
+              </Space>
+            </Row>
+            <Spin spinning={imageLoading}>
+              <img
+                src={viewImage.sourceUrl}
+                alt={viewImage.name}
+                style={{
+                  width: showWidth,
+                  height: showHeight,
+                  transitionProperty: 'width, height',
+                  transitionDuration: '0.3s',
+                  position: 'relative',
+                  top: moveY,
+                  left: moveX,
+                  cursor: canDragImage ? 'move' : 'default'
+                }}
+                draggable={true}
+                onDragStart={this.handleDragStart}
+                onDrag={this.handleImageDrag}
+                onDragEnd={this.handleDragEnd}
+              />
+            </Spin>
+          </div>
+          <ImageListHorizontal
+            propImageList={imageList}
+            onImageClick={onHorImageClick}
+            bottomImageListWidth={clientWidth - 200}
+            viewIndex={index}
+            horizontalImageHeight={150}
+          />
         </div>
       ), this.node
     );

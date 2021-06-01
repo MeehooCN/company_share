@@ -11,7 +11,7 @@ import {
   MyTitle, ImageListView, ImageView, FormDemoHook, FormDemoClass,
   HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView,
   PromptIndex, ImageListHorizontalView, EvaluateView, IconFontView, MyRangePickerView,
-  CodeLogin, ImageLogin, SearchInputView, AttachmentView
+  CodeLogin, ImageLogin, SearchInputView, AttachmentView, ImageListWithView
 } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
@@ -42,6 +42,7 @@ const ComponentList = () => {
         <Route path={platform + 'components/imageView'} component={ImageView} />
         <Route path={platform + 'components/imageCompare'} component={ImageCompare} />
         <Route path={platform + 'components/imageListHorizontal'} component={ImageListHorizontalView} />
+        <Route path={platform + 'components/imageListWithView'} component={ImageListWithView} />
         <Route path={platform + 'components/hookForm'} component={HookForm} />
         <Route path={platform + 'components/searchForm'} component={InlineSearchFormDemo} />
         <Route path={platform + 'components/commonForm'} component={FormDemoHook} />

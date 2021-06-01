@@ -9,6 +9,7 @@ export { default as Home } from '@views/home/Home';
 export { default as MyTitle } from '@views/components/text/MyTitle';
 export { default as ImageListView } from '@views/components/image/ImageList';
 export { default as ImageView } from '@views/components/image/ImageView';
+export { default as ImageListWithView } from '@views/components/image/ImageListWithView';
 export { default as LoadingView } from '@views/components/feedback/LoadingView';
 export { default as BasicProject } from '@views/tips/project/BasicProject';
 export { default as WebStormESLint } from '@views/tips/project/WebStormESLint';
