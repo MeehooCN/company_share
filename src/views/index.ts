@@ -26,6 +26,7 @@ export { default as FormDemoHook } from '@views/components/form/FormDemo';
 export { default as FormDemoClass } from '@views/components/form/FormDemoClass';
 export { default as HookForm } from './components/form/HookForm';
 export { default as InlineSearchFormDemo } from '@views/components/form/InlineSearchFormDemo';
+export { default as FormValid } from '@views/components/form/FormValid';
 export { default as ImageCompare } from '@views/components/image/ImageCompare';
 export { default as BuildIcon } from '@views/tips/flutter/BuildIcon';
 export { default as OverTextView } from '@views/components/text/OverTextView';

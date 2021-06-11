@@ -54,6 +54,10 @@ export const menuList: Array<MenuData> = [{
     name: 'class 使用 class 表单',
     key: 'commonFormClass',
     children: []
+  }, {
+    name: '表单常用验证',
+    key: 'formValid',
+    children: []
   }]
 }, {
   name: '反馈',
