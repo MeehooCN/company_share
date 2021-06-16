@@ -10,7 +10,20 @@ const { Option } = Select;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
 const { RangePicker } = DatePicker;
-declare type FormItemType = 'text' | 'textArea' | 'inputNumber' | 'password' | 'select' | 'treeSelect' | 'date' | 'rangeDate'| 'rangeDateNoTime'| 'dateNoTime' | 'radio' | 'cascader';
+export enum ISearchFormItemType {
+  Text = 'text',
+  TextArea = 'textArea',
+  InputBumber = 'inputNumber',
+  Password = 'password',
+  Select = 'select',
+  TreeSelect = 'treeSelect',
+  Date = 'date',
+  RangeDate = 'rangeDate',
+  DateNoTime = 'dateNoTime',
+  Radio = 'radio',
+  Cascader = 'cascader',
+}
+declare type FormItemType = ISearchFormItemType;
 /**
  * @description 表单项
  * @property label 标签名

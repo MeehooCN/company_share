@@ -6,7 +6,7 @@
 import React from 'react';
 import { IFormColumns } from '@components/components/form/CommonHorizForm';
 import { getRules } from '@utils/CommonFunc';
-import { CommonHorizFormHook } from '@components/components/form/CommonHorizFormHook';
+import { CommonHorizFormHook, IFormItemType } from '@components/components/form/CommonHorizFormHook';
 import { CodeExample, TitleWithDescription } from '@components/index';
 import API from '@components/components/API';
 import { Row } from 'antd';
@@ -82,42 +82,42 @@ const FormValid = () => {
   }];
   const formColumns: Array<IFormColumns> = [{
     label: '非空校验',
-    type: 'text',
+    type: IFormItemType.Text,
     name: 'required',
     rules: getRules('required')
   }, {
     label: '空格，空白字符校验',
-    type: 'text',
+    type: IFormItemType.Text,
     name: 'inputNotSpace',
     rules: getRules('inputNotSpace')
   }, {
     label: '邮箱',
-    type: 'text',
+    type: IFormItemType.Text,
     name: 'email',
     rules: getRules('email')
   }, {
     label: '手机',
-    type: 'text',
+    type: IFormItemType.Text,
     name: 'phone',
     rules: getRules('phone')
   }, {
     label: '身份证号',
-    type: 'text',
+    type: IFormItemType.Text,
     name: 'idNumber',
     rules: getRules('idNumber', true)
   }, {
     label: 'url',
-    type: 'text',
+    type: IFormItemType.Text,
     name: 'url',
     rules: getRules('url')
   }, {
     label: '密码',
-    type: 'password',
+    type: IFormItemType.Text,
     name: 'password',
     rules: getRules('password')
   }, {
     label: '下拉框必填',
-    type: 'select',
+    type: IFormItemType.Text,
     name: 'select',
     option: [{
       key: 'test',

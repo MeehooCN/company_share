@@ -4,7 +4,7 @@
  * @createTime: 2020/8/11 11:24
  **/
 import React, { useRef } from 'react';
-import { CommonHorizForm, IFormColumns } from '@components/components/form/CommonHorizForm';
+import {CommonHorizForm, IFormColumns, IFormItemType} from '@components/components/form/CommonHorizForm';
 import { selectOption } from '@views/components/form/FormCommonVar';
 import { Row, Button } from 'antd';
 const FormUseFunHook = () => {
@@ -21,9 +21,9 @@ const FormUseFunHook = () => {
     comFormRef.current.formRef.current.resetFields();
   };
   const formColumns: Array<IFormColumns> = [
-    { label: '文本', type: 'text', name: 'text', rules: [{ required: true }] },
-    { label: '下拉选择', type: 'select', name: 'select', rules: [{ required: true }], option: selectOption },
-    { label: '数字', type: 'inputNumber', name: 'inputNumber', rules: [{ required: true }] }
+    { label: '文本', type: IFormItemType.Text, name: 'text', rules: [{ required: true }] },
+    { label: '下拉选择', type: IFormItemType.Select, name: 'select', rules: [{ required: true }], option: selectOption },
+    { label: '数字', type: IFormItemType.InputBumber, name: 'inputNumber', rules: [{ required: true }] }
   ];
   return <div style={{ width: '100%' }}>
     <Row justify="end" style={{ marginBottom: 10 }}>

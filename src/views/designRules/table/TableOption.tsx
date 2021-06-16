@@ -5,7 +5,7 @@
  **/
 import React, {CSSProperties, useState} from 'react';
 import {Button, Card, message, Modal, Table, Space, Popconfirm, Row} from 'antd';
-import {CommonHorizFormHook} from '@components/components/form/CommonHorizFormHook';
+import {CommonHorizFormHook, IFormItemType} from '@components/components/form/CommonHorizFormHook';
 import {IFormColumns} from '@components/components/form/CommonHorizForm';
 import {sexOption} from '@views/components/form/FormCommonVar';
 import { ReloadOutlined, SyncOutlined } from '@ant-design/icons';
@@ -100,10 +100,10 @@ const TableOption = () => {
     }
   ];
   const formColumns: Array<IFormColumns> = [
-    { label: '姓名', type: 'text', name: 'name', rules: [{ required: true }] },
-    { label: '性别', type: 'inputNumber', name: 'age', rules: [{ required: true }] },
-    { label: '年龄', type: 'radio', name: 'sex', rules: [{ required: true }], option: sexOption },
-    { label: 'id', type: 'hidden', name: 'id', rules: [{ required: false }] },
+    { label: '姓名', type: IFormItemType.Text, name: 'name', rules: [{ required: true }] },
+    { label: '性别', type: IFormItemType.InputBumber, name: 'age', rules: [{ required: true }] },
+    { label: '年龄', type: IFormItemType.Radio, name: 'sex', rules: [{ required: true }], option: sexOption },
+    { label: 'id', type: IFormItemType.Hidden, name: 'id', rules: [{ required: false }] },
   ];
   return (<div>
     <Card {...cardProps} extra={<Space>
