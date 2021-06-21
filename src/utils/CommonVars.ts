@@ -42,4 +42,4 @@ export const fileAccept = {
  * url: url
  * password: 密码，仅由英文字母，数字以及下划线组成
  **/
-export type RuleType = 'required' | 'inputNotSpace' | 'email' | 'phone' | 'idNumber' | 'url' | 'password';
+export type RuleType = 'required' | 'selectRequired' | 'inputNotSpace' | 'email' | 'phone' | 'idNumber' | 'url' | 'password';

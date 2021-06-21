@@ -124,6 +124,18 @@ const FormValid = () => {
       value: 'test'
     }],
     rules: getRules('required')
+  }, {
+    label: '单选框空白校验',
+    type: 'radio',
+    name: 'radio',
+    option: [{
+      key: 'test1',
+      value: 'test1'
+    }, {
+      key: 'test2',
+      value: 'test2'
+    }],
+    rules: getRules('inputNotSpace', true)
   }];
   return (
     <Row>
