@@ -5,7 +5,7 @@
  **/
 import React, { useState } from 'react';
 import { Row, Table } from 'antd';
-import { ISearchFormColumns, SearchInlineForm } from '@components/components/form/SearchInlineForm';
+import {ISearchFormColumns, ISearchFormItemType, SearchInlineForm} from '@components/components/form/SearchInlineForm';
 import { sexOption, searchFormAPIList, ISearchFormColumnsAPIList } from '@views/components/form/FormCommonVar';
 import TitleWithDescription from '@components/components/TitleWithDescription';
 import CodeExample from '@components/components/CodeExample';
@@ -32,9 +32,9 @@ const InlineSearchFormDemo = () => {
     setUserList(newList);
   };
   const searchColumns: Array<ISearchFormColumns> = [
-    { label: '姓名', type: 'text', name: 'name' },
-    { label: '年龄', type: 'inputNumber', name: 'age' },
-    { label: '性别', type: 'radio', name: 'sex', option: sexOption },
+    { label: '姓名', type: ISearchFormItemType.Text, name: 'name' },
+    { label: '年龄', type: ISearchFormItemType.InputBumber, name: 'age' },
+    { label: '性别', type: ISearchFormItemType.Radio, name: 'sex', option: sexOption },
   ];
   const columns = [
     { title: '序号', dataIndex: 'id' },

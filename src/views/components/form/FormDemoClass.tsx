@@ -6,7 +6,7 @@
 import React from 'react';
 import { message, Row } from 'antd';
 import { CodeExample, TitleWithDescription } from '@components/index';
-import { CommonHorizForm, IFormColumns } from '@components/components/form/CommonHorizForm';
+import {CommonHorizForm, IFormColumns, IFormItemType} from '@components/components/form/CommonHorizForm';
 import {
   spanList,
   selectOption,
@@ -40,21 +40,21 @@ class FormDemoClass extends React.Component<any, IState> {
   render(): React.ReactNode {
     const { submitLoading, inlineSpan } = this.state;
     const formColumns: Array<IFormColumns> = [
-      { label: '每列的span', type: 'radio', name: 'connect', rules: [{ required: false }], option: spanList, onChange: this.spanChange, initialValue: '8' },
-      { label: '文本', type: 'text', name: 'text', rules: [{ required: false }] },
-      { label: '文本域', type: 'textArea', name: 'textArea', rules: [{ required: false }] },
-      { label: '数字', type: 'inputNumber', name: 'inputNumber', rules: [{ required: false }] },
-      { label: '密码', type: 'password', name: 'password', rules: [{ required: false }] },
-      { label: '下拉选择', type: 'select', name: 'select', rules: [{ required: false }], option: selectOption },
-      { label: '下拉选择(multiple)', type: 'select', name: 'selectMultiple', mode: 'multiple', rules: [{ required: false }], option: selectOption },
-      { label: '树选择', type: 'treeSelect', name: 'treeSelect', rules: [{ required: false }], option: treeData },
-      { label: '树选择(multiple)', type: 'treeSelect', name: 'treeSelectMultiple', multiple: true, rules: [{ required: false }], option: treeData },
-      { label: '年月日(showTime)', type: 'date', name: 'date', rules: [{ required: false }] },
-      { label: '年月日', type: 'dateNoTime', name: 'dateNoTime', rules: [{ required: false }] },
-      { label: '时间范围', type: 'rangeDate', name: 'rangeDate', rules: [{ required: false }] },
-      { label: '联级选择', type: 'cascader', name: 'cascader', rules: [{ required: false }], option: residences },
-      { label: '单选框', type: 'radio', name: 'connect', rules: [{ required: false }], option: [{ key: '0', value: '否' }, { key: '1', value: '是' }] },
-      { label: '隐藏', type: 'hidden', name: 'hidden', rules: [{ required: false }] },
+      { label: '每列的span', type: IFormItemType.Radio, name: 'connect', rules: [{ required: false }], option: spanList, onChange: this.spanChange, initialValue: '8' },
+      { label: '文本', type: IFormItemType.Text, name: 'text', rules: [{ required: false }] },
+      { label: '文本域', type: IFormItemType.TextArea, name: 'textArea', rules: [{ required: false }] },
+      { label: '数字', type: IFormItemType.InputBumber, name: 'inputNumber', rules: [{ required: false }] },
+      { label: '密码', type: IFormItemType.Password, name: 'password', rules: [{ required: false }] },
+      { label: '下拉选择', type: IFormItemType.Select, name: 'select', rules: [{ required: false }], option: selectOption },
+      { label: '下拉选择(multiple)', type: IFormItemType.Select, name: 'selectMultiple', mode: 'multiple', rules: [{ required: false }], option: selectOption },
+      { label: '树选择', type: IFormItemType.TreeSelect, name: 'treeSelect', rules: [{ required: false }], option: treeData },
+      { label: '树选择(multiple)', type: IFormItemType.TreeSelect, name: 'treeSelectMultiple', multiple: true, rules: [{ required: false }], option: treeData },
+      { label: '年月日(showTime)', type: IFormItemType.Date, name: 'date', rules: [{ required: false }] },
+      { label: '年月日', type: IFormItemType.DateNoTime, name: 'dateNoTime', rules: [{ required: false }] },
+      { label: '时间范围', type: IFormItemType.RangeDate, name: 'rangeDate', rules: [{ required: false }] },
+      { label: '联级选择', type: IFormItemType.Cascader, name: 'cascader', rules: [{ required: false }], option: residences },
+      { label: '单选框', type: IFormItemType.Radio, name: 'connect', rules: [{ required: false }], option: [{ key: '0', value: '否' }, { key: '1', value: '是' }] },
+      { label: '隐藏', type: IFormItemType.Hidden, name: 'hidden', rules: [{ required: false }] },
     ];
     const viewComponents = <CommonHorizForm submitLoading={submitLoading} formColumns={formColumns} footerBtn={true} inlineSpan={inlineSpan} OK={this.handleOK} cancel={this.handleCancel} />;
     const code = 'interface IState {\n' +
