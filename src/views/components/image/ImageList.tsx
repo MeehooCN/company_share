@@ -7,14 +7,14 @@ import React, { useEffect } from 'react';
 import { Row } from 'antd';
 import Mock, { Random } from 'mockjs';
 import { API, CodeExample, ImageList, TitleWithDescription, useImageListHook } from '@components/index';
-import { getClientWidth } from '@utils/CommonFunc';
+import { getClientWidth, throttle } from '@utils/CommonFunc';
 
 const ImageListView = () => {
   const { containerWidth, setContainerWidth, imagePropList, setImagePropList } = useImageListHook(getClientWidth() / 24 * 20 - 150);
   useEffect(() => {
-    window.addEventListener('resize', onWindowResize);
+    window.addEventListener('resize', throttle(onWindowResize));
     return () => {
-      window.removeEventListener('resize', () => {});
+      window.removeEventListener('resize', throttle(onWindowResize));
     };
   }, []);
   useEffect(() => {

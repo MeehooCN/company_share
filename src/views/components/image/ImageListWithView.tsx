@@ -6,7 +6,7 @@
 import React, { useEffect } from 'react';
 import { ImageListWithView as ImageListWithViewComponent, useImageListWithViewHook } from '@components/index';
 import { ImageData } from '@components/components/image/ImageListHorizontal/ImageListHorizontal';
-import { getClientWidth } from '@utils/CommonFunc';
+import { getClientWidth, throttle } from '@utils/CommonFunc';
 
 const ImageListWithView = () => {
   const {
@@ -16,9 +16,9 @@ const ImageListWithView = () => {
   useEffect(() => {
     setContainerWidth(getClientWidth() / 24 * 20 - 150);
     getImageList();
-    window.addEventListener('resize', onWindowResize);
+    window.addEventListener('resize', throttle(onWindowResize));
     return () => {
-      window.removeEventListener('resize', onWindowResize);
+      window.removeEventListener('resize', throttle(onWindowResize));
     };
   }, []);
   // 监听窗口变化

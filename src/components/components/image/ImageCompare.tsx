@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Row } from 'antd';
 import { CloseOutlined, FullscreenExitOutlined, LoadingOutlined } from '@ant-design/icons';
+import { throttle } from '@utils/CommonFunc';
 
 // 最大放大倍数
 const maxScale: number = 2;
@@ -93,7 +94,7 @@ class ImageCompare extends React.Component<IProps, IState> {
   componentDidMount() {
     const clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
     const clientHeight = document.documentElement ? document.documentElement.clientHeight : document.body.clientHeight;
-    window.addEventListener('resize', this.windowResize);
+    window.addEventListener('resize', throttle(this.windowResize));
     const { retouchUrl, initUrl } = this.props;
     this.setState({ retouchUrl, initUrl, clientWidth, clientHeight }, this.handleImgLoadStatus);
   }
@@ -105,7 +106,7 @@ class ImageCompare extends React.Component<IProps, IState> {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.windowResize);
+    window.removeEventListener('resize', throttle(this.windowResize));
   }
   private readonly imgDiv: React.RefObject<any>;
   private readonly initDiv: React.RefObject<any>;
