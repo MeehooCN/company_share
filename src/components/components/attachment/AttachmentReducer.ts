@@ -3,7 +3,7 @@
  * @author: lll
  * @createTime: 2021/4/8 10:14
  **/
-import { AttachmentData, ImageData, MusicData } from '@utils/CommonInterface';
+import { AttachmentData, ImageData, MusicData } from './CommonInterface';
 
 interface ImageInfo {
   imageView: boolean,

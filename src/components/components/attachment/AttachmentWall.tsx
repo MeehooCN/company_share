@@ -5,8 +5,8 @@
  **/
 import React, { useContext } from 'react';
 import { Row, Image } from 'antd';
-import { AttachmentData } from '@utils/CommonInterface';
-import { AttachmentContext, getFileType } from '@components/components/attachment/AttachmentView';
+import { AttachmentData } from './CommonInterface';
+import { AttachmentContext, getFileType } from './AttachmentView';
 import './AttachmentWall.less';
 
 interface IProps {

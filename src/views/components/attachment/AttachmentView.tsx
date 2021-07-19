@@ -6,7 +6,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'antd';
 import { CodeExample, TitleWithDescription, AttachmentView as AttachmentViewComponent, API } from '@components/index';
-import { AttachmentData} from '@utils/CommonInterface';
+import { AttachmentData } from '@components/components/attachment/CommonInterface';
 
 const AttachmentView = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -157,7 +157,117 @@ const AttachmentView = () => {
     defaultValue: '无'
   }];
   const viewComponents = <AttachmentViewComponent loading={loading} attachmentList={attachmentList} />;
-  const code: string = '<AttachmentView loading={loading} attachmentList={attachmentList} />';
+  const code: string = 'import React, { useEffect, useState } from \'react\';\n' +
+    'import { Row } from \'antd\';\n' +
+    'import { AttachmentView as AttachmentViewComponent } from \'@components/index\';\n' +
+    'import { AttachmentData } from \'@components/components/attachment/CommonInterface\';\n' +
+    '\n' +
+    'const AttachmentView = () => {\n' +
+    '  const [loading, setLoading] = useState<boolean>(false);\n' +
+    '  const [attachmentList, setAttachmentList] = useState<Array<AttachmentData>>([]);\n' +
+    '  useEffect(() => {\n' +
+    '    setLoading(true);\n' +
+    '    setTimeout(() => {\n' +
+    '      const dataList: any = [{\n' +
+    '        id: \'0\',\n' +
+    '        filename: \'花花\',\n' +
+    '        size: \'2.2M\',\n' +
+    '        updateTime: \'2021-3-29\',\n' +
+    '        sourceUrl: \'https://img1.baidu.com/it/u=1361135963,570304265&fm=26&fmt=auto&gp=0.jpg\',\n' +
+    '        thumbnailUrl: \'https://img1.baidu.com/it/u=1361135963,570304265&fm=26&fmt=auto&gp=0.jpg\',\n' +
+    '        thumbnailTrueUrl: \'https://img1.baidu.com/it/u=1361135963,570304265&fm=26&fmt=auto&gp=0.jpg\',\n' +
+    '      }, {\n' +
+    '        id: \'1\',\n' +
+    '        filename: \'小狗子\',\n' +
+    '        size: \'5.2M\',\n' +
+    '        updateTime: \'2021-3-29\',\n' +
+    '        sourceUrl: \'https://img2.baidu.com/it/u=1842750661,82505179&fm=26&fmt=auto&gp=0.jpg\',\n' +
+    '        thumbnailUrl: \'https://img2.baidu.com/it/u=1842750661,82505179&fm=26&fmt=auto&gp=0.jpg\',\n' +
+    '        thumbnailTrueUrl: \'https://img2.baidu.com/it/u=1842750661,82505179&fm=26&fmt=auto&gp=0.jpg\',\n' +
+    '      }, {\n' +
+    '        id: \'2\',\n' +
+    '        filename: \'美少女,元气可爱美少女\',\n' +
+    '        size: \'4.6M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'http://zyjy.meehoo.com/testStatic/testImage.png\',\n' +
+    '        thumbnailUrl: \'http://zyjy.meehoo.com/testStatic/testImage.png\',\n' +
+    '        thumbnailTrueUrl: \'http://zyjy.meehoo.com/testStatic/testImage.png\',\n' +
+    '      }, {\n' +
+    '        id: \'3\',\n' +
+    '        filename: \'横屏视频.mp4\',\n' +
+    '        size: \'3.2M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'4\',\n' +
+    '        filename: \'Excel文件\',\n' +
+    '        size: \'3.2M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'http://zyjy.meehoo.com/testStatic/testExcel.xlsx\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'5\',\n' +
+    '        filename: \'仓颉.mp3\',\n' +
+    '        size: \'1.0M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'http://zyjy.meehoo.com/testStatic/testAudio.mp3\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'6\',\n' +
+    '        filename: \'word文件\',\n' +
+    '        size: \'4.6M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'http://zyjy.meehoo.com/testStatic/testWord.docx\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'7\',\n' +
+    '        filename: \'PPT文件\',\n' +
+    '        size: \'3.2M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'http://zyjy.meehoo.com/testStatic/testPPT.pptx\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'8\',\n' +
+    '        filename: \'PDF文件\',\n' +
+    '        size: \'1.0M\',\n' +
+    '        updateTime: \'2021-3-30\',\n' +
+    '        sourceUrl: \'http://zyjy.meehoo.com/testStatic/testPdf.pdf\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'9\',\n' +
+    '        filename: \'竖屏视频.mp4\',\n' +
+    '        size: \'3.2M\',\n' +
+    '        updateTime: \'2021-4-14\',\n' +
+    '        sourceUrl: \'https://v-cdn.zjol.com.cn/276993.mp4\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }, {\n' +
+    '        id: \'10\',\n' +
+    '        filename: \'夏天的风.mp3\',\n' +
+    '        size: \'3.2M\',\n' +
+    '        updateTime: \'2021-4-16\',\n' +
+    '        sourceUrl: \'http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_96145895&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3\',\n' +
+    '        thumbnailUrl: \'\',\n' +
+    '        thumbnailTrueUrl: \'\',\n' +
+    '      }];\n' +
+    '      setAttachmentList(dataList);\n' +
+    '      setLoading(false);\n' +
+    '    }, 1000);\n' +
+    '  }, []);\n' +
+    '  return (\n' +
+    '    <Row>\n' +
+    '      <AttachmentViewComponent loading={loading} attachmentList={attachmentList} />\n' +
+    '    </Row>\n' +
+    '  );\n' +
+    '};\n' +
+    'export default AttachmentView;';
   return (
     <Row>
       <TitleWithDescription title="AttachmentView" content="附件浏览。" />

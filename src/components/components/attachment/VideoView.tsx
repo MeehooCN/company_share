@@ -6,8 +6,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Row, Space, Spin, Slider } from 'antd';
 import { CloseOutlined, PauseOutlined, CaretRightOutlined, SoundOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons';
-import './VideoView.less';
 import { colors } from '@utils/CommonVars';
+import './VideoView.less';
 
 const clientHeight: number = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 const clientWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;

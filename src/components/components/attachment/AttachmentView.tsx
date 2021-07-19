@@ -6,8 +6,8 @@
 import React, { useEffect, useState, createContext, useReducer } from 'react';
 import { Card } from 'antd';
 import { MenuOutlined, AppstoreOutlined } from '@ant-design/icons';
-import { AttachmentData, ImageData, MusicData } from '@utils/CommonInterface';
-import { AttachmentTable, AttachmentWall, ImageView as ImageViewComponent, VideoView, MusicView } from '@components/index';
+import { AttachmentData, ImageData, MusicData } from './CommonInterface';
+import { AttachmentTable, AttachmentWall, ImageView, VideoView, MusicView } from './index';
 import { attachmentInit, attachmentReducer } from './AttachmentReducer';
 
 interface IProps {
@@ -181,7 +181,7 @@ const AttachmentView = (props: IProps) => {
       >
         {isList ? <AttachmentTable loading={loading} handleClick={handleClick} /> : <AttachmentWall handleClick={handleClick} />}
       </Card>
-      <ImageViewComponent
+      <ImageView
         index={attachmentState.imageInfo.imageIndex}
         imageList={attachmentState.imageList}
         imageView={attachmentState.imageInfo.imageView}

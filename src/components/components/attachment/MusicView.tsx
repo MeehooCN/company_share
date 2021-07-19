@@ -9,8 +9,8 @@ import {
   MinusOutlined, CloseOutlined, LeftCircleTwoTone, PauseCircleTwoTone, PlayCircleTwoTone,
   RightCircleTwoTone, SoundTwoTone, BorderOutlined, DownloadOutlined, setTwoToneColor
 } from '@ant-design/icons';
+import { MusicData } from './CommonInterface';
 import { colors } from '@utils/CommonVars';
-import { MusicData } from '@utils/CommonInterface';
 import './MusicView.less';
 
 interface IProps {
@@ -40,11 +40,13 @@ const MusicView = (props: IProps) => {
     }
   }, [index]);
   useEffect(() => {
-    getDuration();
-    musicEnded();
     // 设置初始音量
     audioRef.current.volume = volume / 100;
   }, []);
+  useEffect(() => {
+    getDuration();
+    musicEnded();
+  }, [viewIndex]);
   useEffect(() => {
     getCurrentTime();
   }, [currentTime]);
@@ -53,7 +55,6 @@ const MusicView = (props: IProps) => {
     closeView();
     setIsPlay(false);
     setIsVolume(false);
-    setProgressPercent(0);
     setIsMini(false);
     audioRef.current.pause();
   };
@@ -98,7 +99,14 @@ const MusicView = (props: IProps) => {
   // 音乐播放结束
   const musicEnded = () => {
     audioRef.current.addEventListener('ended', () => {
-      setIsPlay(false);
+      const totalIndex: number = musicList.length - 1;
+      let tempViewIndex = 0;
+      // 一曲播放结束后： 不是最后一曲时，播放下一曲；否则播放第一曲。
+      if (viewIndex + 1 <= totalIndex) {
+        tempViewIndex = viewIndex + 1;
+      }
+      setCurrMusic(musicList[tempViewIndex]);
+      setViewIndex(tempViewIndex);
     });
   };
   // 调节音量
@@ -163,11 +171,11 @@ const MusicView = (props: IProps) => {
       onClick={() => setIsVolume(false)}
     >
       <Row className="music-header-title" justify="center" align="middle">
-        <div>{currMusic.name}</div>
+        <div>{currMusic && currMusic.name}</div>
         <div className="music-switch">
           <Space size="large">
             {isMini ? <BorderOutlined className="music-switch-button" onClick={() => setIsMini(false)} />
-              : <MinusOutlined className="music-switch-button" onClick={() => setIsMini(true)} />}
+            : <MinusOutlined className="music-switch-button" onClick={() => setIsMini(true)} />}
             <CloseOutlined className="music-switch-button" onClick={hiddenVideo} />
           </Space>
         </div>
@@ -192,7 +200,7 @@ const MusicView = (props: IProps) => {
           <span>{duration}</span>
         </Row>
       </div>
-      <audio ref={audioRef} src={currMusic.sourceUrl} />
+      <audio ref={audioRef} src={currMusic && currMusic.sourceUrl} />
       <div className="music-musicItem-block">
         {musicItemBlock()}
       </div>

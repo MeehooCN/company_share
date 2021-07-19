@@ -26,7 +26,3 @@ export { default as SearchInput } from '@components/components/searchInput/Searc
 export { default as MyRangePicker, getTimeParams } from '@components/components/picker/MyRangePicker';
 export { default as useMenuHook } from '@components/components/hook/useMenuHook';
 export { default as AttachmentView } from '@components/components/attachment/AttachmentView';
-export { default as AttachmentTable } from '@components/components/attachment/AttachmentTable';
-export { default as AttachmentWall } from '@components/components/attachment/AttachmentWall';
-export { default as VideoView } from '@components/components/attachment/VideoView';
-export { default as MusicView } from '@components/components/attachment/MusicView';
