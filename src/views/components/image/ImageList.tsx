@@ -23,7 +23,7 @@ const ImageListView = () => {
   // 初始化图片列表
   const initImageList = () => {
     return setImagePropList(Mock.mock({
-      'imageList|16-35': [{
+      'imageList|50-80': [{
         'id|+1': 1,
         'sourceUrl': Random.dataImage('300x250'),
         'thumbnailUrl|+1': [
@@ -55,6 +55,21 @@ const ImageListView = () => {
     description: '可选，容器宽度',
     type: 'number',
     defaultValue: '1200'
+  }, {
+    name: 'onImageClick',
+    description: '可选，点击单张图片触发的事件',
+    type: '(image: ImageData, viewIndex: number): void',
+    defaultValue: '无'
+  }, {
+    name: 'parentId',
+    description: '可选，父容器 id',
+    type: 'string',
+    defaultValue: '无'
+  }, {
+    name: 'parentTop',
+    description: '可选，父容器离顶部高度',
+    type: 'number',
+    defaultValue: '无'
   }];
   const imageParamList = [{
     name: 'id',

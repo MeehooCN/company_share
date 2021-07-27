@@ -20,7 +20,9 @@ interface ImageDataWithViewContainer extends ImageData {
 interface IProps {
   imagePropList: Array<ImageData>,
   containerWidth?: number,
-  onImageClick?(image: ImageData, viewIndex: number): void
+  onImageClick?(image: ImageData, viewIndex: number): void,
+  parentId?: string, // 父容器 id
+  parentTop?: number
 }
 
 // 使用该组件的 hook
@@ -31,9 +33,16 @@ export const useImageListHook = (containerInitWidth?: number) => {
 };
 
 const ImageList = (props: IProps) => {
-  const { imagePropList, containerWidth = 1200, onImageClick } = props;
+  const { imagePropList, containerWidth = 1200, onImageClick, parentId, parentTop = 0 } = props;
   const [imageList, setImageList] = useState<Array<ImageDataWithViewContainer>>([]);
   const [isInit, setIsInit] = useState<boolean>(false);
+  useEffect(() => {
+    const parentDom = parentId ? (document.getElementById(parentId) || window) : window;
+    parentDom.addEventListener('scroll', handleWheel);
+    return () => {
+      parentDom.removeEventListener('scroll', handleWheel);
+    };
+  }, [imageList]);
   useEffect(() => {
     setIsInit(true);
     initImageList(imagePropList);
@@ -60,12 +69,22 @@ const ImageList = (props: IProps) => {
       setImageList([]);
     }
   };
+  let lastScrollTop: number = -1;
   // 滑动滚轮图片懒加载
   const handleWheel = (e: any) => {
-    let deltaY = e.deltaY;
-    // 向下 加载图片
-    if (deltaY > 0) {
-      lazyLoad();
+    if (parentId) {
+      // 向下滚动
+      if (e.target.scrollTop > lastScrollTop) {
+        // 向下加载图片
+        lazyLoad();
+        lastScrollTop = e.target.scrollTop;
+      }
+    } else {
+      if (window.scrollY > lastScrollTop) {
+        // 向下加载图片
+        lazyLoad();
+        lastScrollTop = window.scrollY;
+      }
     }
   };
   // 图片懒加载
@@ -76,14 +95,13 @@ const ImageList = (props: IProps) => {
       let availHeight: number = window.screen.availHeight;
       // 滚动的高度
       let scrollHeight: number = document.documentElement.scrollTop;
-      // 距img元素显露出的距离
-      // 有个问题，最后两个始终处于懒加载下面一排不知道为啥
-      let diff = 100;
+      // 距 img 元素显露出的距离
+      let diff = 100 + parentTop;
       for (let i = 0; i < tempImageList.length; i++) {
         // @ts-ignore
         let reactObj = document.getElementById(tempImageList[i].id).getBoundingClientRect();
         // div距顶部高度
-        let contentTop = reactObj.top;
+        let contentTop = reactObj.top; // 1080
         if (scrollHeight + diff > contentTop - availHeight) {
           tempImageList[i].thumbnailTrueUrl = tempImageList[i].thumbnailUrl;
         }
@@ -175,7 +193,6 @@ const ImageList = (props: IProps) => {
         flexWrap: 'wrap',
         minWidth: containerWidth + 1
       }}
-      onWheel={handleWheel}
     >
       {getImageListView()}
     </div>
