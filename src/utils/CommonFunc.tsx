@@ -262,3 +262,19 @@ export const throttle = (fn: Function, wait: number = 100) => {
     }
   };
 };
+/**
+ * 防抖
+ * @param fn: 真正要执行的函数
+ * @param wait: 等待时间，默认 100 ms
+ **/
+export const debounce = (fn: Function, delay: number = 100) => {
+  let timer: any = null; // 声明计时器
+  return () => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+};
