@@ -35,6 +35,7 @@ interface IProps {
   imageList: Array<ImageData>,
   closeView(): void,
   onHorImageClick(image: ImageData, viewIndex: number): void,
+  horizontalImageHeight: number
 }
 
 interface IState {
@@ -254,7 +255,7 @@ class ImageView extends React.Component<IProps, IState> {
       showWidth, showHeight, viewImage, moveX,
       moveY, imageView, imageLoading, canDragImage,
     } = this.state;
-    const { imageList, onHorImageClick, index } = this.props;
+    const { imageList, onHorImageClick, index, horizontalImageHeight } = this.props;
     return createPortal(
       (
         <div
@@ -264,7 +265,7 @@ class ImageView extends React.Component<IProps, IState> {
           onDragEnter={(e: any) => e.preventDefault()}
           onDragOver={(e: any) => e.preventDefault()}
         >
-          <div className="view-image-container">
+          <div className="view-hor-image-container" style={{ height: 'calc(100vh - ' + (horizontalImageHeight + 20) + 'px)' }}>
             <Row className="top-icon-container">
               <Space size="middle">
                 <FullscreenExitOutlined className="center-icon" title="居中" onClick={this.centerImage} />
@@ -297,7 +298,7 @@ class ImageView extends React.Component<IProps, IState> {
             onImageClick={onHorImageClick}
             bottomImageListWidth={clientWidth - 200}
             viewIndex={index}
-            horizontalImageHeight={150}
+            horizontalImageHeight={horizontalImageHeight}
           />
         </div>
       ), this.node

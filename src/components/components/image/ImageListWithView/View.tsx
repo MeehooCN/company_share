@@ -23,10 +23,11 @@ interface IProps {
   currentIndex: number,
   closeView: () => void,
   onHorImageClick(image: ImageData, viewIndex: number): void,
+  horizontalImageHeight: number
 }
 
 const View = (props: IProps) => {
-  const { imageView, imageList, currentIndex, closeView, onHorImageClick } = props;
+  const { imageView, imageList, currentIndex, closeView, onHorImageClick, horizontalImageHeight } = props;
   return (
     <ImageView
       index={currentIndex}
@@ -34,6 +35,7 @@ const View = (props: IProps) => {
       closeView={closeView}
       imageView={imageView}
       onHorImageClick={onHorImageClick}
+      horizontalImageHeight={horizontalImageHeight}
     />
   );
 };

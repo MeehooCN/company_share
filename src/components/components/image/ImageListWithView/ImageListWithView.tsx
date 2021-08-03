@@ -21,6 +21,7 @@ interface ImageData {
 
 interface IProps {
   containerWidth: number,
+  horizontalImageHeight: number,
   imageList: Array<ImageData>,
   currentIndex: number,
   onImageClick(image: ImageData, viewIndex: number): void,
@@ -57,11 +58,18 @@ export const useImageListWithViewHook = (initWidth: number) => {
 };
 
 const ImageListWithView = (props: IProps) => {
-  const { imageList, containerWidth, onImageClick, imageView, currentIndex, closeView, onHorImageClick } = props;
+  const { imageList, containerWidth, onImageClick, imageView, currentIndex, closeView, onHorImageClick, horizontalImageHeight } = props;
   return (
     <Row>
       <ImageList imagePropList={imageList} containerWidth={containerWidth} onImageClick={onImageClick} />
-      <View imageView={imageView} currentIndex={currentIndex} imageList={imageList} closeView={closeView} onHorImageClick={onHorImageClick} />
+      <View
+        imageView={imageView}
+        currentIndex={currentIndex}
+        imageList={imageList}
+        closeView={closeView}
+        onHorImageClick={onHorImageClick}
+        horizontalImageHeight={horizontalImageHeight}
+      />
     </Row>
   );
 };

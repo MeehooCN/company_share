@@ -47,12 +47,12 @@ const ImageListWithView = () => {
       leftPosition: 0
     }, {
       id: '3',
-      thumbnailUrl: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3044907555,2122407846&fm=26&gp=0.jpg',
-      thumbnailTrueUrl: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3044907555,2122407846&fm=26&gp=0.jpg',
-      sourceUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597147588837&di=ffa801b9c9dc77d5d0b40e4db0b33331&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fce9f4aaaf1b253030e7b9ba2e6c14dc45320b5f2.jpg',
+      thumbnailUrl: 'https://images.pexels.com/photos/4284233/pexels-photo-4284233.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      thumbnailTrueUrl: 'https://images.pexels.com/photos/4284233/pexels-photo-4284233.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      sourceUrl: 'https://images.pexels.com/photos/4284233/pexels-photo-4284233.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
       name: 'p3',
-      width: 2300,
-      height: 1326,
+      width: 4608,
+      height: 3072,
       leftPosition: 0
     }, {
       id: '4',
@@ -80,6 +80,7 @@ const ImageListWithView = () => {
       <ImageListWithViewComponent
         imageList={imageList}
         containerWidth={containerWidth}
+        horizontalImageHeight={150}
         currentIndex={currentIndex}
         onImageClick={onImageClick}
         imageView={imageView}

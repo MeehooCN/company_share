@@ -119,7 +119,7 @@ const ImageListHorizontal = (props: IProps) => {
     }
   };
   return (
-    <Row className="image-list-container">
+    <Row className="image-list-container" style={{ height: horizontalImageHeight + 20 }}>
       <CaretLeftOutlined
         className="left-list-arrow"
         style={{ top: arrowTop }}
@@ -128,7 +128,7 @@ const ImageListHorizontal = (props: IProps) => {
       <div
         ref={imageListRef}
         className="bottom-image-list-container"
-        style={{ width: bottomImageListWidth, maxWidth: bottomImageListWidth, overflowX: 'auto', display: 'flex' }}
+        style={{ width: bottomImageListWidth, maxWidth: bottomImageListWidth, zIndex: 2 }}
       >
         {getImageList}
       </div>
