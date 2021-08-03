@@ -21,7 +21,7 @@ interface ImageData {
 
 interface IProps {
   containerWidth: number,
-  horizontalImageHeight: number,
+  horizontalImageHeight?: number,
   imageList: Array<ImageData>,
   currentIndex: number,
   onImageClick(image: ImageData, viewIndex: number): void,
@@ -68,7 +68,7 @@ const ImageListWithView = (props: IProps) => {
         imageList={imageList}
         closeView={closeView}
         onHorImageClick={onHorImageClick}
-        horizontalImageHeight={horizontalImageHeight}
+        horizontalImageHeight={horizontalImageHeight || 150}
       />
     </Row>
   );
