@@ -5,11 +5,8 @@
  **/
 import React, { useEffect } from 'react';
 import {
-  API,
-  CodeExample,
-  ImageListWithView as ImageListWithViewComponent,
-  TitleWithDescription,
-  useImageListWithViewHook
+  API, CodeExample, ImageListWithView as ImageListWithViewComponent,
+  TitleWithDescription, useImageListWithViewHook
 } from '@components/index';
 import { ImageData } from '@components/components/image/ImageListHorizontal/ImageListHorizontal';
 import { getClientWidth, throttle } from '@utils/CommonFunc';
@@ -122,6 +119,16 @@ const ImageListWithView = () => {
     description: '关闭图片显示回调函数',
     type: 'Function',
     defaultValue: ''
+  }, {
+    name: 'parentId',
+    description: '可选，父容器 id',
+    type: 'string',
+    defaultValue: '无'
+  }, {
+    name: 'parentTop',
+    description: '可选，父容器离顶部高度',
+    type: 'number',
+    defaultValue: '无'
   }];
   const code: string = 'import React, { useEffect } from \'react\';\n' +
     'import { ImageListWithView as ImageListWithViewComponent, useImageListWithViewHook } from \'@components/index\';\n' +

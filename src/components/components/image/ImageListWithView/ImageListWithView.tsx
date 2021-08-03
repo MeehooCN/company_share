@@ -27,7 +27,9 @@ interface IProps {
   onImageClick(image: ImageData, viewIndex: number): void,
   onHorImageClick(image: ImageData, viewIndex: number): void,
   imageView: boolean,
-  closeView: () => void
+  closeView: () => void,
+  parentId?: string, // 父容器 id
+  parentTop?: number // 父容器距浏览器顶部距离
 }
 
 // 使用该组件 hook
@@ -58,10 +60,19 @@ export const useImageListWithViewHook = (initWidth: number) => {
 };
 
 const ImageListWithView = (props: IProps) => {
-  const { imageList, containerWidth, onImageClick, imageView, currentIndex, closeView, onHorImageClick, horizontalImageHeight } = props;
+  const {
+    imageList, containerWidth, onImageClick, imageView, currentIndex,
+    closeView, onHorImageClick, horizontalImageHeight, parentId, parentTop
+  } = props;
   return (
     <Row>
-      <ImageList imagePropList={imageList} containerWidth={containerWidth} onImageClick={onImageClick} />
+      <ImageList
+        imagePropList={imageList}
+        containerWidth={containerWidth}
+        onImageClick={onImageClick}
+        parentId={parentId}
+        parentTop={parentTop}
+      />
       <View
         imageView={imageView}
         currentIndex={currentIndex}
