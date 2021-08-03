@@ -47,9 +47,14 @@ const ImageListHorizontal = (props: IProps) => {
   // 滑动至选择的图片
   useEffect(() => {
     if (bottomImageListWidth > 0 && imageList.length > viewIndex && viewIndex > -1) {
-      toCurrentImage(imageList[viewIndex].leftPosition);
+      // 如果小于底部宽度则动画，其余直接滚到那里
+      if (Math.abs(imageListRef.current.scrollLeft - imageList[viewIndex].leftPosition) < bottomImageListWidth) {
+        toCurrentImage(imageList[viewIndex].leftPosition);
+      } else {
+        imageListRef.current.scrollLeft = imageList[viewIndex].leftPosition;
+      }
     }
-  }, [bottomImageListWidth]);
+  }, [bottomImageListWidth, viewIndex]);
   // 图片懒加载（预处理）
   const lazyLoad = () => {
     const tempImageList: Array<ImageData> = [...imageList];
