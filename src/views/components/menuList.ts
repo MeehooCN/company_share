@@ -81,6 +81,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: 'SearchInput 带搜索下拉框',
     key: 'searchInput'
+  }, {
+    name: 'MoveWindow 可移动伸缩窗口',
+    key: 'moveWindow'
   }]
 }, {
   name: '图标',
