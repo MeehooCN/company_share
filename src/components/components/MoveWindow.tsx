@@ -36,13 +36,13 @@ const MoveWindow = (props: IProps) => {
         height: 0,
       }}
       style={{ zIndex: 1001 }}
-      bounds="body"
+      bounds="#app"
       minWidth={moveVisible ? minWidth : 0}
       minHeight={moveVisible ? minHeight : 0}
       size={{ width: rndSize[0], height: rndSize[1] }}
       position={{ x: rndPosition[0], y: rndPosition[1] }}
       onDragStop={(e, d) => setRndPosition([d.x, d.y])}
-      onResizeStop={(e, direction, ref, delta, position) => {
+      onResize={(e, direction, ref, delta, position) => {
         setRndSize([Number(ref.style.width), Number(ref.style.height)]);
         setRndPosition([position.x, position.y]);
       }}
@@ -54,8 +54,7 @@ const MoveWindow = (props: IProps) => {
           width: '100%',
           background: '#fff',
           border: '1px solid #ddd',
-          borderRadius: 5,
-          cursor: 'move'
+          borderRadius: 5
         }}
       >
         <Row justify="space-between" align="middle" style={{ padding: '10px 0', fontSize: 16, borderBottom: '1px solid #F0F0F0', marginBottom: 20 }}>
