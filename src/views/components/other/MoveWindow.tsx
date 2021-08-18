@@ -23,9 +23,30 @@ const MoveWindow = () => {
     description: '窗口最小高度',
     type: 'number',
     defaultValue: ''
+  }, {
+    name: 'children',
+    description: '窗口展示内容',
+    type: 'ReactNode',
+    defaultValue: ''
   }];
-  const viewComponents = <MoveWindowView moveTitle="可移动伸缩窗口" minWidth={500} minHeight={500} />;
-  const code: string = '<MoveWindowView moveTitle="可移动伸缩窗口" minWidth={500} minHeight={500} />';
+  const children = (
+    <div style={{ padding: 20 }}>
+      测试
+    </div>
+  );
+  const viewComponents = (
+    <MoveWindowView moveTitle="可移动伸缩窗口" minWidth={500} minHeight={500}>
+      {children}
+    </MoveWindowView>
+  );
+  const code: string = 'const children = (\n' +
+    '    <div style={{ padding: 20 }}>\n' +
+    '      测试\n' +
+    '    </div>\n' +
+    ');\n' +
+    '<MoveWindowView moveTitle="可移动伸缩窗口" minWidth={500} minHeight={500}>\n' +
+    '  {children}\n' +
+    '</MoveWindowView>';
   return (
     <Row>
       <TitleWithDescription title="MoveWindow" content="可移动伸缩窗口（该窗口的显示不会影响底层操作，如填写表单、点击按钮等）" />

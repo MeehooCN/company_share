@@ -12,10 +12,11 @@ import Rnd from 'react-rnd';
 interface IProps {
   moveTitle: string,
   minWidth: number,
-  minHeight: number
+  minHeight: number,
+  children: React.ReactNode
 }
 const MoveWindow = (props: IProps) => {
-  const { moveTitle, minWidth, minHeight } = props;
+  const { moveTitle, minWidth, minHeight, children } = props;
   const [rndSize, setRndSize] = useState<[number, number]>([0, 0]); // 0、width，1、height
   const [rndPosition, setRndPosition] = useState<[number, number]>([0, 0]); // 0、x轴坐标，1、y轴坐标(以左上角为)
   const [moveVisible, setMoveVisible] = useState<boolean>(false);
@@ -62,7 +63,7 @@ const MoveWindow = (props: IProps) => {
           <CloseOutlined style={{ marginRight: 20 }} onClick={closeMoveWindow} />
         </Row>
         <Row>
-          内容区域(放入你需要展示的内容：建议以组件形式导入)
+          {children}
         </Row>
       </div>
     </Rnd>
