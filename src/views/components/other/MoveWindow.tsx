@@ -28,6 +28,11 @@ const MoveWindow = () => {
     description: '窗口展示内容',
     type: 'ReactNode',
     defaultValue: ''
+  }, {
+    name: 'defaultPosition',
+    description: '可选，窗口初始位置',
+    type: '[number, number]',
+    defaultValue: ''
   }];
   const children = (
     <div style={{ padding: 20 }}>

@@ -13,20 +13,21 @@ interface IProps {
   moveTitle: string,
   minWidth: number,
   minHeight: number,
-  children: React.ReactNode
+  children: React.ReactNode,
+  defaultPosition?: [number, number]
 }
 const MoveWindow = (props: IProps) => {
-  const { moveTitle, minWidth, minHeight, children } = props;
+  const { moveTitle, minWidth, minHeight, children, defaultPosition = [0, 0] } = props;
   const [rndSize, setRndSize] = useState<[number, number]>([0, 0]); // 0、width，1、height
-  const [rndPosition, setRndPosition] = useState<[number, number]>([0, 0]); // 0、x轴坐标，1、y轴坐标(以左上角为)
+  const [rndPosition, setRndPosition] = useState<[number, number]>(defaultPosition); // 0、x轴坐标，1、y轴坐标(以左上角为)
   const [moveVisible, setMoveVisible] = useState<boolean>(false);
   // 关闭移动窗口
   const closeMoveWindow = () => {
     setMoveVisible(false);
     // 设置移动窗口的宽高为0
     setRndSize([0, 0]);
-    // 设置移动窗口的位置为[0,0]
-    setRndPosition([0, 0]);
+    // 设置移动窗口的位置为默认初始位置
+    setRndPosition(defaultPosition);
   };
   const rnd = (
     <Rnd
