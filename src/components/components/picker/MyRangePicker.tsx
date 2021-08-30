@@ -139,7 +139,7 @@ const MyRangePicker = (props: IProps, ref: any) => {
       default:
         return (
           <RangePicker
-            picker={timeDimension}
+            picker={timeDimension === 'day' ? 'date' : timeDimension}
             value={selectDate}
             onChange={(date) => setSelectDate(date)}
             onCalendarChange={(val) => setSelectDate(val)}
