@@ -55,8 +55,8 @@ const TreeTable = () => {
               { id: '3-1-1', name: '指标三-01-001', children: [] },
               {
                 id: '3-1-2', name: '指标三-01-002', children: [
-                  { id: '3-1-2-1', name: '指标三-02-002-1', children: [] },
-                  { id: '3-1-2-2', name: '指标三-02-002-2', children: [] },
+                  { id: '3-1-2-1', name: '指标三-01-002-1', children: [] },
+                  { id: '3-1-2-2', name: '指标三-01-002-2', children: [] },
                 ]
               },
             ]
