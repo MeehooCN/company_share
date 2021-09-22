@@ -109,4 +109,11 @@ export const menuList: Array<MenuData> = [{
     name: 'AttachmentView 附件浏览',
     key: 'attachmentView'
   }]
+}, {
+  name: '表格',
+  key: 'table',
+  children: [{
+    name: 'treeTable 树形合并表格',
+    key: 'treeTable'
+  }]
 }];

@@ -12,7 +12,7 @@ import {
   HookForm, InlineSearchFormDemo, ImageCompare, LoadingView, OverTextView,
   PromptIndex, ImageListHorizontalView, EvaluateView, IconFontView, MyRangePickerView,
   CodeLogin, ImageLogin, SearchInputView, AttachmentView, ImageListWithView, FormValid,
-  MoveWindow
+  MoveWindow, TreeTable
 } from '@views/index';
 import { initMenu } from '@utils/CommonFunc';
 import { menuList } from '@views/components/menuList';
@@ -60,6 +60,8 @@ const ComponentList = () => {
         <Route path={platform + 'components/imageLogin'} component={ImageLogin} />
         <Route path={platform + 'components/attachmentView'} component={AttachmentView} />
         <Route path={platform + 'components/moveWindow'} component={MoveWindow} />
+
+        <Route path={platform + 'components/treeTable'} component={TreeTable} />
       </Col>
     </Row>
   );
