@@ -4,12 +4,12 @@
  * @createTime: 2021/9/18 14:09
  **/
 import React, { useEffect, useState } from 'react';
-import {Row, Table} from 'antd';
+import { Row, Table } from 'antd';
 import { tableToTree } from '@views/components/table/tableToTree';
-import {API, CodeExample, TitleWithDescription} from '@components/index';
+import { API, CodeExample, TitleWithDescription } from '@components/index';
+
 export const getTreeExpandKeyAndChild = (array: Array<any>, customSet?: any) => {
   let keys: Array<string> = [];
-  let total = 0;
   const setChildren = (array: Array<any>, customSet?: any) => {
     return array.map((v: any) => {
       const item = { ...v };
@@ -20,16 +20,12 @@ export const getTreeExpandKeyAndChild = (array: Array<any>, customSet?: any) => 
       } else {
         keys.push(item.id);
       }
-      if (item.type === 1) {
-        total += item.score;
-      }
       return item;
     });
   };
   return {
     tree: setChildren(array, customSet),
-    key: keys,
-    total: total.toFixed(2)
+    key: keys
   };
 };
 const TreeTable = () => {
@@ -103,7 +99,7 @@ const TreeTable = () => {
       type: 'string',
       defaultValue: '级'
     },
-  ]
+  ];
   const viewComponent = (
     <Table
       bordered={true}
@@ -337,7 +333,7 @@ const TreeTable = () => {
     '    />\n' +
     '  );\n' +
     '};\n' +
-    'export default TreeTable;'
+    'export default TreeTable;';
   return (
     <Row>
       <TitleWithDescription title="树形合并表格" content="树形结构的数据，展开为合并方式展示，类似于Excel表格中合并的方式" style={{ marginBottom: 50 }} />

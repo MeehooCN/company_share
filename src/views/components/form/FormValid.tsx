@@ -126,7 +126,7 @@ const FormValid = () => {
     rules: getRules('required')
   }, {
     label: '单选框空白校验',
-    type: 'radio',
+    type: IFormItemType.Radio,
     name: 'radio',
     option: [{
       key: 'test1',

@@ -4,13 +4,14 @@
  * @createTime: 2021/9/18 15:44
  **/
 import React from 'react';
+
 const convertToChinaNum = (num: number) => {
   let arr1: Array<string> = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
   let arr2: Array<string> = ['', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿']; // 可继续追加更高位转换值
   if (!num || isNaN(num)) {
     return '零';
   }
-  let english = num.toString().split('')
+  let english = num.toString().split('');
   let result = '';
   for (let i = 0; i < english.length; i++) {
     let des_i = english.length - 1 - i; // 倒序排列设值
