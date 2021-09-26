@@ -20,14 +20,15 @@ interface IProps {
   image: ImageData,
   height?: number,
   width?: number,
+  containerWidth?: number,
   onClick(image: ImageData, viewIndex: number): void
 }
 
 const ImageComponent = (props: IProps) => {
-  const { image, height, width, onClick, index } = props;
+  const { image, height, width, onClick, index, containerWidth = 1200 } = props;
   return (
-    <div style={{ height: height || 150, width: width || undefined, margin: 5, cursor: 'pointer' }} onClick={() => onClick(image, index)}>
-      <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto' }} />
+    <div style={{ height: height || 150, margin: 5, cursor: 'pointer', maxWidth: (containerWidth - 10) }} onClick={() => onClick(image, index)}>
+      <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto', maxWidth: (containerWidth - 10) }} />
     </div>
   );
 };
