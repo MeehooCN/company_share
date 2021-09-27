@@ -55,7 +55,6 @@ const ImageLogin = () => {
   // 获取图片
   const getImageUrl = () => {
     const codeImageList = [codeImage1, codeImage2, codeImage3, codeImage4, codeImage5];
-    console.log(currCodeIndex);
     let img = codeImageList[currCodeIndex];// codeImage 就是你的图片路径
     let image = new Image();
     image.src = img;

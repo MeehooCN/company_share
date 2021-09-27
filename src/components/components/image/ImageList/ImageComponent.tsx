@@ -20,15 +20,30 @@ interface IProps {
   image: ImageData,
   height?: number,
   width?: number,
-  containerWidth?: number,
-  onClick(image: ImageData, viewIndex: number): void
+  onClick(image: ImageData, viewIndex: number): void,
+  isBigWidth?: boolean
 }
 
 const ImageComponent = (props: IProps) => {
-  const { image, height, width, onClick, index, containerWidth = 1200 } = props;
+  const { image, height, width, onClick, index, isBigWidth } = props;
   return (
-    <div style={{ height: height || 150, margin: 5, cursor: 'pointer', maxWidth: (containerWidth - 10) }} onClick={() => onClick(image, index)}>
-      <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto', maxWidth: (containerWidth - 10) }} />
+    <div
+      style={{
+        height: height || 150,
+        width: width || undefined,
+        margin: 5,
+        cursor: 'pointer',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+      onClick={() => onClick(image, index)}
+    >
+      {isBigWidth ? (
+        <img src={image.thumbnailTrueUrl} alt={image.name} style={{ width: '100%' }} />
+      ) : (
+        <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto' }} />
+      )}
     </div>
   );
 };

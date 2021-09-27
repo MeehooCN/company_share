@@ -25,9 +25,9 @@ const ImageListView = () => {
     return setImagePropList(Mock.mock({
       'imageList|50-80': [{
         'id|+1': 1,
-        'sourceUrl': Random.dataImage('300x250'),
+        'sourceUrl': Random.dataImage('2700x250'),
         'thumbnailUrl|+1': [
-          Random.dataImage('300x250'),
+          Random.dataImage('2700x250'),
           Random.dataImage('450x300'),
           Random.dataImage('300x500'),
           Random.dataImage('300x600'),
@@ -36,7 +36,7 @@ const ImageListView = () => {
         ],
         'thumbnailTrueUrl|+1': '',
         'name': Random.cname(),
-        'width|+1': [300, 450, 300, 300, 400, 400],
+        'width|+1': [2700, 450, 300, 300, 400, 400],
         'height|+1': [250, 300, 500, 600, 400, 400]
       }]
     }).imageList);

@@ -14,7 +14,8 @@ const wishHeight: number = 200;
 interface ImageDataWithViewContainer extends ImageData {
   viewWidth: number,
   viewHeight: number,
-  imageRatio: number
+  imageRatio: number,
+  isBigWidth?: boolean
 }
 
 interface IProps {
@@ -55,15 +56,16 @@ const ImageList = (props: IProps) => {
   // 初始化图片列表
   const initImageList = (imagePropList: Array<ImageData>) => {
     if (imagePropList.length > 0) {
-      let containerRatio: number = containerWidth / wishHeight;
+      const allRatio: number = containerWidth / wishHeight;
       let imageTempList: Array<ImageDataWithViewContainer> = imagePropList.map((item: ImageData) => {
-        let imgRatio = item.width / item.height;
+        // 优化宽图显示
+        const imageRatio: number = item.width / item.height;
         return {
           ...item,
           viewHeight: wishHeight,
           viewWidth: wishHeight,
-          // imageRatio: item.width / item.height
-          imageRatio: imgRatio > containerRatio ? containerRatio : imgRatio
+          imageRatio: imageRatio < allRatio ? imageRatio : (16 / 9),
+          isBigWidth: imageRatio > allRatio
         };
       });
       imageTempList = getImageView(imageTempList);
@@ -128,18 +130,15 @@ const ImageList = (props: IProps) => {
     for (let index: number = 0; index < imageTempList.length; index++) {
       rowTotalRatio = rowTotalRatio + imageTempList[index].imageRatio;
       // 分行，每行宽高比总和小于总宽高比
-      // if (rowTotalRatio > allRatio && )
       // 当当前宽高比大于总宽高比时，说明应该是下一行了，当前的上一行为最后一个
       if (rowTotalRatio > allRatio) {
-        const spaceWidth: number = rowTotal * 10; // 图片之间的间距
+        const spaceWidth: number = rowTotal * 10;
         const restWidth = containerWidth - spaceWidth;
         const height: number = restWidth / (rowTotalRatio - imageTempList[index].imageRatio);
         rowList.push({
           row: rowIndex,
           endIndex: index - 1, // 包括这张图
-          // todo 修改的
           height
-          // height: 200
         });
         lastRowIndex = index - 1;
         rowIndex = rowIndex + 1;
@@ -151,18 +150,12 @@ const ImageList = (props: IProps) => {
     }
     // 如果还剩图片或者只有一行
     if (lastRowIndex < (imageTempList.length - 1) || lastRowIndex === 0) {
-      let ratioHeight = wishHeight - 10;
-      if (imageTempList[imageTempList.length - 1].imageRatio > 1) { // 若实际图片的宽度大于高度，则需
-        ratioHeight = containerWidth / imageTempList[imageTempList.length - 1].imageRatio;
-      }
       rowList.push({
         row: rowIndex,
         endIndex: imageTempList.length - 1,
-        // height: wishHeight - 10
-        height: ratioHeight
+        height: wishHeight - 10
       });
     }
-    console.log('rowList', rowList);
     for (let j: number = 0; j < rowList.length; j++) {
       let startIndex: number = -1; // 不包括
       let endIndex: number = rowList[j].endIndex; // 包括
@@ -190,8 +183,8 @@ const ImageList = (props: IProps) => {
             image={item}
             height={item.viewHeight}
             width={item.viewWidth}
-            containerWidth={containerWidth}
             onClick={onImageClick ? onImageClick : () => {}}
+            isBigWidth={item.isBigWidth}
           />
         </div>
       ));
