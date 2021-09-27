@@ -30,7 +30,6 @@ const ImageListView = () => {
       list.push({
         id: i + '1',
         sourceUrl: 'http://lorempixel.com/1600/900',
-        thumbnailTrueUrl: '',
         thumbnailUrl: 'http://lorempixel.com/' + width + '/' + height, // 随机生成一个有宽度和高度的图片
         name: 'xx',
         width,

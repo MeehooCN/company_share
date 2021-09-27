@@ -9,7 +9,6 @@ export interface ImageData {
   id: string,
   sourceUrl: string,
   thumbnailUrl: string,
-  thumbnailTrueUrl: string,
   name: string,
   width: number,
   height: number
@@ -40,9 +39,9 @@ const ImageComponent = (props: IProps) => {
       onClick={() => onClick(image, index)}
     >
       {isBigWidth ? (
-        <img src={image.thumbnailTrueUrl} alt={image.name} style={{ width: '100%' }} />
+        <img src={image.thumbnailUrl} alt={image.name} style={{ width: '100%' }} loading="lazy" />
       ) : (
-        <img src={image.thumbnailTrueUrl} alt={image.name} style={{ height: height || 150, width: 'auto' }} />
+        <img src={image.thumbnailUrl} alt={image.name} style={{ height: height || 150, width: 'auto' }} loading="lazy" />
       )}
     </div>
   );

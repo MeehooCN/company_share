@@ -22,8 +22,6 @@ interface IProps {
   imagePropList: Array<ImageData>,
   containerWidth?: number,
   onImageClick?(image: ImageData, viewIndex: number): void,
-  parentId?: string, // 父容器 id
-  parentTop?: number
 }
 
 // 使用该组件的 hook
@@ -34,25 +32,11 @@ export const useImageListHook = (containerInitWidth?: number) => {
 };
 
 const ImageList = (props: IProps) => {
-  const { imagePropList, containerWidth = 1200, onImageClick, parentId, parentTop = 0 } = props;
+  const { imagePropList, containerWidth = 1200, onImageClick } = props;
   const [imageList, setImageList] = useState<Array<ImageDataWithViewContainer>>([]);
-  const [isInit, setIsInit] = useState<boolean>(false);
   useEffect(() => {
-    const parentDom = parentId ? (document.getElementById(parentId) || window) : window;
-    parentDom.addEventListener('scroll', handleWheel);
-    return () => {
-      parentDom.removeEventListener('scroll', handleWheel);
-    };
-  }, [imageList]);
-  useEffect(() => {
-    setIsInit(true);
     initImageList(imagePropList);
   }, [imagePropList, containerWidth]);
-  useEffect(() => {
-    if (isInit) {
-      lazyLoad();
-    }
-  }, [imageList]);
   // 初始化图片列表
   const initImageList = (imagePropList: Array<ImageData>) => {
     if (imagePropList.length > 0) {
@@ -72,47 +56,6 @@ const ImageList = (props: IProps) => {
       setImageList(imageTempList);
     } else {
       setImageList([]);
-    }
-  };
-  let lastScrollTop: number = -1;
-  // 滑动滚轮图片懒加载
-  const handleWheel = (e: any) => {
-    if (parentId) {
-      // 向下滚动
-      if (e.target.scrollTop > lastScrollTop) {
-        // 向下加载图片
-        lazyLoad();
-        lastScrollTop = e.target.scrollTop;
-      }
-    } else {
-      if (window.scrollY > lastScrollTop) {
-        // 向下加载图片
-        lazyLoad();
-        lastScrollTop = window.scrollY;
-      }
-    }
-  };
-  // 图片懒加载
-  const lazyLoad = () => {
-    const tempImageList: Array<ImageDataWithViewContainer> = [...imageList];
-    if (tempImageList.length > 0) {
-      // 设备可用高度
-      let availHeight: number = window.screen.availHeight;
-      // 滚动的高度
-      let scrollHeight: number = document.documentElement.scrollTop;
-      // 距 img 元素显露出的距离
-      let diff = 100 + parentTop;
-      for (let i = 0; i < tempImageList.length; i++) {
-        // @ts-ignore
-        let reactObj = document.getElementById(tempImageList[i].id).getBoundingClientRect();
-        // div距顶部高度
-        let contentTop = reactObj.top; // 1080
-        if (scrollHeight + diff > contentTop - availHeight) {
-          tempImageList[i].thumbnailTrueUrl = tempImageList[i].thumbnailUrl;
-        }
-      }
-      setImageList(tempImageList);
-      setIsInit(false);
     }
   };
   // 计算图片宽高
