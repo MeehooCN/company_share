@@ -58,6 +58,7 @@ const ImageList = (props: IProps) => {
     if (imagePropList.length > 0) {
       const allRatio: number = containerWidth / wishHeight;
       let imageTempList: Array<ImageDataWithViewContainer> = imagePropList.map((item: ImageData) => {
+        // 优化宽图显示
         const imageRatio: number = item.width / item.height;
         return {
           ...item,
