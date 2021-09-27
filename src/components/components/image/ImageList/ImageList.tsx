@@ -14,7 +14,8 @@ const wishHeight: number = 200;
 interface ImageDataWithViewContainer extends ImageData {
   viewWidth: number,
   viewHeight: number,
-  imageRatio: number
+  imageRatio: number,
+  isBigWidth?: boolean
 }
 
 interface IProps {
@@ -55,12 +56,15 @@ const ImageList = (props: IProps) => {
   // 初始化图片列表
   const initImageList = (imagePropList: Array<ImageData>) => {
     if (imagePropList.length > 0) {
+      const allRatio: number = containerWidth / wishHeight;
       let imageTempList: Array<ImageDataWithViewContainer> = imagePropList.map((item: ImageData) => {
+        const imageRatio: number = item.width / item.height;
         return {
           ...item,
           viewHeight: wishHeight,
           viewWidth: wishHeight,
-          imageRatio: item.width / item.height
+          imageRatio: imageRatio < allRatio ? imageRatio : (16 / 9),
+          isBigWidth: imageRatio > allRatio
         };
       });
       imageTempList = getImageView(imageTempList);
@@ -179,6 +183,7 @@ const ImageList = (props: IProps) => {
             height={item.viewHeight}
             width={item.viewWidth}
             onClick={onImageClick ? onImageClick : () => {}}
+            isBigWidth={item.isBigWidth}
           />
         </div>
       ));
