@@ -5,7 +5,6 @@
  **/
 import React, { useEffect } from 'react';
 import { Row } from 'antd';
-import Mock, { Random } from 'mockjs';
 import { API, CodeExample, ImageList, TitleWithDescription, useImageListHook } from '@components/index';
 import { getClientWidth, throttle } from '@utils/CommonFunc';
 import { ImageData } from '@components/components/image/ImageList/ImageComponent';
@@ -23,38 +22,23 @@ const ImageListView = () => {
   }, []);
   // 初始化图片列表
   const initImageList = () => {
-    let list: Array<ImageData> = [];
+    const list: Array<ImageData> = [];
     for (let i = 0; i < 30; i++) {
       let width = Math.round(Math.random() * 800);
       let height = Math.round(Math.random() * 500);
-      list.push({
-        id: i + '1',
-        sourceUrl: 'http://lorempixel.com/1600/900',
-        thumbnailUrl: 'http://lorempixel.com/' + width + '/' + height, // 随机生成一个有宽度和高度的图片
-        name: 'xx',
-        width,
-        height
-      });
+      // 解决图片宽度为 1 时获取到的图片有问题的 bug
+      if (width > 5 && height > 5) {
+        list.push({
+          id: i + '1',
+          sourceUrl: 'https://source.unsplash.com/user/erondu/' + width + 'x' + height,
+          thumbnailUrl: 'https://source.unsplash.com/user/erondu/' + width + 'x' + height, // 随机生成一个有宽度和高度的图片
+          name: 'xx',
+          width,
+          height
+        });
+      }
     }
-    return setImagePropList(list);
-    // return setImagePropList(Mock.mock({
-    //   'imageList|50-80': [{
-    //     'id|+1': 1,
-    //     'sourceUrl': Random.dataImage('200x250'),
-    //     'thumbnailUrl|+1': [
-    //       Random.dataImage('800x250'),
-    //       Random.dataImage('450x300'),
-    //       Random.dataImage('300x500'),
-    //       Random.dataImage('900x600'),
-    //       Random.dataImage('400x400'),
-    //       Random.dataImage('1600x400'),
-    //     ],
-    //     'thumbnailTrueUrl|+1': '',
-    //     'name': Random.cname(),
-    //     'width|+1': [800, 450, 300, 900, 400, 1600],
-    //     'height|+1': [250, 300, 500, 600, 400, 400]
-    //   }]
-    // }).imageList);
+    setImagePropList(list);
   };
   // 监听窗口变化
   const onWindowResize = () => {

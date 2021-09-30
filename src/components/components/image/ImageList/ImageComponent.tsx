@@ -20,11 +20,12 @@ interface IProps {
   height?: number,
   width?: number,
   onClick(image: ImageData, viewIndex: number): void,
-  isBigWidth?: boolean
+  isBigWidth?: boolean,
+  borderColor?: string
 }
 
 const ImageComponent = (props: IProps) => {
-  const { image, height, width, onClick, index, isBigWidth } = props;
+  const { image, height, width, onClick, index, isBigWidth, borderColor } = props;
   return (
     <div
       style={{
@@ -34,7 +35,8 @@ const ImageComponent = (props: IProps) => {
         cursor: 'pointer',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        border: isBigWidth ? '1px solid ' + borderColor : 'none'
       }}
       onClick={() => onClick(image, index)}
     >

@@ -22,6 +22,7 @@ interface IProps {
   imagePropList: Array<ImageData>,
   containerWidth?: number,
   onImageClick?(image: ImageData, viewIndex: number): void,
+  borderColor?: string
 }
 
 // 使用该组件的 hook
@@ -32,7 +33,7 @@ export const useImageListHook = (containerInitWidth?: number) => {
 };
 
 const ImageList = (props: IProps) => {
-  const { imagePropList, containerWidth = 1200, onImageClick } = props;
+  const { imagePropList, containerWidth = 1200, onImageClick, borderColor = '#eee' } = props;
   const [imageList, setImageList] = useState<Array<ImageDataWithViewContainer>>([]);
   useEffect(() => {
     initImageList(imagePropList);
@@ -48,7 +49,7 @@ const ImageList = (props: IProps) => {
           ...item,
           viewHeight: wishHeight,
           viewWidth: wishHeight,
-          imageRatio: imageRatio < allRatio ? imageRatio : (16 / 9),
+          imageRatio: imageRatio <= allRatio ? imageRatio : (16 / 9),
           isBigWidth: imageRatio > allRatio
         };
       });
@@ -128,6 +129,7 @@ const ImageList = (props: IProps) => {
             width={item.viewWidth}
             onClick={onImageClick ? onImageClick : () => {}}
             isBigWidth={item.isBigWidth}
+            borderColor={borderColor}
           />
         </div>
       ));
