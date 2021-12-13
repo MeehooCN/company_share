@@ -1,5 +1,7 @@
-# company_share
-分享平台—主要包含以下功能组件
+# company_share 分享平台
+
+# 组件
+
 ## 文字
 ### MyTitle 标题
 ### OverText 溢出文字
@@ -30,4 +32,4 @@
 ### AttachmentView 附件浏览
 
 ## 表格
-### treeTable 树形合并表格
+### treeTable 树形合并表格
