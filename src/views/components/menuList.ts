@@ -68,6 +68,9 @@ export const menuList: Array<MenuData> = [{
   }, {
     name: '离开页面提示',
     key: 'prompt'
+  }, {
+    name: '消息提示',
+    key: 'message'
   }]
 }, {
   name: '其他',

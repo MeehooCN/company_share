@@ -14,7 +14,7 @@ export { default as ImageComponent } from '@components/components/image/ImageCom
 export { default as ImageList, useImageListHook } from '@components/components/image/ImageList/ImageList';
 export { default as ImageView, useImageViewHook } from '@components/components/image/ImageView/ImageView';
 export { default as ImageCompare, useImageCompareHook } from '@components/components/image/ImageCompare';
-export { default as Loading } from '@components/components/Loading';
+export { default as Loading } from '@components/components/feedback/Loading';
 export { default as OverText } from '@components/components/text/OverText';
 export { default as ImageListHorizontal, useImageListHorizontalHook } from '@components/components/image/ImageListHorizontal/ImageListHorizontal';
 export { default as ImageListWithView, useImageListWithViewHook } from '@components/components/image/ImageListWithView/ImageListWithView';
@@ -27,3 +27,4 @@ export { default as MyRangePicker, getTimeParams } from '@components/components/
 export { default as useMenuHook } from '@components/components/hook/useMenuHook';
 export { default as AttachmentView } from '@components/components/attachment/AttachmentView';
 export { default as MoveWindow } from '@components/components/MoveWindow';
+export { default as Message, message } from '@components/components/feedback/Message';
