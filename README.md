@@ -20,6 +20,7 @@
 ### 反馈
 #### Loading 居中显示加载效果
 #### Prompt 离开页面提示
+#### message 消息提示
 
 ### 图标
 #### IconFontChoose 选择图标
