@@ -71,11 +71,9 @@ useEffect 使用总结
 useContext + useReducer 使用介绍
 
 #### Node.js 技巧
-
 yalc 将源代码打包用在自己项目中
 
 #### Flutter 技巧
-
 命令行生成应用图标
 
 ### 资源
@@ -86,17 +84,24 @@ yalc 将源代码打包用在自己项目中
 ### Debug 分享
 
 #### React 错误处理
-
 ReactEcharts y 轴数据过小处理
 
 #### Flutter 错误处理
-
 flutter initializing gradle...
 IOS 无法固定屏幕方向
 
 #### 浏览器兼容
-
 图片拖拽兼容性问题
+
+### 设计规范
+
+#### 按钮
+按钮位置
+
+按钮顺序
+
+#### 表格中的操作
+
 
 
 
