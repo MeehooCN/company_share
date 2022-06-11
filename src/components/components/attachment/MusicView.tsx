@@ -155,9 +155,9 @@ const MusicView = (props: IProps) => {
       const tempIndex = musicList.findIndex((item: MusicData) => item.id === musicItem.id);
       return (
         <div className="music-musicItem-container" key={musicItem.id} onClick={() => switchMusic(musicItem, tempIndex)}>
-          <div className="music-musicItem-content">
+          <div className="music-music-item-content">
             <span style={{ color: viewIndex === tempIndex ? colors.primaryColor : '' }}>{musicItem.name}</span>
-            <DownloadOutlined className="music-musicItem-download" />
+            <DownloadOutlined className="music-music-item-download" />
           </div>
         </div>
       );
@@ -166,7 +166,7 @@ const MusicView = (props: IProps) => {
   };
   return (
     <div
-      className={'view-music-container' + (isMini ? ' miniView-music-container' : ' maxView-music-container')}
+      className={'view-music-container' + (isMini ? ' mini-view-music-container' : ' max-view-music-container')}
       style={{ display: musicView ? 'block' : 'none' }}
       onClick={() => setIsVolume(false)}
     >
@@ -201,7 +201,7 @@ const MusicView = (props: IProps) => {
         </Row>
       </div>
       <audio ref={audioRef} src={currMusic && currMusic.sourceUrl} />
-      <div className="music-musicItem-block">
+      <div className="music-music-item-block">
         {musicItemBlock()}
       </div>
     </div>
