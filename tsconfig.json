@@ -36,5 +36,8 @@
       "dom",
       "es2015"
     ]
-  }
+  },
+  "exclude": [
+    "tsconfig.json"
+  ]
 }
