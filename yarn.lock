@@ -1877,12 +1877,12 @@ autoprefixer@^9.6.1, autoprefixer@^9.8.6:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-axios@^0.19.0:
-  version "0.19.2"
-  resolved "https://registry.npmmirror.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
-  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+axios@^0.21.2:
+  version "0.21.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.2.tgz#21297d5084b2aeeb422f5d38e7be4fbb82239017"
+  integrity sha512-87otirqUw3e8CzHTMO+/9kh/FSgXt/eVDvipijwDtEuwbkySWZ9SBm6VEubmJ/kLKEoLQV/POhxXFb66bfekfg==
   dependencies:
-    follow-redirects "1.5.10"
+    follow-redirects "^1.14.0"
 
 babel-code-frame@^6.26.0:
   version "6.26.0"
@@ -2810,13 +2810,6 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
   dependencies:
     ms "2.0.0"
 
-debug@=3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmmirror.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
-  dependencies:
-    ms "2.0.0"
-
 debug@^3.1.1, debug@^3.2.6, debug@^3.2.7:
   version "3.2.7"
   resolved "https://registry.npmmirror.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
@@ -3635,14 +3628,7 @@ flatten@^1.0.2:
   resolved "https://registry.npmmirror.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
   integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
 
-follow-redirects@1.5.10:
-  version "1.5.10"
-  resolved "https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
-  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
-  dependencies:
-    debug "=3.1.0"
-
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0:
   version "1.15.1"
   resolved "https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.15.1.tgz#0ca6a452306c9b276e4d3127483e29575e207ad5"
   integrity sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==
@@ -4635,6 +4621,15 @@ jest-worker@^27.4.5:
   version "27.5.1"
   resolved "https://registry.npmmirror.com/jest-worker/-/jest-worker-27.5.1.tgz#8d146f0900e8973b106b6f73cc1e9a8cb86f8db0"
   integrity sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==
+  dependencies:
+    "@types/node" "*"
+    merge-stream "^2.0.0"
+    supports-color "^8.0.0"
+
+jest-worker@^28.1.0:
+  version "28.1.1"
+  resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-28.1.1.tgz#3480c73247171dfd01eda77200f0063ab6a3bf28"
+  integrity sha512-Au7slXB08C6h+xbJPp7VIb6U0XX5Kc9uel/WFc6/rcTzGiaVCBRngBExSYuXSLFPULPSYU3cJ3ybS988lNFQhQ==
   dependencies:
     "@types/node" "*"
     merge-stream "^2.0.0"
@@ -7709,6 +7704,17 @@ stylelint-order@^5.0.0:
   dependencies:
     postcss "^8.3.11"
     postcss-sorting "^7.0.1"
+
+stylelint-webpack-plugin@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-3.3.0.tgz#3ba40e2b2b2b7d1802fa53618e01fc28bc21ffb3"
+  integrity sha512-F53bapIZ9zI16ero8IWm6TrUE6SSibZBphJE9b5rR2FxtvmGmm1YmS+a5xjQzn63+cv71GVSCu4byX66fBLpEw==
+  dependencies:
+    globby "^11.1.0"
+    jest-worker "^28.1.0"
+    micromatch "^4.0.5"
+    normalize-path "^3.0.0"
+    schema-utils "^4.0.0"
 
 stylelint@^14.9.0:
   version "14.9.1"
