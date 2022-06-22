@@ -25,13 +25,13 @@ const AttachmentTable = (props: IProps) => {
       </Row>
     );
     switch (fileType) {
-      case 'picture': return fileBlock('pictureIcon', row.filename);
-      case 'music': return fileBlock('musicIcon', row.filename);
-      case 'video': return fileBlock('videoIcon', row.filename);
-      case 'pdf': return fileBlock('pdfIcon', row.filename);
-      case 'word': return fileBlock('wordIcon', row.filename);
-      case 'ppt': return fileBlock('pptIcon', row.filename);
-      case 'excel': return fileBlock('excelIcon', row.filename);
+      case 'picture': return fileBlock('picture-icon', row.filename);
+      case 'music': return fileBlock('music-icon', row.filename);
+      case 'video': return fileBlock('video-icon', row.filename);
+      case 'pdf': return fileBlock('pdf-icon', row.filename);
+      case 'word': return fileBlock('word-icon', row.filename);
+      case 'ppt': return fileBlock('ppt-icon', row.filename);
+      case 'excel': return fileBlock('excel-icon', row.filename);
       default:
         return fileBlock('', '无法识别文档');
     }

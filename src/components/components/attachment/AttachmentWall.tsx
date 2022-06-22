@@ -20,26 +20,26 @@ const AttachmentWall = (props: IProps) => {
     const attachmentWall = attachmentState.attachmentList.map((item: any) => {
       const fileType: string = getFileType(item.sourceUrl);
       const fileBlock = (logoType: string, filename: string) => {
-        return <div className="fileBlock" key={item.id} onClick={() => handleClick(item, fileType)}>
+        return <div className="file-block" key={item.id} onClick={() => handleClick(item, fileType)}>
           <div className={logoType} />
-          <a className="fileName">{filename}</a>
+          <a className="file-name">{filename}</a>
         </div>;
       };
       switch (fileType) {
         case 'picture': return (
-          <div className="fileBlock" key={item.id} onClick={() => handleClick(item, fileType)}>
-            <div className="pictureLogo">
+          <div className="file-block" key={item.id} onClick={() => handleClick(item, fileType)}>
+            <div className="picture-logo">
               <Image src={item.sourceUrl} width={84} height={84} preview={false} />
             </div>
-            <a className="fileName">{item.filename}</a>
+            <a className="file-name">{item.filename}</a>
           </div>
         );
-        case 'music': return fileBlock('musicLogo', item.filename);
-        case 'video': return fileBlock('videoLogo', item.filename);
-        case 'pdf': return fileBlock('pdfLogo', item.filename);
-        case 'word': return fileBlock('wordLogo', item.filename);
-        case 'ppt': return fileBlock('pptLogo', item.filename);
-        case 'excel': return fileBlock('excelLogo', item.filename);
+        case 'music': return fileBlock('music-logo', item.filename);
+        case 'video': return fileBlock('video-logo', item.filename);
+        case 'pdf': return fileBlock('pdf-logo', item.filename);
+        case 'word': return fileBlock('word-logo', item.filename);
+        case 'ppt': return fileBlock('ppt-logo', item.filename);
+        case 'excel': return fileBlock('excel-logo', item.filename);
         default:
           return fileBlock('', '无法识别文档类型');
       }
