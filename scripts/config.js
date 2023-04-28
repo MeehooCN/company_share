@@ -20,8 +20,8 @@ module.exports = {
   path: '/opt/view/dist.zip',
   shPath: '/opt/sh',
   // 开发时
-  // platform: '/',
+  platform: '/',
   // 打包时
-  platform: '/share/',
-  serverPath: '/api/'
+  // platform: '/share/',
+  serverPath: '/api/',
 };
